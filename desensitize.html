@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据脱敏、字段权限 | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>数据脱敏、字段权限 | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/desensitize/">https://doc.iocoder.cn/desensitize/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">数据脱敏、字段权限<!----></h1>  <div class="theme-vdoing-content content__default"><p>接口在返回一些<strong>敏感</strong>或<strong>隐私</strong>数据时，是需要进行脱敏处理，通常的手段是使用 <code>*</code> 隐藏一部分数据。例如说：</p> <table><thead><tr><th>类型</th> <th>原始数据</th> <th>脱敏数据</th></tr></thead> <tbody><tr><td>手机</td> <td>13248765917</td> <td>132****5917</td></tr> <tr><td>身份证</td> <td>530321199204074611</td> <td>530321**********11</td></tr> <tr><td>银行卡</td> <td>9988002866797031</td> <td>998800********31</td></tr></tbody></table> <h2 id="_1-脱敏组件"><a href="#_1-%E8%84%B1%E6%95%8F%E7%BB%84%E4%BB%B6" class="header-anchor">#</a> 1. 脱敏组件</h2> <p>脱敏组件，由 <code>yudao-spring-boot-starter-web</code> 的 <a href="https://github.com/YunaiV/ruoyi-vue-pro/tree/master/yudao-framework/yudao-spring-boot-starter-web/src/main/java/cn/iocoder/yudao/framework/desensitize" target="_blank" rel="noopener noreferrer"><code>desensitize</code><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 包实现，基于 Jackson 拓展，只需要在字段上添加脱敏注解，即可实现对该字段进行脱敏。</p> <p>使用步骤如下：</p> <p>在字段上添加脱敏注解。如下所示：</p> <div class="language-Java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@Data</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">DesensitizeDemo</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@MobileDesensitize</span> <span class="token comment">// 手机号的脱敏注解</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> phoneNumber<span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="_2-内置脱敏注解"><a href="#_2-%E5%86%85%E7%BD%AE%E8%84%B1%E6%95%8F%E6%B3%A8%E8%A7%A3" class="header-anchor">#</a> 2. 内置脱敏注解</h2> <p>根据不同的脱敏处理方式，项目内置了两类脱敏注解：正则脱敏、滑块脱敏。</p> <h3 id="_2-1-regex-正则脱敏"><a href="#_2-1-regex-%E6%AD%A3%E5%88%99%E8%84%B1%E6%95%8F" class="header-anchor">#</a> 2.1 regex 正则脱敏</h3> <h4 id="_2-1-1-regexdesensitize-注解"><a href="#_2-1-1-regexdesensitize-%E6%B3%A8%E8%A7%A3" class="header-anchor">#</a> 2.1.1 @RegexDesensitize 注解</h4> <p>正则脱敏注解 <code>@RegexDesensitize</code>：根据<strong>正则表达式</strong>，将原始数据进行<strong>替换</strong>处理。</p> <div class="language-Java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token annotation punctuation">@interface</span> <span class="token class-name">RegexDesensitize</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">/**
+     * 匹配的正则表达式（默认匹配所有）
+     */</span>
+    <span class="token class-name">String</span> <span class="token function">regex</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">"^[\\s\\S]*$"</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/**
+     * 替换规则，会将匹配到的字符串全部替换成 replacer
+     */</span>
+    <span class="token class-name">String</span> <span class="token function">replacer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">"******"</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><p>例如说：<code>regex=123; replacer=******</code> 表示将 <code>123</code> 替换为 <code>******</code></p> <ul><li>原始字符串 123456789</li> <li>脱敏后字符串 ******456789</li></ul> <h4 id="_2-1-2-其它正则脱敏注解"><a href="#_2-1-2-%E5%85%B6%E5%AE%83%E6%AD%A3%E5%88%99%E8%84%B1%E6%95%8F%E6%B3%A8%E8%A7%A3" class="header-anchor">#</a> 2.1.2 其它正则脱敏注解</h4> <p>项目内置了其它基于正则脱敏的常用注解，无需手动填写 <code>regex</code>、<code>replacer</code> 属性，更加方便。例如说：</p> <div class="language-Java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@Data</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">DesensitizeDemo</span> <span class="token punctuation">{</span>
+    
+    <span class="token annotation punctuation">@EmailDesensitize</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> email<span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><p>所有注解如下：</p> <table><thead><tr><th>注解</th> <th>原始数据</th> <th>脱敏数据</th></tr></thead> <tbody><tr><td><code>@EmailDesensitize</code></td> <td>example@gmail.com</td> <td>e****@gmail.com</td></tr></tbody></table> <h3 id="_2-2-slider-滑块脱敏"><a href="#_2-2-slider-%E6%BB%91%E5%9D%97%E8%84%B1%E6%95%8F" class="header-anchor">#</a> 2.2 slider 滑块脱敏</h3> <h4 id="_2-2-1-sliderdesensitize-注解"><a href="#_2-2-1-sliderdesensitize-%E6%B3%A8%E8%A7%A3" class="header-anchor">#</a> 2.2.1 @SliderDesensitize 注解</h4> <p>滑块脱敏注解 <code>@SliderDesensitize</code>：根据设置的左右明文字符长度，中间部分全部替换为 <code>*</code>。</p> <p>例如说：<code>prefixKeep=3; suffixKeep=4; replacer=*</code> 表示前 3 后 4 保持明文，中间都替换成 <code>*</code></p> <ul><li>原始字符串 13248765917</li> <li>脱敏后字符串 132****5917</li></ul> <h4 id="_2-2-2-其它滑块脱敏注解"><a href="#_2-2-2-%E5%85%B6%E5%AE%83%E6%BB%91%E5%9D%97%E8%84%B1%E6%95%8F%E6%B3%A8%E8%A7%A3" class="header-anchor">#</a> 2.2.2 其它滑块脱敏注解</h4> <p>项目内置了其它基于滑块脱敏的常用注解，无需手动填写 <code>prefixKeep</code>、<code>suffixKeep</code>、<code>replacer</code> 属性，更加方便。例如说：</p> <div class="language-Java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@Data</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">DesensitizeDemo</span> <span class="token punctuation">{</span>
+    
+    <span class="token annotation punctuation">@MobileDesensitize</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> mobile<span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><p>所有注解如下：</p> <table><thead><tr><th>注解</th> <th>原始数据</th> <th>脱敏数据</th></tr></thead> <tbody><tr><td><code>@MobileDesensitize</code></td> <td>13248765917</td> <td>132****5917</td></tr> <tr><td><code>@FixedPhoneDesensitize</code></td> <td>01086551122</td> <td>0108*****22</td></tr> <tr><td><code>@BankCardDesensitize</code></td> <td>9988002866797031</td> <td>998800********31</td></tr> <tr><td><code>@PasswordDesensitize</code></td> <td>123456</td> <td>******</td></tr> <tr><td><code>@CarLicenseDesensitize</code></td> <td>粤A66666</td> <td>粤A6***6</td></tr> <tr><td><code>@ChineseNameDesensitize</code></td> <td>刘子豪</td> <td>刘**</td></tr> <tr><td><code>@IdCardDesensitize</code></td> <td>530321199204074611</td> <td>530321**********11</td></tr></tbody></table> <h2 id="_3-自定义脱敏注解"><a href="#_3-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%84%B1%E6%95%8F%E6%B3%A8%E8%A7%A3" class="header-anchor">#</a> 3. 自定义脱敏注解</h2> <p>如果内置的注解无法满足你的需求，只需要自定义一个脱敏注解，并实现它的脱敏处理器即可。</p> <p>例如说，我们要实现一个新的脱敏处理方法，将编号使用 MD5 或 SHA256 计算后返回。步骤如下：</p> <p>① 创建 <code>@DigestDesensitize</code> 注解，使用 <code>@DesensitizeBy</code> 标记它使用的处理器。代码如下：</p> <div class="language-Java extra-class"><pre class="language-java"><code><span class="token keyword">import</span> <span class="token import"><span class="token namespace">cn<span class="token punctuation">.</span>iocoder<span class="token punctuation">.</span>yudao<span class="token punctuation">.</span>framework<span class="token punctuation">.</span>desensitize<span class="token punctuation">.</span>core<span class="token punctuation">.</span>base<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">DesensitizeBy</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">cn<span class="token punctuation">.</span>iocoder<span class="token punctuation">.</span>yudao<span class="token punctuation">.</span>framework<span class="token punctuation">.</span>desensitize<span class="token punctuation">.</span>core<span class="token punctuation">.</span>handler<span class="token punctuation">.</span></span><span class="token class-name">DigestHandler</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>fasterxml<span class="token punctuation">.</span>jackson<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">JacksonAnnotationsInside</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token operator">*</span></span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Documented</span>
+<span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token class-name">ElementType</span><span class="token punctuation">.</span><span class="token constant">FIELD</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span><span class="token class-name">RetentionPolicy</span><span class="token punctuation">.</span><span class="token constant">RUNTIME</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@JacksonAnnotationsInside</span>
+<span class="token annotation punctuation">@DesensitizeBy</span><span class="token punctuation">(</span>handler <span class="token operator">=</span> <span class="token class-name">DigestHandler</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token comment">// 使用 @DesensitizeBy 设置它的处理器</span>
+<span class="token keyword">public</span> <span class="token annotation punctuation">@interface</span> <span class="token class-name">DigestDesensitize</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">/**
+     * 摘要算法，例如说：MD5、SHA256
+     */</span>
+    <span class="token class-name">String</span> <span class="token function">algorithm</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">"md5"</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><p>② 创建 DigestHandler 类，实现 DesensitizationHandler 接口，将编号使用 MD5 或 SHA256 处理。代码如下：</p> <div class="language-Java extra-class"><pre class="language-java"><code><span class="token keyword">import</span> <span class="token import"><span class="token namespace">cn<span class="token punctuation">.</span>hutool<span class="token punctuation">.</span>crypto<span class="token punctuation">.</span>digest<span class="token punctuation">.</span></span><span class="token class-name">DigestUtil</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">cn<span class="token punctuation">.</span>iocoder<span class="token punctuation">.</span>yudao<span class="token punctuation">.</span>framework<span class="token punctuation">.</span>desensitize<span class="token punctuation">.</span>core<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">DigestDesensitize</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">cn<span class="token punctuation">.</span>iocoder<span class="token punctuation">.</span>yudao<span class="token punctuation">.</span>framework<span class="token punctuation">.</span>desensitize<span class="token punctuation">.</span>core<span class="token punctuation">.</span>base<span class="token punctuation">.</span>handler<span class="token punctuation">.</span></span><span class="token class-name">DesensitizationHandler</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DigestHandler</span> <span class="token keyword">implements</span> <span class="token class-name">DesensitizationHandler</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">DigestDesensitize</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">desensitize</span><span class="token punctuation">(</span><span class="token class-name">String</span> origin<span class="token punctuation">,</span> <span class="token class-name">DigestDesensitize</span> annotation<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">String</span> algorithm <span class="token operator">=</span> annotation<span class="token punctuation">.</span><span class="token function">algorithm</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token class-name">DigestUtil</span><span class="token punctuation">.</span><span class="token function">digester</span><span class="token punctuation">(</span>algorithm<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">digestHex</span><span class="token punctuation">(</span>origin<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><div class="custom-block tip"><p class="custom-block-title">友情提示：</p> <p>① 如果自定义的是基于正则脱敏的注解，可选择继承 AbstractRegexDesensitizationHandler 处理器。</p> <p>① 如果自定义的是基于滑块脱敏的注解，可选择继承 AbstractSliderDesensitizationHandler 处理器。</p></div> <p>③ 在需要使用的字段上，添加 <code>@DigestDesensitize</code> 注解。示例代码如下：</p> <div class="language-Java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@Data</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">DesensitizeDemo</span> <span class="token punctuation">{</span>
+    
+    <span class="token annotation punctuation">@DigestDesensitize</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> email<span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><p>完事~</p> <h2 id="_4-脱敏工具类"><a href="#_4-%E8%84%B1%E6%95%8F%E5%B7%A5%E5%85%B7%E7%B1%BB" class="header-anchor">#</a> 4. 脱敏工具类</h2> <p>Hutool 提供了 <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/DesensitizedUtil.html" target="_blank" rel="noopener noreferrer">DesensitizedUtil<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 脱敏工具类，支持用户 ID、 中文名、身份证、座机号、手机号、 地址、电子邮件、 密码、车牌、银行卡号的脱敏处理。</p> <p>使用方式，代码如下：</p> <div class="language-Java extra-class"><pre class="language-java"><code><span class="token class-name">DesensitizedUtil</span><span class="token punctuation">.</span><span class="token function">desensitized</span><span class="token punctuation">(</span><span class="token string">"100"</span><span class="token punctuation">,</span> <span class="token class-name">DesensitizedUtils<span class="token punctuation">.</span>DesensitizedType</span><span class="token punctuation">.</span><span class="token constant">USER_ID</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span>  <span class="token string">"0"</span>
+<span class="token class-name">DesensitizedUtil</span><span class="token punctuation">.</span><span class="token function">desensitized</span><span class="token punctuation">(</span><span class="token string">"段正淳"</span><span class="token punctuation">,</span> <span class="token class-name">DesensitizedUtils<span class="token punctuation">.</span>DesensitizedType</span><span class="token punctuation">.</span><span class="token constant">CHINESE_NAME</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"段**"</span>
+<span class="token class-name">DesensitizedUtil</span><span class="token punctuation">.</span><span class="token function">desensitized</span><span class="token punctuation">(</span><span class="token string">"51343620000320711X"</span><span class="token punctuation">,</span> <span class="token class-name">DesensitizedUtils<span class="token punctuation">.</span>DesensitizedType</span><span class="token punctuation">.</span><span class="token constant">ID_CARD</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"5***************1X"</span>
+<span class="token class-name">DesensitizedUtil</span><span class="token punctuation">.</span><span class="token function">desensitized</span><span class="token punctuation">(</span><span class="token string">"09157518479"</span><span class="token punctuation">,</span> <span class="token class-name">DesensitizedUtils<span class="token punctuation">.</span>DesensitizedType</span><span class="token punctuation">.</span><span class="token constant">FIXED_PHONE</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"0915*****79"</span>
+<span class="token class-name">DesensitizedUtil</span><span class="token punctuation">.</span><span class="token function">desensitized</span><span class="token punctuation">(</span><span class="token string">"18049531999"</span><span class="token punctuation">,</span> <span class="token class-name">DesensitizedUtils<span class="token punctuation">.</span>DesensitizedType</span><span class="token punctuation">.</span><span class="token constant">MOBILE_PHONE</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"180****1999"</span>
+<span class="token class-name">DesensitizedUtil</span><span class="token punctuation">.</span><span class="token function">desensitized</span><span class="token punctuation">(</span><span class="token string">"北京市海淀区马连洼街道289号"</span><span class="token punctuation">,</span> <span class="token class-name">DesensitizedUtils<span class="token punctuation">.</span>DesensitizedType</span><span class="token punctuation">.</span><span class="token constant">ADDRESS</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"北京市海淀区马********"</span>
+<span class="token class-name">DesensitizedUtil</span><span class="token punctuation">.</span><span class="token function">desensitized</span><span class="token punctuation">(</span><span class="token string">"duandazhi-jack@gmail.com.cn"</span><span class="token punctuation">,</span> <span class="token class-name">DesensitizedUtils<span class="token punctuation">.</span>DesensitizedType</span><span class="token punctuation">.</span><span class="token constant">EMAIL</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"d*************@gmail.com.cn"</span>
+<span class="token class-name">DesensitizedUtil</span><span class="token punctuation">.</span><span class="token function">desensitized</span><span class="token punctuation">(</span><span class="token string">"1234567890"</span><span class="token punctuation">,</span> <span class="token class-name">DesensitizedUtils<span class="token punctuation">.</span>DesensitizedType</span><span class="token punctuation">.</span><span class="token constant">PASSWORD</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"**********"</span>
+<span class="token class-name">DesensitizedUtil</span><span class="token punctuation">.</span><span class="token function">desensitized</span><span class="token punctuation">(</span><span class="token string">"苏D40000"</span><span class="token punctuation">,</span> <span class="token class-name">DesensitizedUtils<span class="token punctuation">.</span>DesensitizedType</span><span class="token punctuation">.</span><span class="token constant">CAR_LICENSE</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"苏D4***0"</span>
+<span class="token class-name">DesensitizedUtil</span><span class="token punctuation">.</span><span class="token function">desensitized</span><span class="token punctuation">(</span><span class="token string">"11011111222233333256"</span><span class="token punctuation">,</span> <span class="token class-name">DesensitizedUtils<span class="token punctuation">.</span>DesensitizedType</span><span class="token punctuation">.</span><span class="token constant">BANK_CARD</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"1101 **** **** **** 3256"</span>
+</code></pre></div><p>适合场景，逻辑里需要直接对某个变量进行脱敏处理，然后打印 logger 日志，或者存储到数据库中。</p> <h2 id="_5-字段权限"><a href="#_5-%E5%AD%97%E6%AE%B5%E6%9D%83%E9%99%90" class="header-anchor">#</a> 5. 字段权限</h2> <h3 id="_5-1-基于角色判断"><a href="#_5-1-%E5%9F%BA%E4%BA%8E%E8%A7%92%E8%89%B2%E5%88%A4%E6%96%AD" class="header-anchor">#</a> 5.1 基于角色判断</h3> <p>例如说：只有超管可以查看完整手机号，其它用户只能查看脱敏后的手机号。</p> <div class="language-Java extra-class"><pre class="language-java"><code><span class="token comment">// XXXVO.java</span>
+
+<span class="token annotation punctuation">@EmailDesensitize</span><span class="token punctuation">(</span>disable <span class="token operator">=</span> <span class="token string">"@ss.hasRole('super_admin')"</span><span class="token punctuation">)</span>
+<span class="token keyword">private</span> <span class="token class-name">String</span> mobile<span class="token punctuation">;</span>
+</code></pre></div><h3 id="_5-2-基于权限判断"><a href="#_5-2-%E5%9F%BA%E4%BA%8E%E6%9D%83%E9%99%90%E5%88%A4%E6%96%AD" class="header-anchor">#</a> 5.2 基于权限判断</h3> <p>再例如说：只有拥有 <code>user:info:query-mobile</code> 权限的用户，才能查看完整手机号。</p> <div class="language-Java extra-class"><pre class="language-java"><code><span class="token comment">// XXXVO.java</span>
+
+<span class="token annotation punctuation">@EmailDesensitize</span><span class="token punctuation">(</span>disable <span class="token operator">=</span> <span class="token string">"!@ss.hasPermission('user:info:query-mobile')"</span><span class="token punctuation">)</span>
+</code></pre></div></div></div>
+    </div>
+</body>
+</html>

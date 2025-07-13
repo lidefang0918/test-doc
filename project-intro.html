@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目结构 | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>项目结构 | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/project-intro/">https://doc.iocoder.cn/project-intro/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABH1JREFUSA3tVl1oHFUUPmdmd2ltklqbpJDiNnXFmgbFktho7YMPNiJSSZM0+CAYSkUELVhM6YuwIPpgoOKDqOBDC0XE2CQoNtQXBUFTTcCi+Wlh1V2TQExsUzcltd3M9Tt3ZjZzZ2fT+OJTL8yeM+eee757fmeJbq//KQL8X3DUSFOcfr7cRsRtxNQMWueeVzOkaITIGqQHNg5y8+jNW9ldM7A6nTpAjuolUikAwq7CE3WcM2RRDz+XGVgN3FptU/aUSlvq9Pa3iZ1+sgAqJyyAFqkipd9dqiwHF3P65YycLWc/6sqGrvoEoIp6DOFaX5h6+dnfjkWprwqsPk0dUGq5vySwDImC10KxFHgGL1SWoc92O3eVht09qdXNH11I2SsTsJYqMWzihqGMi+A+Garf3BAuuLI5oGlULyNfyB/HYNujwktOfRrMr5t77NmevqaUopx0grnKAyvVpmwUDB4x6FPXuGvYLTDwWsejwgtgkYKPqRJg8SV6xaiZ3ZTppGneS4yfH5/66fZSDHv+QZci/+h5c5UHtpy67JUqGppM0sh0Nc1dW6/N1W5Yoqat8/TU/VnadmdeW2PLLSyh0cvxBs3KbqTmwYPpxN4do/mzE8nEpvX/UMu2Wbp74zUAK5q6WkHns7V0eWkdPbPzd3rxkTGybadYySumVzhcaJFbs5UrEkQ/+CK8gF5dnh/6ciIZ73gwQ927L1IitoxKLXYP3SjYdOrHHfTZhRRlFyrorafPk20B3HPD1y2G3qKZME5Jcf3t/HUC13/8tSd++vqFveMUTwAUxSUFI1QekR1+bIze3D9MF2aq6cPvG72CgnldWCFqyRw3lwH8ZMerjTD9ElRO7Gv44wNpC90aASqGfVlz/Rx17srQ57/UU26hkhQqUB7dBR71WmzQhHUnblGmVOEw0jhbV1n9OlXUDCIRGaNV5Jp43N516fN7JmnTHdfp7Hgy0luO4aMhtkLL8Bi3bUWYvzh5Mn1dTxrL6QmGuRhGL/TiTTxRoEdTszSaq9GR0NGA3KdkOz3hqSV3MIDhQ5IVX/Ivx3umBti2es2h4eZby7x8br1rkf7Mo90AqC8aQ3sJeNzqFRu+vSANAQe3PL7l0HGOAdwDCeZYvNKeoZp1Qfs6Aipndh86HmFRi0LAnEO47wsqM6cdfjh3jBPUzhZy7nvlUfFsamED1VQt6aISHVymXZ/B2aCtIG8AI8xfobj2d3en1wWVhOeHELKmLQ1s211s88comkv4UCwWyF787mJdYXtNfhKAXVqnKTq8QZvGAGGOfaTo5pGZ/PwbUCr5+DPr/1J92JNHr9aOl/F3iI5+O1nfybsGxoimvZ3ViWSluDITw3P37mypheDIPY0tw7+O/5ApbkYw+zpfaUVu32Pi98+defdUhEpZkRFq0aqyNh9FuL9hpYbEm6iwi0z2REd09ZmyENEbuhjDWzKvZXTqKYaBIr3tt5kuPtQBZFvEUwHt60vfCNu41XsksH9Ij1BMMz1Y0OOunHNShFIP5868g5zeXmuLwL9T4b6Q2+KejgAAAABJRU5ErkJggg==">项目结构<!----></h1>  <div class="theme-vdoing-content content__default"><p><img src="/img/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/01.png" alt="项目结构"></p> <h2 id="👍-相关视频教程"><a href="#%F0%9F%91%8D-%E7%9B%B8%E5%85%B3%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B" class="header-anchor">#</a> 👍 相关视频教程</h2> <ul><li><a href="https://t.zsxq.com/07rbyjM7A" target="_blank" rel="noopener noreferrer">从零开始 01：视频课程导读：项目简介、功能列表、技术选型<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://t.zsxq.com/07FiIaQr3" target="_blank" rel="noopener noreferrer">从零开始 04：自顶向下，讲解项目的整体结构（上）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://t.zsxq.com/07yNfE6un" target="_blank" rel="noopener noreferrer">从零开始 04：自顶向下，讲解项目的整体结构（下）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <h2 id="👻-后端结构"><a href="#%F0%9F%91%BB-%E5%90%8E%E7%AB%AF%E7%BB%93%E6%9E%84" class="header-anchor">#</a> 👻 后端结构</h2> <p>后端采用模块化的架构，按照功能拆分成多个 Maven Module，提升开发与研发的效率，带来更好的可维护性。</p> <p>一共有<strong>四</strong>类 Maven Module：</p> <table><thead><tr><th>Maven Module</th> <th>作用</th></tr></thead> <tbody><tr><td><code>yudao-dependencies</code></td> <td>Maven 依赖版本管理</td></tr> <tr><td><code>yudao-framework</code></td> <td>Java 框架拓展</td></tr> <tr><td><code>yudao-module-xxx</code></td> <td>XXX 功能的 Module 模块</td></tr> <tr><td><code>yudao-server</code></td> <td>管理后台 + 用户 App 的服务端</td></tr></tbody></table> <p>下面，我们来逐个看看。</p> <h3 id="_1-yudao-dependencies"><a href="#_1-yudao-dependencies" class="header-anchor">#</a> 1. yudao-dependencies</h3> <p>该模块是一个 Maven Bom，只有一个 <a href="https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-dependencies/pom.xml" target="_blank" rel="noopener noreferrer"><code>pom.xml</code><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 文件，定义项目中所有 Maven 依赖的<strong>版本号</strong>，解决依赖冲突问题。</p> <blockquote><p>详细的解释，可见 <a href="http://www.iocoder.cn/maven/bom?yudao" target="_blank" rel="noopener noreferrer">《微服务中使用 Maven BOM 来管理你的版本依赖 》<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 文章。</p></blockquote> <p>从定位上来说，它和 Spring Boot 的 <a href="https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent" target="_blank" rel="noopener noreferrer"><code>spring-boot-starter-parent</code><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 和 Spring Cloud 的 <a href="https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies" target="_blank" rel="noopener noreferrer"><code>spring-cloud-dependencies</code><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 是一致的。</p> <p>实际上，<code>ruoyi-vue-pro</code> 本质上还是个<strong>单体</strong>项目，直接在根目录 <a href="https://github.com/YunaiV/ruoyi-vue-pro/blob/master/pom.xml" target="_blank" rel="noopener noreferrer"><code>pom.xml</code><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 管理依赖版本会更加方便，也符合绝大多数程序员的认知。但是要额外考虑一个场景，如果每个 <code>yudao-module-xxx</code> 模块都维护在一个独立的 Git 仓库，那么 <code>yudao-dependencies</code> 就可以在多个 <code>yudao-module-xxx</code> 模块下复用。</p> <h3 id="_2-yudao-framework"><a href="#_2-yudao-framework" class="header-anchor">#</a> 2. yudao-framework</h3> <p>该模块是 <code>ruoyi-vue-pro</code> 项目的框架封装，其下的每个 Maven Module 都是一个组件，分成两种类型：</p> <p>① 技术组件：技术相关的组件封装，例如说 MyBatis、Redis 等等。</p> <table><thead><tr><th>Maven Module</th> <th>作用</th></tr></thead> <tbody><tr><td><code>yudao-common</code></td> <td>定义基础 pojo 类、枚举、工具类等</td></tr> <tr><td><code>yudao-spring-boot-starter-web</code></td> <td>Web 封装，提供全局异常、访问日志等</td></tr> <tr><td><code>yudao-spring-boot-starter-websocket</code></td> <td>WebSocket 封装，提供 Token 认证、WebSocket 集群广播、Message 监听</td></tr> <tr><td><code>yudao-spring-boot-starter-security</code></td> <td>认证授权，基于 Spring Security 实现</td></tr> <tr><td><code>yudao-spring-boot-starter-mybatis</code></td> <td>数据库操作，基于 MyBatis Plus 实现</td></tr> <tr><td><code>yudao-spring-boot-starter-redis</code></td> <td>缓存操作，基于 Spring Data Redis + Redisson 实现</td></tr> <tr><td><code>yudao-spring-boot-starter-mq</code></td> <td>消息队列，基于 Redis 实现，支持集群消费和广播消费</td></tr> <tr><td><code>yudao-spring-boot-starter-job</code></td> <td>定时任务，基于 Quartz 实现，支持集群模式</td></tr> <tr><td><code>yudao-spring-boot-starter-protection</code></td> <td>服务保障，提供幂等、分布式锁、限流、熔断等功能</td></tr> <tr><td><code>yudao-spring-boot-starter-excel</code></td> <td>Excel 导入导出，基于 EasyExcel 实现</td></tr> <tr><td><code>yudao-spring-boot-starter-monitor</code></td> <td>服务监控，提供链路追踪、日志服务、指标收集等功能</td></tr> <tr><td><code>yudao-spring-boot-starter-test</code></td> <td>单元测试，基于 Junit + Mockito 实现</td></tr> <tr><td><code>yudao-spring-boot-starter-file</code> 【已合并】</td> <td>文件客户端，支持将文件存储到 S3（MinIO、阿里云、腾讯云、七牛云）、本地、FTP、SFTP、数据库等</td></tr> <tr><td><code>yudao-spring-boot-starter-captcha</code> 【已合并】</td> <td>验证码 Captcha，提供滑块验证码</td></tr> <tr><td><code>yudao-spring-boot-starter-flowable</code> 【已合并】</td> <td>工作流，基于 Flowable 实现</td></tr></tbody></table> <div class="custom-block tip"><p class="custom-block-title">友情提示：</p> <ul><li><code>yudao-spring-boot-starter-file</code> 组件：自 <code>2.0.1</code> 版本，合并到 <code>yudao-module-infra</code> 模块的 <code>framework/file</code> 包下，一方面减少 starter 提升编译速度，一方面只有 infra 模块使用到</li> <li><code>yudao-spring-boot-starter-captcha</code> 组件：自 <code>2.0.1</code> 版本，合并到 <code>yudao-module-system</code> 模块的 <code>framework/captcha</code> 包下，一方面减少 starter 提升编译速度，一方面只有 system 模块使用到</li> <li><code>yudao-spring-boot-starter-flowable</code> 组件：自 <code>2.0.1</code> 版本，合并到 <code>yudao-module-bpm</code> 模块的 <code>framework/flowable</code> 包下，一方面减少 starter 提升编译速度，一方面只有 bpm 模块使用到</li></ul></div> <p>② 业务组件：业务相关的组件封装，例如说数据字典、操作日志等等。如果是业务组件，名字会包含 <code>biz</code> 关键字。</p> <table><thead><tr><th>Maven Module</th> <th>作用</th></tr></thead> <tbody><tr><td><code>yudao-spring-boot-starter-biz-tenant</code></td> <td>SaaS 多租户</td></tr> <tr><td><code>yudao-spring-boot-starter-biz-data-permission</code></td> <td>数据权限</td></tr> <tr><td><code>yudao-spring-boot-starter-biz-operatelog</code> 【已合并】</td> <td>操作日志</td></tr> <tr><td><code>yudao-spring-boot-starter-biz-pay</code> 【已合并】</td> <td>支付客户端，对接微信支付、支付宝等支付平台</td></tr> <tr><td><code>yudao-spring-boot-starter-biz-ip</code></td> <td>地区 &amp; IP 库</td></tr></tbody></table> <div class="custom-block tip"><p class="custom-block-title">友情提示：</p> <ul><li><code>yudao-spring-boot-starter-biz-operatelog</code> 组件：自 <code>2.1.0</code> 版本，合并到 <code>yudao-spring-boot-starter-security</code> 组件的 <code>operatelog</code> 包下，主要减少 starter 提升编译速度</li> <li><code>yudao-spring-boot-starter-biz-pay</code> 组件：自 <code>2.5.1</code> 版本，合并到 <code>yudao-module-pay</code> 模块的 <code>framework/pay</code> 包下，因为只有它会使用到，更加聚焦收敛</li></ul></div> <hr> <p>每个组件，包含两部分：</p> <ol><li><code>core</code> 包：组件的核心封装，拓展相关的功能。</li> <li><code>config</code> 包：组件的 Spring Boot 自动配置。</li></ol> <p><img src="https://static.iocoder.cn/images/Yudao/2022-03-01/11.png" alt=" 示例"></p> <h3 id="_3-yudao-module-xxx"><a href="#_3-yudao-module-xxx" class="header-anchor">#</a> 3. yudao-module-xxx</h3> <p>该模块是 XXX 功能的 Module 模块，目前内置了 12 个模块。</p> <table><thead><tr><th>项目</th> <th>说明</th> <th>是否必须</th></tr></thead> <tbody><tr><td><code>yudao-module-system</code></td> <td>系统功能</td> <td>√</td></tr> <tr><td><code>yudao-module-infra</code></td> <td>基础设施</td> <td>√</td></tr> <tr><td><code>yudao-module-member</code></td> <td>会员中心</td> <td>x</td></tr> <tr><td><code>yudao-module-bpm</code></td> <td>工作流程</td> <td>x</td></tr> <tr><td><code>yudao-module-pay</code></td> <td>支付系统</td> <td>x</td></tr> <tr><td><code>yudao-module-report</code></td> <td>大屏报表</td> <td>x</td></tr> <tr><td><code>yudao-module-mall</code></td> <td>商城系统</td> <td>x</td></tr> <tr><td><code>yudao-module-erp</code></td> <td>ERP 系统</td> <td>x</td></tr> <tr><td><code>yudao-module-crm</code></td> <td>CRM 系统</td> <td>x</td></tr> <tr><td><code>yudao-module-ai</code></td> <td>AI 大模型</td> <td>x</td></tr> <tr><td><code>yudao-module-mp</code></td> <td>微信公众号</td> <td>x</td></tr> <tr><td><code>yudao-module-iot</code></td> <td>IoT 物联网</td> <td>x</td></tr></tbody></table> <h4 id="_3-1-整体结构"><a href="#_3-1-%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84" class="header-anchor">#</a> 3.1 整体结构</h4> <p>每个模块，不包含子 Maven Module，打开后就是源码，如下图所示：</p> <p><img src="/img/%E5%90%8E%E7%AB%AF%E6%89%8B%E5%86%8C/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/%E5%90%8E%E7%AB%AF%E6%A8%A1%E5%9D%97%E7%BB%93%E6%9E%84-boot.png" alt="后端模块结构"></p> <p>总结来说，每个模块采用<strong>三层</strong>架构 + <strong>非严格</strong>分层，如下图所示：</p> <p><img src="https://static.iocoder.cn/images/Yudao/2022-03-01/33.png" alt="项目分层"></p> <p>下面，我们来看看每个分层（包）的具体结构。</p> <h4 id="_3-2-controller-包"><a href="#_3-2-controller-%E5%8C%85" class="header-anchor">#</a> 3.2 Controller 包</h4> <p><img src="/img/%E5%90%8E%E7%AB%AF%E6%89%8B%E5%86%8C/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/%E5%90%8E%E7%AB%AFController-boot.png" alt="后端 Controller 结构"></p> <table><thead><tr><th>所在包</th> <th>类</th> <th>作用</th> <th>示例</th></tr></thead> <tbody><tr><td><code>controller.admin</code></td> <td>Controller 类</td> <td>提供给管理后台的 RESTful API，默认以 <code>admin-api/</code> 作为前缀。<br> 例如 <code>admin-api/system/auth/login</code> 登录接口</td> <td>AuthController</td></tr> <tr><td><code>controller.admin</code></td> <td>VO 类</td> <td>Admin Controller 接口的入参 ReqVO、出参 RespVO</td> <td>AuthLoginReqVO、AuthLoginRespVO</td></tr> <tr><td><code>controller.app</code></td> <td>Controller 类，<strong>以 App 为前缀</strong></td> <td>提供给用户 App 的 RESTful API，默认以 <code>app-api/</code> 作为前缀。<br> 例如 <code>app-api/member/auth/login</code> 登录接口</td> <td>AppAuthController</td></tr> <tr><td><code>controller.app</code></td> <td>VO 类，<strong>以 App 为前缀</strong></td> <td>App Controller 接口的入参 ReqVO、出参 RespVO</td> <td>AppAuthLoginReqVO、AppAuthLoginRespVO</td></tr> <tr><td><code>controller</code></td> <td><code>.http</code> 文件</td> <td><a href="https://www.iocoder.cn/Spring-Boot/IDEA-HTTP-Client/?yudao" target="_blank" rel="noopener noreferrer">IDEA Http Client 插件<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，模拟请求 RESTful 接口</td> <td>AuthController.http</td></tr></tbody></table> <div class="custom-block tip"><p class="custom-block-title">疑问：为什么 Controller 分成 Admin 和 App 两种？</p> <p>提供给 Admin 和 App 的 RESTful API 接口是不同的，拆分后更加清晰。</p></div> <div class="custom-block tip"><p class="custom-block-title">疑问：为什么 VO 分成 Admin 和 App 两种？</p> <p>相同功能的 RESTful API 接口，对于 Admin 和 App 传入的参数、返回的结果都可能是不同的。例如说，Admin 查询某个用户的基本信息时，可以返回全部字段；而 App 查询时，不会返回 mobile 手机等敏感字段。</p></div> <div class="custom-block tip"><p class="custom-block-title">疑问：为什么 DO 不作为 Controller 的出入参？</p> <ol><li>明确每个 RESTful API 接口的出入参。例如说，创建部门时，只需要传入 name、parentId 字段，使用 DO 接参就会导致 type、createTime、creator 等字段可以被传入，导致前端同学一脸懵逼。</li> <li>每个 RESTful API 有自己独立的 VO，可以更好的设置 Swagger 注解、Validator 校验规则，而让 DO 保持整洁，专注映射好数据库表。</li></ol> <p>ps：不过考虑到大家的开发方便，代码生成器也支持使用 DO 作为 Controller 的出入参，适用于一些简单的项目，主要看你的选择！</p></div> <p>更多推荐阅读：</p> <ul><li><a href="/user-center">《用户体系》</a></li> <li><a href="/api-doc">《接口文档》</a></li> <li><a href="/vo/">《VO 对象转换、数据翻译》</a></li></ul> <h4 id="_3-3-service-包"><a href="#_3-3-service-%E5%8C%85" class="header-anchor">#</a> 3.3 Service 包</h4> <p><img src="/img/%E5%90%8E%E7%AB%AF%E6%89%8B%E5%86%8C/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/%E5%90%8E%E7%AB%AFService-boot.png" alt="后端 Service 结构"></p> <table><thead><tr><th>所在包</th> <th>类</th> <th>作用</th> <th>示例</th></tr></thead> <tbody><tr><td><code>service</code></td> <td>Service 接口</td> <td>业务逻辑的接口定义</td> <td>AdminUserService</td></tr> <tr><td><code>service</code></td> <td>ServiceImpl 类</td> <td>业务逻辑的实现类</td> <td>AdminUserServiceImpl</td></tr></tbody></table> <h4 id="_3-4-dal-包"><a href="#_3-4-dal-%E5%8C%85" class="header-anchor">#</a> 3.4 DAL 包</h4> <p><img src="/img/%E5%90%8E%E7%AB%AF%E6%89%8B%E5%86%8C/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/%E5%90%8E%E7%AB%AFDAL-boot.png" alt="后端 DAL 结构"></p> <table><thead><tr><th>所在包</th> <th>类</th> <th>作用</th> <th>示例</th></tr></thead> <tbody><tr><td><code>dal</code></td> <td>-</td> <td>Data Access Layer，数据访问层</td> <td></td></tr> <tr><td><code>dal.dataobject</code></td> <td>DO 类</td> <td>Data Object，映射数据库表、或者 Redis 对象</td> <td>AdminUserDO</td></tr> <tr><td><code>dal.mysql</code></td> <td>Mapper 接口</td> <td>数据库的操作</td> <td>AdminUserMapper</td></tr> <tr><td><code>dal.redis</code></td> <td>RedisDAO 类</td> <td>Redis 的操作</td> <td>OAuth2AccessTokenRedisDAO</td></tr></tbody></table> <div class="custom-block tip"><p class="custom-block-title">疑问：为什么操作 Redis 需要通过 RedisDAO？</p> <p>Service 直接使用 RedisTemplate 操作 Redis，导致大量 Redis 的操作细节和业务逻辑杂糅在一起，导致代码不够整洁。通过 RedisDAO 类，将每个 Redis Key 像一个数据表一样对待，清晰易维护。</p></div> <p>更多推荐阅读：</p> <ul><li><a href="/mybatis">《MyBatis 数据库》</a></li> <li><a href="/mybatis-pro/">《MyBatis 联表x分页》</a></li> <li><a href="/redis-cache">《Redis 缓存》</a></li></ul> <h4 id="_3-5-api-包"><a href="#_3-5-api-%E5%8C%85" class="header-anchor">#</a> 3.5 API 包</h4> <p><img src="/img/%E5%90%8E%E7%AB%AF%E6%89%8B%E5%86%8C/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/%E5%90%8E%E7%AB%AFAPI1-boot.png" alt="后端API1"></p> <table><thead><tr><th>所在包</th> <th>类</th> <th>作用</th> <th>示例</th></tr></thead> <tbody><tr><td><code>api</code></td> <td>Api 接口</td> <td>提供给其它模块的 API 接口</td> <td>AdminUserApi</td></tr> <tr><td><code>api</code></td> <td>ApiImpl 类</td> <td>提供给其它模块的 API 实现类</td> <td>AdminUserApiImpl</td></tr> <tr><td><code>api</code></td> <td>DTO 类</td> <td>Api 接口的入参 ReqDTO、出参 RespDTO</td> <td>AdminUserRespDTO、SocialUserBindReqDTO</td></tr></tbody></table> <p>① 你可以把 <code>api</code> 理解成一种特殊的“Controller”，提供给其他模块，方便你治理，知道哪些模块，调用了你那些接口。如下图所示：</p> <p><img src="/img/%E5%90%8E%E7%AB%AF%E6%89%8B%E5%86%8C/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/%E5%90%8E%E7%AB%AFAPI2-boot.png" alt="后端API2"></p> <p>② 当然，如果觉得麻烦，可以直接调用引入模块的 Service 的方法，不会有什么问题。</p> <p>唯一需要注意的是，如果模块之间可能会存在相互引用的情况，会导致无法编译的情况，这个是 Maven 的限制。此时，需要抽一个 模块出来，例如说 <code>yudao-module-xxx-api</code> 模块。目前项目里，就有一个例子：</p> <ul><li>问题：mall 商城下面，<code>yudao-module-promotion</code> 营销依赖 <code>yudao-module-trade</code> 交易，<code>yudao-module-trade</code> 交易依赖 <code>yudao-module-promotion</code> 营销。此时，编译会报错！</li> <li>解决方案：<code>yudao-module-trade</code> 抽出一个 <code>yudao-module-trade-api</code> 模块，提供给 <code>yudao-module-promotion</code> 营销使用</li> <li>依赖关系：最终就是 <code>yudao-module-trade</code> =&gt; <code>yudao-module-promotion</code> =&gt; <code>yudao-module-trade-api</code></li></ul> <p>如果这个情况出的比较多，你也可以索性搞个 <code>yudao-module-all-api</code> 模块，所有碰到这种情况，都依赖它。</p> <h4 id="_3-6-mq-包"><a href="#_3-6-mq-%E5%8C%85" class="header-anchor">#</a> 3.6 MQ 包</h4> <table><thead><tr><th>所在包</th> <th>类</th> <th>作用</th> <th>示例</th></tr></thead> <tbody><tr><td><code>mq</code></td> <td>-</td> <td>Message Queue，消息队列</td> <td></td></tr> <tr><td><code>mq.message</code></td> <td>Message 类</td> <td>发送和消费的消息</td> <td>SmsSendMessage</td></tr> <tr><td><code>mq.producer</code></td> <td>Producer 类</td> <td>消息的生产者</td> <td>SmsProducer</td></tr> <tr><td><code>mq.consumer</code></td> <td>Producer 类</td> <td>消息的消费者</td> <td>SmsSendConsumer</td></tr></tbody></table> <p>更多推荐阅读：</p> <ul><li><a href="/message-queue/event">《消息队列（内存）》</a></li> <li><a href="/message-queue/redis">《消息队列（Redis）》</a></li> <li><a href="/message-queue/kafka">《消息队列（Kafka）》</a></li> <li><a href="/message-queue/rocketmq">《消息队列（RocketMQ）》</a></li> <li><a href="/message-queue/rabbitmq">《消息队列（RabbitMQ）》</a></li></ul> <h4 id="_3-7-job-包"><a href="#_3-7-job-%E5%8C%85" class="header-anchor">#</a> 3.7 Job 包</h4> <table><thead><tr><th>所在包</th> <th>类</th> <th>作用</th> <th>示例</th></tr></thead> <tbody><tr><td><code>job</code></td> <td>Job 类</td> <td>定时任务</td> <td>DemoJob</td></tr></tbody></table> <p>更多推荐阅读：</p> <ul><li><a href="/job">《定时任务》</a></li></ul> <h4 id="_3-8-enum-包"><a href="#_3-8-enum-%E5%8C%85" class="header-anchor">#</a> 3.8 Enum 包</h4> <table><thead><tr><th>所在包</th> <th>类</th> <th>作用</th> <th>示例</th></tr></thead> <tbody><tr><td><code>enums</code></td> <td>Enum 类</td> <td>字段的枚举</td> <td>SocialTypeEnum</td></tr> <tr><td><code>enums</code></td> <td>DictTypeConstants 类</td> <td>数据字典的枚举</td> <td>DictTypeConstants</td></tr> <tr><td><code>enums</code></td> <td>ErrorCodeConstants 类</td> <td>错误码的枚举</td> <td>ErrorCodeConstants</td></tr></tbody></table> <h4 id="_3-9-其它"><a href="#_3-9-%E5%85%B6%E5%AE%83" class="header-anchor">#</a> 3.9 其它</h4> <table><thead><tr><th>所在包</th> <th>类</th> <th>作用</th> <th>示例</th></tr></thead> <tbody><tr><td><code>convert</code></td> <td>Convert 接口</td> <td>DTO / VO / DO 等对象之间的转换器</td> <td>UserConvert</td></tr> <tr><td><code>framework</code></td> <td>-</td> <td>模块自身的框架封装</td> <td>YudaoCaptchaConfiguration</td></tr></tbody></table> <p>更多推荐阅读：</p> <ul><li><a href="/util">《工具类 Util》</a></li></ul> <h3 id="_4-yudao-server"><a href="#_4-yudao-server" class="header-anchor">#</a> 4. yudao-server</h3> <p>该模块是后端 Server 的<strong>主项目</strong>，通过引入需要 <code>yudao-module-xxx</code> 业务模块，从而实现提供 RESTful API 给 <code>yudao-ui-admin-vue3</code>、<code>yudao-mall-uniapp</code> 等前端项目。</p> <p>本质上来说，它就是个空壳（容器）！如下图所示：</p> <p><img src="https://static.iocoder.cn/images/Yudao/2023-10-13/yudao-server.png?imageView2/2/format/webp/w/1280" alt=" 项目"></p> <h2 id="👾-前端结构"><a href="#%F0%9F%91%BE-%E5%89%8D%E7%AB%AF%E7%BB%93%E6%9E%84" class="header-anchor">#</a> 👾 前端结构</h2> <p>前端一共有六个项目，分别是：</p> <table><thead><tr><th>项目</th> <th>说明</th></tr></thead> <tbody><tr><td><a href="https://github.com/yudaocode/yudao-ui-admin-vue3/" target="_blank" rel="noopener noreferrer"><code>yudao-ui-admin-vue3</code><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td> <td>基于 Vue3 + element-plus 实现的管理后台</td></tr> <tr><td><a href="https://github.com/yudaocode/yudao-ui-admin-vben/" target="_blank" rel="noopener noreferrer"><code>yudao-ui-admin-vben</code><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td> <td>基于 Vue3 + vben5.0(ant-design-vue) 实现的管理后台</td></tr> <tr><td><a href="https://github.com/yudaocode/yudao-ui-admin-vue2/" target="_blank" rel="noopener noreferrer"><code>yudao-ui-admin-vue2</code><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td> <td>基于 Vue2 + element-ui 实现的管理后台</td></tr> <tr><td><a href="https://gitee.com/yudaocode/yudao-ui-go-view" target="_blank" rel="noopener noreferrer"><code>yudao-ui-go-view</code><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td> <td>基于 Vue3 + naive-ui 实现的大屏报表</td></tr> <tr><td><a href="https://github.com/yudaocode/yudao-ui-admin-uniapp/" target="_blank" rel="noopener noreferrer"><code>yudao-ui-admin-uniapp</code><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td> <td>基于 uni-app + uni-ui 实现的管理后台的小程序</td></tr> <tr><td><a href="https://github.com/yudaocode/yudao-mall-uniapp" target="_blank" rel="noopener noreferrer"><code>yudao-mall-uniapp</code><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td> <td>基于 uni-app + uview 实现的用户 App</td></tr></tbody></table> <h3 id="_1-yudao-ui-admin-vue3"><a href="#_1-yudao-ui-admin-vue3" class="header-anchor">#</a> 1. yudao-ui-admin-vue3</h3> <div class="language- extra-class"><pre class="language-text"><code>.
+├── .github # github workflows 相关
+├── .husky # husky 配置
+├── .vscode # vscode 配置
+├── mock # 自定义 mock 数据及配置
+├── public # 静态资源
+├── src # 项目代码
+│   ├── api # api接口管理
+│   ├── assets # 静态资源
+│   ├── components # 公用组件
+│   ├── hooks # 常用hooks
+│   ├── layout # 布局组件
+│   ├── locales # 语言文件
+│   ├── plugins # 外部插件
+│   ├── router # 路由配置
+│   ├── store # 状态管理
+│   ├── styles # 全局样式
+│   ├── utils # 全局工具类
+│   ├── views # 路由页面
+│   ├── App.vue # 入口vue文件
+│   ├── main.ts # 主入口文件
+│   └── permission.ts # 路由拦截
+├── types # 全局类型
+├── .env.base # 本地开发环境 环境变量配置
+├── .env.dev # 打包到开发环境 环境变量配置
+├── .env.gitee # 针对 gitee 的环境变量 可忽略
+├── .env.pro # 打包到生产环境 环境变量配置
+├── .env.test # 打包到测试环境 环境变量配置
+├── .eslintignore # eslint 跳过检测配置
+├── .eslintrc.js # eslint 配置
+├── .gitignore # git 跳过配置
+├── .prettierignore # prettier 跳过检测配置
+├── .stylelintignore # stylelint 跳过检测配置
+├── .versionrc 自动生成版本号及更新记录配置
+├── CHANGELOG.md # 更新记录
+├── commitlint.config.js # git commit 提交规范配置
+├── index.html # 入口页面
+├── package.json
+├── .postcssrc.js # postcss 配置
+├── prettier.config.js # prettier 配置
+├── README.md # 英文 README
+├── README.zh-CN.md # 中文 README
+├── stylelint.config.js # stylelint 配置
+├── tsconfig.json # typescript 配置
+├── vite.config.ts # vite 配置
+└── windi.config.ts # windicss 配置
+</code></pre></div><h3 id="_2-yudao-ui-admin-vben"><a href="#_2-yudao-ui-admin-vben" class="header-anchor">#</a> 2. yudao-ui-admin-vben</h3> <p>目录使用 Monorepo 管理，项目结构如下</p> <div class="language- extra-class"><pre class="language-text"><code>.
+├── Dockerfile # Docker 镜像构建文件
+├── README.md # 项目说明文档
+├── apps # 项目应用目录
+│   ├── backend-mock # 后端模拟服务应用
+│   ├── web-antd # 基于 Ant Design Vue 的前端应用
+│   ├── web-ele # 基于 Element Plus 的前端应用
+│   └── web-naive # 基于 Naive UI 的前端应用
+├── build-local-docker-image.sh # 本地构建 Docker 镜像脚本
+├── cspell.json # CSpell 配置文件
+├── docs # 项目文档目录
+├── eslint.config.mjs # ESLint 配置文件
+├── internal # 内部工具目录
+│   ├── lint-configs # 代码检查配置
+│   │   ├── commitlint-config # Commitlint 配置
+│   │   ├── eslint-config # ESLint 配置
+│   │   ├── prettier-config # Prettier 配置
+│   │   └── stylelint-config # Stylelint 配置
+│   ├── node-utils # Node.js 工具
+│   ├── tailwind-config # Tailwind 配置
+│   ├── tsconfig # 通用 tsconfig 配置
+│   └── vite-config # 通用Vite 配置
+├── package.json # 项目依赖配置
+├── packages # 项目包目录
+│   ├── @core # 核心包
+│   │   ├── base # 基础包
+│   │   │   ├── design # 设计相关
+│   │   │   ├── icons # 图标
+│   │   │   ├── shared # 共享
+│   │   │   └── typings # 类型定义
+│   │   ├── composables # 组合式 API
+│   │   ├── preferences # 偏好设置
+│   │   └── ui-kit # UI 组件集合
+│   │       ├── layout-ui # 布局 UI
+│   │       ├── menu-ui  # 菜单 UI
+│   │       ├── shadcn-ui # shadcn UI
+│   │       └── tabs-ui # 标签页 UI
+│   ├── constants # 常量
+│   ├── effects # 副作用相关包
+│   │   ├── access # 访问控制
+│   │   ├── plugins # 第三方大型依赖插件
+│   │   ├── common-ui # 通用 UI
+│   │   ├── hooks # 组合式 API
+│   │   ├── layouts # 布局
+│   │   └── request # 请求
+│   ├── icons # 图标
+│   ├── locales # 国际化
+│   ├── preferences  # 偏好设置
+│   ├── stores # 状态管理
+│   ├── styles # 样式
+│   ├── types # 类型定义
+│   └── utils # 工具
+├── playground # 演示目录
+├── pnpm-lock.yaml # pnpm 锁定文件
+├── pnpm-workspace.yaml # pnpm 工作区配置文件
+├── scripts # 脚本目录
+│   ├── turbo-run # Turbo 运行脚本
+│   └── vsh # VSH 脚本
+├── stylelint.config.mjs # Stylelint 配置文件
+├── turbo.json # Turbo 配置文件
+├── vben-admin.code-workspace # VS Code 工作区配置文件
+└── vitest.config.ts # Vite 配置文件
+</code></pre></div><h3 id="_3-yudao-admin-ui"><a href="#_3-yudao-admin-ui" class="header-anchor">#</a> 3. yudao-admin-ui</h3> <div class="language- extra-class"><pre class="language-text"><code>├── bin                        // 执行脚本
+├── build                      // 构建相关  
+├── public                     // 公共文件
+│   ├── favicon.ico            // favicon 图标
+│   └── index.html             // html 模板
+│   └── robots.txt             // 反爬虫
+├── src                        // 源代码
+│   ├── api                    // 所有请求【重要】
+│   ├── assets                 // 主题、字体等静态资源
+│   ├── components             // 全局公用组件
+│   ├── directive              // 全局指令
+│   ├── icons                  // 图标
+│   ├── layout                 // 布局
+│   ├── plugins                // 插件
+│   ├── router                 // 路由
+│   ├── store                  // 全局 store 管理
+│   ├── utils                  // 全局公用方法
+│   ├── views                  // 视图【重要】
+│   ├── App.vue                // 入口页面
+│   ├── main.js                // 入口 JS，加载组件、初始化等
+│   ├── permission.js          // 权限管理
+│   └── settings.js            // 系统配置
+├── .editorconfig              // 编码格式
+├── .env.development           // 开发环境配置
+├── .env.production            // 生产环境配置
+├── .env.staging               // 测试环境配置
+├── .eslintignore              // 忽略语法检查
+├── .eslintrc.js               // eslint 配置项
+├── .gitignore                 // git 忽略项
+├── babel.config.js            // babel.config.js
+├── package.json               // package.json
+└── vue.config.js              // vue.config.js
+</code></pre></div><h3 id="_4-yudao-admin-ui-uniapp"><a href="#_4-yudao-admin-ui-uniapp" class="header-anchor">#</a> 4. yudao-admin-ui-uniapp</h3> <p>TODO 待补充</p> <h3 id="_5-yudao-mall-uniapp"><a href="#_5-yudao-mall-uniapp" class="header-anchor">#</a> 5. yudao-mall-uniapp</h3> <div class="language- extra-class"><pre class="language-text"><code>├── pages                   // 页面
+│      ├── index            // 入口页面
+│      ├── user             // 用户相关
+│      ├── public           // 公共页面
+│      ├── activity         // 活动页面
+│      ├── app              // 积分、签到页面
+│      ├── chat             // 客服页面
+│      ├── commission       // 分销页面
+│      ├── coupon           // 优惠券页面
+│      ├── goods            // 商品页面
+│      ├── order            // 订单页面
+│      ├── pay              // 支付页面
+├── sheep                   // 底层依赖/工具库
+│      ├── api              // 服务端接口
+│      ├── components       // 自定义功能组件
+│      ├── config           // 配置文件
+│      ├── helper           // 助手函数
+│      ├── hooks            // vue-hooks
+│      ├── libs             // 自定义依赖
+│      ├── platform         // 第三方平台登录、分享、支付
+│      ├── request          // 请求类库
+│      ├── router           // 自定义路由跳转
+│      ├── scss             // 主样式库
+│      ├── store            // pinia状态管理模块
+│      ├── ui               // 自定义UI组件
+│      ├── url              // cdn图片地址格式化
+│      ├── validate         // 通用验证器
+│      ├── index.js         // Shopro入口文件
+├── uni_modules             // dcloud第三方插件
+</code></pre></div><h3 id="_6-yudao-ui-go-view"><a href="#_6-yudao-ui-go-view" class="header-anchor">#</a> 6. yudao-ui-go-view</h3> <p>TODO 待补充</p></div></div>
+    </div>
+</body>
+</html>

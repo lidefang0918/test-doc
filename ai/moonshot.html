@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【模型接入】月之暗灭 | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>【模型接入】月之暗灭 | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/ai/moonshot/">https://doc.iocoder.cn/ai/moonshot/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABGpJREFUSA3tVVtoXFUU3fvOI53UlmCaKIFmwEhsE7QK0ipFEdHEKpXaZGrp15SINsXUWvBDpBgQRKi0+KKoFeJHfZA+ED9KKoIU2gYD9UejTW4rVIzm0VSTziPzuNu1z507dibTTjL4U/DAzLn3nL3X2o91ziX6f9wMFdh6Jvbm9nNSV0msViVO6tN1Rm7NMu2OpeJ9lWBUTDxrJbYTS0hInuwciu9eLHlFxCLCZEk3MegsJmZ5K/JD6t7FkFdEvGUo1g7qJoG3MHImqRIn8/nzY1K9UPKKiJmtnUqHVE3Gbuay6vJE/N2FEmuxFjW2nUuE0yQXRRxLiTUAzs36zhZvOXJPdX850EVnnLZkB8prodQoM5JGj7Xk2mvC7JB8tG04Ef5PiXtG0UtxupRQSfTnBoCy554x18yJHI6I+G5Eru4LHmPJZEQsrvPUbMiA8G/WgMK7w7I+ez7++o2ANfbrjvaOl1tFMs+htG3IrZH9/hDX1Pr8Tc0UvH8tcX29KzAgIGcEkINyW5BF9x891hw6VYqgJHEk0huccS7vh3C6gTiODL+26huuBtbct8eZnqLML8PkxGYpuPZBqtqwkSjgc4mB5gbgig5i+y0UDK35LMxXisn9xQtK+nd26gTIHsHe/oblK/b29fUmN/8Y+9jAQrnBp56m1LcDlDp9irKTExSKduXJVWSqdBMA08pEJnEIOB3FPPMybu/oeV8zFeYN3xx576Q6RH+VmplE4ncQV5v+5rzSoyOU7PuEAg8g803PwBJ0CExno/jcMbN8tONYeOmHiuUNryvm3fRUy4tMPVLdAGkUhNWuggGrJcXPv+ouCjz0MKUHz1J2/E8IC9nqTabcxgaBYM0hPhD5Y65FsbxRQKxCQrDjDctW7PUM3HuZunFyifSAqEfuzCp48Il24luWUWZoyJCaPR82jE0+kFA643wRFVni4RYSq3ohJO2pZ7B5dO4xkDWbEpossJPLSrPjYID8rS2UHTlvyNxqIGsg674XJJ7vnh5L7PNwC4hh2sjCI96mzszOTpxLF0T7l88Yz7lAuK6OnL8gXLOnTvpzSb22YG8W7us3jSebFHeeqnXRG1vt+MoUM84LQIBmMsCTAcOauTh0T0l0neQK7m2bLMt2mGxU3HYssS0J2cdv5wljlPsrIuZLAG/2DOZIXgCYT8uMGZN+e2kSirfxZOPCsC0f24nTZzspnVn9VePS1Z5vubmAGGXG8ZFno9Hel0yfA5ZPhF7Dh972BQJ2qCpgH67lmWtBYbvk6sz02wjky2vXyz0XErP/kFB619js1BtwfOV4OPRqOQBjy3Qbk18vigUPPSD5ceHnwck7W9bhAqZdd7SuG7w4/P2F/GaJh8c7e9qgow+Q7cGBo+98WsLkuktFqiZabtXuQTu/Y5ETbR0v7tNSFnvrmu6pjdoan2KjMu8q/Hmj1EfCO2ZGfEIbIXKUlw8qaX9/b2oeSJmFksSeT/Fn0V3nSypChh4Gjh74ybO9aeZ/AN2dwciu2/MhAAAAAElFTkSuQmCC">【模型接入】月之暗灭<!----></h1>  <div class="theme-vdoing-content content__default"><p>项目基于 Spring AI 提供的 <a href="https://github.com/spring-ai-community/moonshot" target="_blank" rel="noopener noreferrer"><code>spring-ai-moonshot</code><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，实现 <a href="https://www.moonshot.cn/" target="_blank" rel="noopener noreferrer">Moonshot<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 的接入：</p> <table><thead><tr><th>功能</th> <th>模型</th> <th>Spring AI 客户端</th></tr></thead> <tbody><tr><td>AI 对话</td> <td><a href="https://platform.moonshot.cn/docs/api/chat#%E5%85%AC%E5%BC%80%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%9C%B0%E5%9D%80" target="_blank" rel="noopener noreferrer">对话模型<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td> <td>MoonshotChatModel</td></tr> <tr><td>AI 绘画</td> <td>不支持</td> <td>暂未接入</td></tr></tbody></table> <h2 id="_1-申请密钥"><a href="#_1-%E7%94%B3%E8%AF%B7%E5%AF%86%E9%92%A5" class="header-anchor">#</a> 1. 申请密钥</h2> <p>由于 Moonshot 是非开源的模型，所以无法私有化部署，需要去官网申请 API Key，然后通过 Spring AI 提供的客户端接入。</p> <h3 id="_1-1-方式一-申请-moonshot-密钥"><a href="#_1-1-%E6%96%B9%E5%BC%8F%E4%B8%80-%E7%94%B3%E8%AF%B7-moonshot-%E5%AF%86%E9%92%A5" class="header-anchor">#</a> 1.1 方式一：申请 Moonshot 密钥</h3> <p>① 在 <a href="https://www.moonshot.cn/" target="_blank" rel="noopener noreferrer">Moonshot<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 上，注册一个账号。</p> <p>② 在 <a href="https://platform.moonshot.cn/console/api-keys" target="_blank" rel="noopener noreferrer">Moonshot 开放平台 -&gt; API Key 管理<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 上，创建一个 API Key 密钥。</p> <hr> <p>申请完成后，可以在我们系统的 [AI 大模型 -&gt; 控制台 -&gt; API 密钥] 菜单，进行密钥的配置。需要填写“密钥” + “自定义 API URL”（因为让 Spring AI 使用该地址）。如下图所示：</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/%E6%A8%A1%E5%9E%8B%E6%8E%A5%E5%85%A5/Moonshot-%E5%AE%98%E6%96%B9.png" alt="官方的密钥配置"></p> <h2 id="_2-模型配置"><a href="#_2-%E6%A8%A1%E5%9E%8B%E9%85%8D%E7%BD%AE" class="header-anchor">#</a> 2. 模型配置</h2> <div class="custom-block tip"><p class="custom-block-title">友情提示：</p> <p>目前 <code>ai_model</code> 表中，已经预置了一些模型，可以直接使用！！！</p></div> <h3 id="_2-1-ai-对话"><a href="#_2-1-ai-%E5%AF%B9%E8%AF%9D" class="header-anchor">#</a> 2.1 AI 对话</h3> <p>使用 <a href="/ai/chat/">《AI 对话》</a> 时，需要在 [AI 大模型 -&gt; 控制台 -&gt; 模型配置] 菜单，配置对应的聊天模型。</p> <p>模型有：<code>Moonshot-Text-01</code>、<code>abab6.5s-chat</code>、<code>DeepSeek-R1</code> 等等，可以点击 <a href="https://platform.minimaxi.com/document/ChatCompletion%20v2?key=66701d281d57f38758d581d0" target="_blank" rel="noopener noreferrer">对话模型<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 进行查看。</p> <p>注意，每个模型标识的 <code>max_tokens</code>（回复数 Token 数）一般是 4096 或 8192，具体也是看上述链接。</p> <h3 id="_2-2-ai-绘图"><a href="#_2-2-ai-%E7%BB%98%E5%9B%BE" class="header-anchor">#</a> 2.2 AI 绘图</h3> <p>TODO 等待 Moonshot ImageModel 客户端！</p> <h2 id="_3-如何使用"><a href="#_3-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8" class="header-anchor">#</a> 3. 如何使用？</h2> <p>① 如果你的项目里需要直接通过 <code>@Resource</code> 注入 MoonshotChatModel 等对象，需要把 <code>application.yaml</code> 配置文件里的 <code>spring.ai.moonshot</code> 配置项，替换成你的！</p> <div class="language-YAML extra-class"><pre class="language-yaml"><code><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">ai</span><span class="token punctuation">:</span>
+    <span class="token key atrule">moonshot</span><span class="token punctuation">:</span> <span class="token comment"># 月之暗灭（KIMI）</span>
+      <span class="token key atrule">api-key</span><span class="token punctuation">:</span> sk<span class="token punctuation">-</span>abc
+</code></pre></div><p>② 如果你希望使用 [AI 大模型 -&gt; 控制台 -&gt; API 密钥] 菜单的密钥配置，则可以通过 AiModelService 的 <code>#getChatModel(...)</code> 方法，获取对应的模型对象。</p> <hr> <p>① 和 ② 这两者的后续使用，就是标准的 Spring AI 客户端的使用，调用对应的方法即可。</p> <p>另外，MoonshotChatModelTests 里有对应的测试用例，可以参考。</p></div></div>
+    </div>
+</body>
+</html>

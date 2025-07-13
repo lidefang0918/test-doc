@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【商品】商品属性 | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>【商品】商品属性 | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/mall/product-property/">https://doc.iocoder.cn/mall/product-property/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABGpJREFUSA3tVVtoXFUU3fvOI53UlmCaKIFmwEhsE7QK0ipFEdHEKpXaZGrp15SINsXUWvBDpBgQRKi0+KKoFeJHfZA+ED9KKoIU2gYD9UejTW4rVIzm0VSTziPzuNu1z507dibTTjL4U/DAzLn3nL3X2o91ziX6f9wMFdh6Jvbm9nNSV0msViVO6tN1Rm7NMu2OpeJ9lWBUTDxrJbYTS0hInuwciu9eLHlFxCLCZEk3MegsJmZ5K/JD6t7FkFdEvGUo1g7qJoG3MHImqRIn8/nzY1K9UPKKiJmtnUqHVE3Gbuay6vJE/N2FEmuxFjW2nUuE0yQXRRxLiTUAzs36zhZvOXJPdX850EVnnLZkB8prodQoM5JGj7Xk2mvC7JB8tG04Ef5PiXtG0UtxupRQSfTnBoCy554x18yJHI6I+G5Eru4LHmPJZEQsrvPUbMiA8G/WgMK7w7I+ez7++o2ANfbrjvaOl1tFMs+htG3IrZH9/hDX1Pr8Tc0UvH8tcX29KzAgIGcEkINyW5BF9x891hw6VYqgJHEk0huccS7vh3C6gTiODL+26huuBtbct8eZnqLML8PkxGYpuPZBqtqwkSjgc4mB5gbgig5i+y0UDK35LMxXisn9xQtK+nd26gTIHsHe/oblK/b29fUmN/8Y+9jAQrnBp56m1LcDlDp9irKTExSKduXJVWSqdBMA08pEJnEIOB3FPPMybu/oeV8zFeYN3xx576Q6RH+VmplE4ncQV5v+5rzSoyOU7PuEAg8g803PwBJ0CExno/jcMbN8tONYeOmHiuUNryvm3fRUy4tMPVLdAGkUhNWuggGrJcXPv+ouCjz0MKUHz1J2/E8IC9nqTabcxgaBYM0hPhD5Y65FsbxRQKxCQrDjDctW7PUM3HuZunFyifSAqEfuzCp48Il24luWUWZoyJCaPR82jE0+kFA643wRFVni4RYSq3ohJO2pZ7B5dO4xkDWbEpossJPLSrPjYID8rS2UHTlvyNxqIGsg674XJJ7vnh5L7PNwC4hh2sjCI96mzszOTpxLF0T7l88Yz7lAuK6OnL8gXLOnTvpzSb22YG8W7us3jSebFHeeqnXRG1vt+MoUM84LQIBmMsCTAcOauTh0T0l0neQK7m2bLMt2mGxU3HYssS0J2cdv5wljlPsrIuZLAG/2DOZIXgCYT8uMGZN+e2kSirfxZOPCsC0f24nTZzspnVn9VePS1Z5vubmAGGXG8ZFno9Hel0yfA5ZPhF7Dh972BQJ2qCpgH67lmWtBYbvk6sz02wjky2vXyz0XErP/kFB619js1BtwfOV4OPRqOQBjy3Qbk18vigUPPSD5ceHnwck7W9bhAqZdd7SuG7w4/P2F/GaJh8c7e9qgow+Q7cGBo+98WsLkuktFqiZabtXuQTu/Y5ETbR0v7tNSFnvrmu6pjdoan2KjMu8q/Hmj1EfCO2ZGfEIbIXKUlw8qaX9/b2oeSJmFksSeT/Fn0V3nSypChh4Gjh74ybO9aeZ/AN2dwciu2/MhAAAAAElFTkSuQmCC">【商品】商品属性<!----></h1>  <div class="theme-vdoing-content content__default"><h2 id="_1-表结构"><a href="#_1-%E8%A1%A8%E7%BB%93%E6%9E%84" class="header-anchor">#</a> 1. 表结构</h2> <p>商品属性，由 <code>yudao-module-product</code> 后端模块的 <code>property</code> 包实现，分成属性【项】和属性【值】两个表。</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E5%95%86%E5%93%81%E5%B1%9E%E6%80%A7/%E5%95%86%E5%93%81%E5%B1%9E%E6%80%A7.png" alt="商品属性"></p> <p>整体的设计上，参考有赞、淘宝等电商平台的设计。</p> <h3 id="_1-1-属性项"><a href="#_1-1-%E5%B1%9E%E6%80%A7%E9%A1%B9" class="header-anchor">#</a> 1.1 属性项</h3> <blockquote><p>省略 creator/create_time/updater/update_time/deleted/tenant_id 等通用字段</p></blockquote> <div class="language-SQL extra-class"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token identifier"><span class="token punctuation">`</span>product_property<span class="token punctuation">`</span></span> <span class="token punctuation">(</span>
+  <span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">AUTO_INCREMENT</span> <span class="token keyword">COMMENT</span> <span class="token string">'编号'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>name<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_general_ci <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'名称'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>status<span class="token punctuation">`</span></span> <span class="token keyword">tinyint</span> <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'状态'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>remark<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">128</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_general_ci <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'备注'</span><span class="token punctuation">,</span>
+  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span><span class="token punctuation">)</span> <span class="token keyword">USING</span> <span class="token keyword">BTREE</span><span class="token punctuation">,</span>
+  <span class="token keyword">KEY</span> <span class="token identifier"><span class="token punctuation">`</span>idx_name<span class="token punctuation">`</span></span> <span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>name<span class="token punctuation">`</span></span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">USING</span> <span class="token keyword">BTREE</span> <span class="token keyword">COMMENT</span> <span class="token string">'规格名称索引'</span>
+<span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token operator">=</span><span class="token number">14</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8mb4 <span class="token keyword">COLLATE</span><span class="token operator">=</span>utf8mb4_general_ci <span class="token keyword">COMMENT</span><span class="token operator">=</span><span class="token string">'商品属性项'</span><span class="token punctuation">;</span>
+</code></pre></div><p>属性【项】只是基于 <code>name</code> 字段存储一条唯一记录，具体商品怎么使用它，可以看 <a href="/mall/product-spu-sku/">《【商品】商品信息》</a> 文档。</p> <h3 id="_1-2-属性值"><a href="#_1-2-%E5%B1%9E%E6%80%A7%E5%80%BC" class="header-anchor">#</a> 1.2 属性值</h3> <blockquote><p>省略 creator/create_time/updater/update_time/deleted/tenant_id 等通用字段</p></blockquote> <div class="language-SQL extra-class"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token identifier"><span class="token punctuation">`</span>product_property_value<span class="token punctuation">`</span></span> <span class="token punctuation">(</span>
+  <span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">AUTO_INCREMENT</span> <span class="token keyword">COMMENT</span> <span class="token string">'编号'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>property_id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'属性项的编号'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>name<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">128</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_general_ci <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'名称'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>status<span class="token punctuation">`</span></span> <span class="token keyword">tinyint</span> <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'状态'</span><span class="token punctuation">,</span>
+  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span><span class="token punctuation">)</span> <span class="token keyword">USING</span> <span class="token keyword">BTREE</span>
+<span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token operator">=</span><span class="token number">26</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8mb4 <span class="token keyword">COLLATE</span><span class="token operator">=</span>utf8mb4_general_ci <span class="token keyword">COMMENT</span><span class="token operator">=</span><span class="token string">'商品属性值'</span><span class="token punctuation">;</span>
+</code></pre></div><p>属性【值】只是基于 <code>property_id</code> + <code>name</code> 字段存储一条唯一记录，具体商品怎么使用它，可以看 <a href="/mall/product-spu-sku/">《【【商品】商品 SPU 与 SKU》</a> 文档。</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/SPU%E4%B8%8ESKU/%E8%A1%A8%E5%85%B3%E7%B3%BB.png" alt="表结构"></p> <h2 id="_2-管理后台"><a href="#_2-%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0" class="header-anchor">#</a> 2. 管理后台</h2> <h3 id="_1-1-属性项-2"><a href="#_1-1-%E5%B1%9E%E6%80%A7%E9%A1%B9-2" class="header-anchor">#</a> 1.1 属性项</h3> <p>对应 [商城系统 -&gt; 商品中心 -&gt; 商品属性] 菜单，对应 <code>yudao-ui-admin-vue3</code> 项目的 <code>@/views/mall/product/property</code> 目录。</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E5%95%86%E5%93%81%E5%B1%9E%E6%80%A7/%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0-%E5%95%86%E5%93%81%E5%B1%9E%E6%80%A7%E9%A1%B9.png" alt="管理后台 - 商品属性项"></p> <p>注意，如果修改了属性【项】的名字，使用到该属性【项】的商品也会跟着改变，这也是为什么属性【项】统一维护的原因。</p> <p>例如说，修改了 <code>颜色</code> 属性【项】的名字为 <code>颜色分类</code>，那么使用到 <code>颜色</code> 属性【项】的商品，都会变成 <code>颜色分类</code> 属性【项】。</p> <h3 id="_1-2-属性值-2"><a href="#_1-2-%E5%B1%9E%E6%80%A7%E5%80%BC-2" class="header-anchor">#</a> 1.2 属性值</h3> <p>点击属性【项】的 「属性值」 按钮，进入属性【值】管理页面，对应 <code>yudao-ui-admin-vue3</code> 项目的 <code>@/views/mall/product/property/value</code> 目录。</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E5%95%86%E5%93%81%E5%B1%9E%E6%80%A7/%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0-%E5%95%86%E5%93%81%E5%B1%9E%E6%80%A7%E5%80%BC.png" alt="管理后台 - 商品属性值"></p> <p>注意，如果修改了属性【值】的名字，使用到该属性【值】的商品也会跟着改变，这也是为什么属性【值】统一维护的原因。</p> <p>例如说，修改了 <code>红色</code> 属性【值】的名字为 <code>淡红色</code>，那么使用到 <code>红色</code> 属性【值】的商品，都会变成 <code>淡红色</code> 属性【值】。</p> <h2 id="_3-移动端"><a href="#_3-%E7%A7%BB%E5%8A%A8%E7%AB%AF" class="header-anchor">#</a> 3. 移动端</h2> <p>商品属性在移动端，主要是在商品详情页展示，如下图所示：</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E5%95%86%E5%93%81%E5%B1%9E%E6%80%A7/%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E5%95%86%E5%93%81%E5%B1%9E%E6%80%A7.png" alt="移动端 - 商品属性"></p> <p>暂时没有对应的具体 Vue 页面或是组件，后续放在 <a href="/mall/product-spu-sku/">《【商品】商品 SPU 与 SKU》</a> 文档中进行说明。</p></div></div>
+    </div>
+</body>
+</html>

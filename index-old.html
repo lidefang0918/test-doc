@@ -1,0 +1,1989 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruoyi文档导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1em;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        
+        .category-section {
+            background: #fff;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .category-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+        
+        .category-content {
+            padding: 20px 30px;
+        }
+        
+        .page-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .page-card {
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+        
+        .page-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-color: #3498db;
+        }
+        
+        .page-card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .page-card a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .page-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .page-meta {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            margin-bottom: 30px;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        @media (max-width: 768px) {
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .page-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Ruoyi文档导航</h1>
+            <p>本地离线文档浏览 - 完整保存所有页面内容</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">221</div>
+                    <div class="stat-label">总页面数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">分类数量</div>
+                </div>
+            </div>
+        </div>
+        
+        <input type="text" class="search-box" placeholder="搜索文档..." id="searchBox">
+        
+        <div id="content">
+
+        <div class="category-section">
+            <div class="category-header">
+                📚 萌新必读 (221 页)
+            </div>
+            <div class="category-content">
+                <div class="page-grid">
+
+                    <div class="page-card">
+                        <h3>AI 大模型演示 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai-preview.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai-preview.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>接口文档 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="api-doc.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: api-doc.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>地区 & IP 库 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="area-and-ip.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: area-and-ip.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>异步任务 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="async-task.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: async-task.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>工作流演示 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="bpm-preview.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: bpm-preview.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>功能开启 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="bpm.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: bpm.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>验证码 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="captcha.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: captcha.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>配置管理 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="config-center.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: config-center.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>CRM 演示 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="crm-preview.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: crm-preview.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>数据权限 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="data-permission.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: data-permission.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>数据库文档 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="db-doc.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: db-doc.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>删除功能（以租户为例） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="delete-code.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: delete-code.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>宝塔部署 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="deployment-baota.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: deployment-baota.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>Docker 部署 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="deployment-docker.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: deployment-docker.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>Jenkins 部署 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="deployment-jenkins.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: deployment-jenkins.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>Linux 部署 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="deployment-linux.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: deployment-linux.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>数据脱敏、字段权限 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="desensitize.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: desensitize.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>开发环境 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="dev-env.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: dev-env.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>代码热加载 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="dev-hot-swap.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: dev-hot-swap.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>分布式锁 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="distributed-lock.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: distributed-lock.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>多数据源（读写分离）、事务 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="dynamic-datasource.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: dynamic-datasource.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>ERP 演示 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="erp-preview.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: erp-preview.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>Excel 导入导出 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="excel-import-and-export.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: excel-import-and-export.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>异常处理（错误码） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="exception.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: exception.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>功能列表 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="feature.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: feature.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>文件存储（上传下载） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="file.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: file.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>HTTP 接口签名（防篡改） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="http-sign.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: http-sign.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>HTTPS 证书 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="https.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: https.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>幂等性（防重复提交） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="idempotent.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: idempotent.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>Ruoyi文档浏览器</h3>
+                        <a href="index22.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: index22.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>面试题、简历模版、简历优化 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="interview.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: interview.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>简介 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="intro.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: intro.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>定时任务 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="job.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: job.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>本地缓存 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="local-cache.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: local-cache.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>邮件配置 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mail.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mail.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>商城演示 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall-preview.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall-preview.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>迁移模块（适合新项目） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="migrate-module.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: migrate-module.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>新建模块 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="module-new.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: module-new.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>MyBatis 联表&分页查询 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mybatis-pro.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mybatis-pro.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>MyBatis 数据库 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mybatis.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mybatis.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>内网穿透 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="natapp.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: natapp.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>代码生成【单表】（新增功能） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="new-feature.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: new-feature.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>站内信配置 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="notify.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: notify.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>OAuth 2.0（SSO 单点登录) | ruoyi-vue-pro 开发指南</h3>
+                        <a href="oauth2.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: oauth2.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>分页实现 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="page-feature.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: page-feature.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>项目结构 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="project-intro.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: project-intro.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>一键改包 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="project-rename.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: project-rename.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>快速启动（前端项目） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="quick-start-front.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: quick-start-front.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>快速启动（后端项目） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="quick-start.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: quick-start.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>交流群 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="qun.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: qun.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>请求限流（RateLimiter） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="rate-limiter.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: rate-limiter.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>Redis 缓存 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="redis-cache.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: redis-cache.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>如何去除 Redis 缓存 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="remove-redis.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: remove-redis.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>报表设计器 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="report.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: report.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>功能权限 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="resource-permission.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: resource-permission.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>SaaS 多租户【字段隔离】 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="saas-tenant.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: saas-tenant.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>敏感词 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="sensitive-word.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: sensitive-word.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>服务监控 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="server-monitor.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: server-monitor.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>限流熔断 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="server-protection.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: server-protection.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>短信配置 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="sms.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: sms.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>三方登录 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="social-user.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: social-user.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>表结构变更（版本升级） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="sql-update.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: sql-update.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>操作日志、访问日志、异常日志 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="system-log.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: system-log.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>技术选型 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="technology.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: technology.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>单元测试 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="unit-test.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: unit-test.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>用户体系 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="user-center.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: user-center.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>工具类 Util | ruoyi-vue-pro 开发指南</h3>
+                        <a href="util.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: util.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>参数校验、时间传参 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="validator.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: validator.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>视频教程 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="video.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: video.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>VO 对象转换、数据翻译 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="vo.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: vo.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>项目外包 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="waibao.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: waibao.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>WebSocket 实时通信 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="websocket.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: websocket.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>国产信创数据库（DM 达梦、大金、OpenGauss） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="xinchuang-db.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: xinchuang-db.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【模型接入】微软 OpenAI | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/azure-openai.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/azure-openai.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【模型接入】百川智能 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/baichuan.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/baichuan.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>功能开启 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/build.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/build.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>AI 聊天对话 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/chat.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/chat.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>Coze 智能体 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/coze.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/coze.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【模型接入】DeepSeek | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/deep-seek.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/deep-seek.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>Dify 工作流 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/dify.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/dify.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【模型接入】字节豆包 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/doubao.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/doubao.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>FastGPT 工作流 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/fastgpt.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/fastgpt.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【模型接入】谷歌 Gemini | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/gemini.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/gemini.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【模型接入】智谱 GLM | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/glm.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/glm.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【模型接入】腾讯混元 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/hunyuan.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/hunyuan.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>AI 绘画创作 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/image.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/image.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>AI 知识库 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/knowledge.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/knowledge.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【模型接入】LLAMA | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/llama.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/llama.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【模型接入】Midjourney | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/midjourney.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/midjourney.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>AI 思维导图 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/mindmap.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/mindmap.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【模型接入】MiniMax | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/minimax.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/minimax.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【模型接入】月之暗灭 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/moonshot.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/moonshot.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>AI 音乐创作 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/music.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/music.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【模型接入】OpenAI | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/openai.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/openai.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【模型接入】硅基流动 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/siliconflow.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/siliconflow.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【模型接入】Stable Diffusion | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/stable-diffusion.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/stable-diffusion.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【模型接入】Suno | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/suno.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/suno.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【模型接入】通义千问 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/tongyi.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/tongyi.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>AI 工具（function calling） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/tool.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/tool.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>AI 工作流 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/workflow.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/workflow.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>AI 写作助手 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/write.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/write.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【模型接入】讯飞星火 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/xinghuo.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/xinghuo.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【模型接入】文心一言 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="ai/yiyan.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: ai/yiyan.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>选择审批人、发起人自选 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="bpm/assignee.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: bpm/assignee.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>工作流（达梦适配） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="bpm/dameng.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: bpm/dameng.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>流程表达式 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="bpm/expression.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: bpm/expression.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>执行监听器、任务监听器 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="bpm/listener.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: bpm/listener.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>流程审批通知 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="bpm/message.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: bpm/message.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>流程设计器（BPMN） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="bpm/model-designer-bpmn.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: bpm/model-designer-bpmn.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>流程设计器（钉钉、飞书） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="bpm/model-designer-dingding.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: bpm/model-designer-dingding.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>会签、或签、依次审批 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="bpm/multi-instance.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: bpm/multi-instance.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>流程发起、取消、重新发起 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="bpm/process-instance.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: bpm/process-instance.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>审批加签、减签 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="bpm/sign.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: bpm/sign.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>审批转办、委派、抄送 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="bpm/task-delegation-and-cc.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: bpm/task-delegation-and-cc.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>审批通过、不通过、驳回 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="bpm/task-todo-done.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: bpm/task-todo-done.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>审批接入（流程表单） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="bpm/use-bpm-form.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: bpm/use-bpm-form.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>审批接入（业务表单） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="bpm/use-business-form.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: bpm/use-business-form.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【v2.0.0】2024-01-26 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="changelog/2.0.0.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: changelog/2.0.0.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【v2.0.1】2024-03-01 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="changelog/2.0.1.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: changelog/2.0.1.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【v2.1.0】2024-05-05 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="changelog/2.1.0.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: changelog/2.1.0.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【v2.2.0】2024-08-02 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="changelog/2.2.0.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: changelog/2.2.0.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【v2.3.0】2024-10-07 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="changelog/2.3.0.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: changelog/2.3.0.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【v2.4.0】2024-12-31 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="changelog/2.4.0.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: changelog/2.4.0.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【v2.4.1】2025-02-09 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="changelog/2.4.1.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: changelog/2.4.1.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【v2.4.2】2025-04-12 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="changelog/2.4.2.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: changelog/2.4.2.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【v2.5.0】2025-05-13 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="changelog/2.5.0.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: changelog/2.5.0.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【v2-6-0】2025-06-07 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="changelog/2.6.0.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: changelog/2.6.0.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【v2-6-1】开发中 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="changelog/2.6.1.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: changelog/2.6.1.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>功能开启 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="crm/build.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: crm/build.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【商机】商机管理、商机状态 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="crm/business.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: crm/business.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【线索】线索管理 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="crm/clue.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: crm/clue.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【合同】合同管理、合同提醒 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="crm/contract.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: crm/contract.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【客户】客户管理、公海客户 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="crm/customer.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: crm/customer.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【通用】跟进记录、待办事项 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="crm/follow-up.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: crm/follow-up.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【通用】数据权限 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="crm/permission.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: crm/permission.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【产品】产品管理、产品分类 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="crm/product.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: crm/product.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【回款】回款管理、回款计划 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="crm/receivable.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: crm/receivable.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>功能开启 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="erp/build.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: erp/build.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【产品】产品信息、分类、单位 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="erp/product.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: erp/product.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【采购】采购订单、入库、退货 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="erp/purchase.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: erp/purchase.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【销售】销售订单、出库、退货 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="erp/sale.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: erp/sale.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【库存】其它入库、其它出库 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="erp/stock-in-out.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: erp/stock-in-out.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【库存】库存调拨、库存盘点 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="erp/stock-move-check.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: erp/stock-move-check.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【库存】产品库存、库存明细 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="erp/stock.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: erp/stock.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>功能开启 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="iot/build.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: iot/build.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>功能开启 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/build.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/build.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>商城装修 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/diy.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/diy.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>在线客服 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/kefu.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/kefu.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【营销】积分商城 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/point-activity.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/point-activity.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【商品】商品分类 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/product-category.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/product-category.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【商品】商品评价 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/product-comment.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/product-comment.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【商品】商品属性 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/product-property.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/product-property.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【商品】商品 SPU 与 SKU | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/product-spu-sku.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/product-spu-sku.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【营销】砍价活动 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/promotion-bargain.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/promotion-bargain.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【营销】拼团活动 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/promotion-combination.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/promotion-combination.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【营销】内容管理 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/promotion-content.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/promotion-content.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【营销】优惠劵 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/promotion-coupon.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/promotion-coupon.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【营销】限时折扣 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/promotion-discount.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/promotion-discount.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【营销】满减送活动 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/promotion-record.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/promotion-record.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【营销】秒杀活动 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/promotion-seckill.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/promotion-seckill.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【统计】会员、商品、交易统计 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/statistics.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/statistics.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【交易】售后退款 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/trade-aftersale.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/trade-aftersale.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【交易】分销返佣 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/trade-brokerage.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/trade-brokerage.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【交易】购物车 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/trade-cart.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/trade-cart.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【交易】快递发货 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/trade-delivery-express.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/trade-delivery-express.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【交易】门店自提 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/trade-delivery-pickup.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/trade-delivery-pickup.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【交易】交易订单 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mall/trade-order.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mall/trade-order.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>功能开启 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="member/build.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: member/build.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>会员等级、积分、签到 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="member/level.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: member/level.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>会员用户、标签、分组 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="member/user.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: member/user.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>微信小程序登录 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="member/weixin-lite-login.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: member/weixin-lite-login.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>微信小程序码 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="member/weixin-lite-qrcode.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: member/weixin-lite-qrcode.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>微信小程序订阅消息 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="member/weixin-lite-subscribe-message.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: member/weixin-lite-subscribe-message.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>微信公众号登录 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="member/weixin-mp-login.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: member/weixin-mp-login.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>消息队列（内存） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="message-queue/event.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: message-queue/event.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>消息队列（Kafka） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="message-queue/kafka.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: message-queue/kafka.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>消息队列（RabbitMQ） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="message-queue/rabbitmq.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: message-queue/rabbitmq.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>消息队列（Redis） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="message-queue/redis.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: message-queue/redis.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>消息队列（RocketMQ） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="message-queue/rocketmq.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: message-queue/rocketmq.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>公众号接入 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mp/account.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mp/account.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>公众号图文 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mp/article.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mp/article.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>自动回复 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mp/auto-reply.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mp/auto-reply.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>功能开启 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mp/build.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mp/build.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>公众号素材 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mp/material.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mp/material.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>公众号菜单 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mp/menu.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mp/menu.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>公众号消息 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mp/message.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mp/message.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>公众号统计 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mp/statistics.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mp/statistics.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>公众号标签 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mp/tag.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mp/tag.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>公众号粉丝 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="mp/user.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: mp/user.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>代码生成【主子表】 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="new-feature/master-sub.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: new-feature/master-sub.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>代码生成（树表） | ruoyi-vue-pro 开发指南</h3>
+                        <a href="new-feature/tree.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: new-feature/tree.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>支付宝支付接入 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="pay/alipay-pay-demo.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: pay/alipay-pay-demo.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>支付宝转账接入 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="pay/alipay-transfer-demo.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: pay/alipay-transfer-demo.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>功能开启 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="pay/build.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: pay/build.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>模拟支付、退款 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="pay/mock.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: pay/mock.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>支付宝、微信退款接入 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="pay/refund-demo.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: pay/refund-demo.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>钱包充值、支付、退款 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="pay/wallet.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: pay/wallet.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>微信小程序支付接入 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="pay/wx-lite-pay-demo.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: pay/wx-lite-pay-demo.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>微信公众号支付接入 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="pay/wx-pub-pay-demo.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: pay/wx-pub-pay-demo.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>微信转账接入 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="pay/wx-transfer-demo.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: pay/wx-transfer-demo.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>大屏设计器 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="report/screen.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: report/screen.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>SaaS 多租户【数据库隔离】 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="saas-tenant/dynamic.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: saas-tenant/dynamic.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>【财务】采购付款、销售收款 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="sale/finance-payment-receipt.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: sale/finance-payment-receipt.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>系统组件 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="vue2/components.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: vue2/components.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>配置读取 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="vue2/config-center.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: vue2/config-center.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>开发规范 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="vue2/dev-spec.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: vue2/dev-spec.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>字典数据 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="vue2/dict.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: vue2/dict.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>Icon 图标 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="vue2/icon.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: vue2/icon.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>菜单路由 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="vue2/route.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: vue2/route.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>通用方法 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="vue2/util.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: vue2/util.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>系统组件 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="vue3/components.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: vue3/components.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>配置读取 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="vue3/config-center.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: vue3/config-center.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>CRUD 组件 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="vue3/crud-schema.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: vue3/crud-schema.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>IDE 调试 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="vue3/debugger.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: vue3/debugger.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>开发规范 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="vue3/dev-spec.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: vue3/dev-spec.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>字典数据 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="vue3/dict.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: vue3/dict.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>代码格式化 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="vue3/format.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: vue3/format.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>国际化 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="vue3/i18n.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: vue3/i18n.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>Icon 图标 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="vue3/icon.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: vue3/icon.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>菜单路由 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="vue3/route.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: vue3/route.html
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <h3>通用方法 | ruoyi-vue-pro 开发指南</h3>
+                        <a href="vue3/util.html" target="_blank">查看文档</a>
+                        <div class="page-meta">
+                            路径: vue3/util.html
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('searchBox').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const pageCards = document.querySelectorAll('.page-card');
+            const categorySection = document.querySelectorAll('.category-section');
+            
+            pageCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const path = card.querySelector('.page-meta').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || path.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // 隐藏空分类
+            categorySection.forEach(section => {
+                const visibleCards = section.querySelectorAll('.page-card[style="display: block"], .page-card:not([style])');
+                if (searchTerm && visibleCards.length === 0) {
+                    section.style.display = 'none';
+                } else {
+                    section.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微信公众号支付接入 | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>微信公众号支付接入 | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/pay/wx-pub-pay-demo/">https://doc.iocoder.cn/pay/wx-pub-pay-demo/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABGpJREFUSA3tVVtoXFUU3fvOI53UlmCaKIFmwEhsE7QK0ipFEdHEKpXaZGrp15SINsXUWvBDpBgQRKi0+KKoFeJHfZA+ED9KKoIU2gYD9UejTW4rVIzm0VSTziPzuNu1z507dibTTjL4U/DAzLn3nL3X2o91ziX6f9wMFdh6Jvbm9nNSV0msViVO6tN1Rm7NMu2OpeJ9lWBUTDxrJbYTS0hInuwciu9eLHlFxCLCZEk3MegsJmZ5K/JD6t7FkFdEvGUo1g7qJoG3MHImqRIn8/nzY1K9UPKKiJmtnUqHVE3Gbuay6vJE/N2FEmuxFjW2nUuE0yQXRRxLiTUAzs36zhZvOXJPdX850EVnnLZkB8prodQoM5JGj7Xk2mvC7JB8tG04Ef5PiXtG0UtxupRQSfTnBoCy554x18yJHI6I+G5Eru4LHmPJZEQsrvPUbMiA8G/WgMK7w7I+ez7++o2ANfbrjvaOl1tFMs+htG3IrZH9/hDX1Pr8Tc0UvH8tcX29KzAgIGcEkINyW5BF9x891hw6VYqgJHEk0huccS7vh3C6gTiODL+26huuBtbct8eZnqLML8PkxGYpuPZBqtqwkSjgc4mB5gbgig5i+y0UDK35LMxXisn9xQtK+nd26gTIHsHe/oblK/b29fUmN/8Y+9jAQrnBp56m1LcDlDp9irKTExSKduXJVWSqdBMA08pEJnEIOB3FPPMybu/oeV8zFeYN3xx576Q6RH+VmplE4ncQV5v+5rzSoyOU7PuEAg8g803PwBJ0CExno/jcMbN8tONYeOmHiuUNryvm3fRUy4tMPVLdAGkUhNWuggGrJcXPv+ouCjz0MKUHz1J2/E8IC9nqTabcxgaBYM0hPhD5Y65FsbxRQKxCQrDjDctW7PUM3HuZunFyifSAqEfuzCp48Il24luWUWZoyJCaPR82jE0+kFA643wRFVni4RYSq3ohJO2pZ7B5dO4xkDWbEpossJPLSrPjYID8rS2UHTlvyNxqIGsg674XJJ7vnh5L7PNwC4hh2sjCI96mzszOTpxLF0T7l88Yz7lAuK6OnL8gXLOnTvpzSb22YG8W7us3jSebFHeeqnXRG1vt+MoUM84LQIBmMsCTAcOauTh0T0l0neQK7m2bLMt2mGxU3HYssS0J2cdv5wljlPsrIuZLAG/2DOZIXgCYT8uMGZN+e2kSirfxZOPCsC0f24nTZzspnVn9VePS1Z5vubmAGGXG8ZFno9Hel0yfA5ZPhF7Dh972BQJ2qCpgH67lmWtBYbvk6sz02wjky2vXyz0XErP/kFB619js1BtwfOV4OPRqOQBjy3Qbk18vigUPPSD5ceHnwck7W9bhAqZdd7SuG7w4/P2F/GaJh8c7e9qgow+Q7cGBo+98WsLkuktFqiZabtXuQTu/Y5ETbR0v7tNSFnvrmu6pjdoan2KjMu8q/Hmj1EfCO2ZGfEIbIXKUlw8qaX9/b2oeSJmFksSeT/Fn0V3nSypChh4Gjh74ybO9aeZ/AN2dwciu2/MhAAAAAElFTkSuQmCC">微信公众号支付接入<!----></h1>  <div class="theme-vdoing-content content__default"><div class="custom-block tip"><p class="custom-block-title">前置阅读：</p> <p>① 阅读 <a href="/pay/build/">《支付功能开启》</a> 和 <a href="/pay/alipay-pay-demo/">《支付宝支付接入》</a> 文档，一定要先跑通支付宝支付流程！！！不跑通支付宝，微信公众号支付更跑不通。</p> <p>② 阅读 <a href="/member/weixin-mp-login/">《微信公众号登录》</a> 文档，因为微信公众号支付需要先微信公众号登录，超级麻烦的说！</p> <p>注意，微信公众号支付不能使用“测试公众号”，必须使用认证过的公众号。并且，在阅读《公众号登录》文档时，前端项目需要使用 <a href="/natapp/">《内网穿透》</a>，因为微信公众号支付只能在手机微信上测试！！！</p></div> <p>微信公众号支付，使用 WxPubPayClient 客户端进行对接。</p> <p>下面，我们以 <code>yudao-mall-uniapp</code> 商城项目，演示微信公众号支付的接入流程。</p> <div class="custom-block tip"><p class="custom-block-title">友情提示：</p> <ul><li><a href="http://niubi.natapp1.cc" target="_blank" rel="noopener noreferrer">http://niubi.natapp1.cc<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 域名，是我前端项目的访问域名</li> <li><a href="http://yunai.natapp1.cc" target="_blank" rel="noopener noreferrer">http://yunai.natapp1.cc<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 域名，是我后端项目的访问域名</li></ul> <p>所以，你的前后端项目也要分别使用 <a href="/natapp/">《内网穿透》</a> 实现独立域名！！！</p></div> <h2 id="_1-第一步-配置支付渠道"><a href="#_1-%E7%AC%AC%E4%B8%80%E6%AD%A5-%E9%85%8D%E7%BD%AE%E6%94%AF%E4%BB%98%E6%B8%A0%E9%81%93" class="header-anchor">#</a> 1. 第一步，配置支付渠道</h2> <p>① 访问 [支付管理 -&gt; 应用信息] 菜单，点击“商城应用”对应的【微信 JSAPI 支付】，进入支付渠道的配置。如下图所示：</p> <p><img src="/img/%E6%94%AF%E4%BB%98%E6%89%8B%E5%86%8C/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E6%94%AF%E4%BB%98%E6%8E%A5%E5%85%A5/%E6%94%AF%E4%BB%98%E6%B8%A0%E9%81%93%E9%85%8D%E7%BD%AE.png" alt="支付渠道配置"></p> <ul><li>在 <a href="https://pay.weixin.qq.com/index.php/core/account/info" target="_blank" rel="noopener noreferrer">https://pay.weixin.qq.com/index.php/core/account/info<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 地址，可获取微信支付商户号</li> <li>在 <a href="https://pay.weixin.qq.com/index.php/core/cert/api_cert#/" target="_blank" rel="noopener noreferrer">https://pay.weixin.qq.com/index.php/core/cert/api_cert#/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 地址，可获取 API 证书、密钥</li></ul> <div class="custom-block tip"><p class="custom-block-title">友情提示：</p> <p>可以简单阅读下 <a href="https://pay.weixin.qq.com/doc/v3/partner/4012069852" target="_blank" rel="noopener noreferrer">《微信官方文档 —— JSAPI 支付的接入前准备》<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 文章。</p> <p>目前建议使用微信支付的 V3 版本，并且使用<a href="https://pay.weixin.qq.com/doc/v3/merchant/4012153196" target="_blank" rel="noopener noreferrer">“微信支付公钥”<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>！！！</p></div> <p>② 访问微信支付的 <a href="https://pay.weixin.qq.com/index.php/extend/pay_setting" target="_blank" rel="noopener noreferrer">开发配置<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 地址，设置 JSAPI 支付目录，设置为前端项目的访问域名。如下图所示：</p> <p><img src="/img/%E6%94%AF%E4%BB%98%E6%89%8B%E5%86%8C/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E6%94%AF%E4%BB%98%E6%8E%A5%E5%85%A5/JSAPI%E6%94%AF%E4%BB%98%E7%9B%AE%E5%BD%95.png" alt="JSAPI 支付目录"></p> <h2 id="_2-支付功能测试"><a href="#_2-%E6%94%AF%E4%BB%98%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95" class="header-anchor">#</a> 2. 支付功能测试</h2> <p>① IDEA 打开前端 uniapp 项目，修改 <code>.env</code> 配置文件的 <code>SHOPRO_DEV_BASE_URL</code> 配置项目，替换成你的后端项目的访问域名。例如说下图：</p> <p><img src="/img/%E6%94%AF%E4%BB%98%E6%89%8B%E5%86%8C/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E6%94%AF%E4%BB%98%E6%8E%A5%E5%85%A5/%E6%9B%BF%E6%8D%A2%E5%90%8E%E7%AB%AF%E5%9F%9F%E5%90%8D.png" alt="替换后端域名"></p> <p>② 使用手机微信，访问前端项目的域名。随便找个商品下单，一路往下走，可以进入“收银台”界面（对应前端项目的 <code>pages/pay/index.vue</code> 文件）。如下图所示：</p> <p><img src="/img/%E6%94%AF%E4%BB%98%E6%89%8B%E5%86%8C/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E6%94%AF%E4%BB%98%E6%8E%A5%E5%85%A5/%E6%94%B6%E9%93%B6%E5%8F%B0.png" alt="收银台"></p> <p>③ 选择“微信支付”，点击“立即支付”按钮，即可进行微信支付。如下图所示：</p> <p><img src="/img/%E6%94%AF%E4%BB%98%E6%89%8B%E5%86%8C/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E6%94%AF%E4%BB%98%E6%8E%A5%E5%85%A5/%E7%AB%8B%E5%8D%B3%E6%94%AF%E4%BB%98.png" alt="立即支付"></p> <ul><li>前端代码的实现，可见 <code>sheep/platform/pay.js</code> 文件的 <code>#wechatOfficialAccountPay(...)</code> 方法</li> <li>后端代码的实现，可见 AppPayOrderController 提供的 <code>#submitPayOrder(...)</code> 接口</li></ul> <p>④ 支付成功后，跳转到“支付结果”界面（对应前端项目的 <code>pages/pay/result.vue</code> 文件）。</p> <div class="custom-block tip"><p class="custom-block-title">友情提示：</p> <p>如果这个过程中碰到问题，可以先使用「微信开发者工具」访问前端项目的域名，看看这个过程中有没什么报错。</p> <p>自查 30-60 分钟，如果还是无法解决，可以在星球发帖求助！但是注意，一定要先自查，因为这玩意没环境现场，很难搞啊！！！</p></div></div></div>
+    </div>
+</body>
+</html>

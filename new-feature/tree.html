@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>代码生成（树表） | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>代码生成（树表） | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/new-feature/tree/">https://doc.iocoder.cn/new-feature/tree/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">代码生成（树表）<!----></h1>  <div class="theme-vdoing-content content__default"><div class="custom-block tip"><p class="custom-block-title">友情提示：</p> <p>本文接 <a href="/new-feature/" class="router-link-active">《代码生成【单表】》</a>，请务必先阅读。因为重复的内容，本文会不再赘述！</p></div> <p>树表，是在“单表”的基础上，增加了「树形结构」的功能。</p> <p><img src="/img/%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/%E6%A0%91%E8%A1%A8/%E6%A0%91%E8%A1%A8.png" alt="树表"></p> <p>例如说：部门、分类等，是一个树形结构。我们可以通过树形结构，来展示部门、分类的层级关系。</p> <p>下面，我们将演示“树表”的使用，基于代码生成器，在 <code>yudao-module-system</code> 模块中，开发一个【<strong>分类</strong>】的功能。</p> <h2 id="_1-数据库表结构设计"><a href="#_1-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1" class="header-anchor">#</a> 1. 数据库表结构设计</h2> <p>设计分类的数据库表名为 <code>system_category</code>，其建表语句如下：</p> <div class="language-SQL extra-class"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token identifier"><span class="token punctuation">`</span>system_category<span class="token punctuation">`</span></span> <span class="token punctuation">(</span>
+  <span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">AUTO_INCREMENT</span> <span class="token keyword">COMMENT</span> <span class="token string">'编号'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>name<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">DEFAULT</span> <span class="token string">''</span> <span class="token keyword">COMMENT</span> <span class="token string">'名字'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>parent_id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'父级编号'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>creator<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token keyword">DEFAULT</span> <span class="token string">''</span> <span class="token keyword">COMMENT</span> <span class="token string">'创建者'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>create_time<span class="token punctuation">`</span></span> <span class="token keyword">datetime</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CURRENT_TIMESTAMP</span> <span class="token keyword">COMMENT</span> <span class="token string">'创建时间'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>updater<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token keyword">DEFAULT</span> <span class="token string">''</span> <span class="token keyword">COMMENT</span> <span class="token string">'更新者'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>update_time<span class="token punctuation">`</span></span> <span class="token keyword">datetime</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CURRENT_TIMESTAMP</span> <span class="token keyword">ON</span> <span class="token keyword">UPDATE</span> <span class="token keyword">CURRENT_TIMESTAMP</span> <span class="token keyword">COMMENT</span> <span class="token string">'更新时间'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>deleted<span class="token punctuation">`</span></span> <span class="token keyword">bit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">DEFAULT</span> b<span class="token string">'0'</span> <span class="token keyword">COMMENT</span> <span class="token string">'是否删除'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>tenant_id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">DEFAULT</span> <span class="token string">'0'</span> <span class="token keyword">COMMENT</span> <span class="token string">'租户编号'</span><span class="token punctuation">,</span>
+  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span><span class="token punctuation">)</span> <span class="token keyword">USING</span> <span class="token keyword">BTREE</span>
+<span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token operator">=</span><span class="token number">6</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8mb4 <span class="token keyword">COLLATE</span><span class="token operator">=</span>utf8mb4_unicode_ci <span class="token keyword">COMMENT</span><span class="token operator">=</span><span class="token string">'分类表'</span><span class="token punctuation">;</span>
+</code></pre></div><p>其中 <code>parent_id</code> 字段，用于标识父级分类的编号。如果是顶级分类，则 <code>parent_id</code> 为 <code>0</code>。</p> <h2 id="_2-代码生成"><a href="#_2-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90" class="header-anchor">#</a> 2. 代码生成</h2> <h3 id="_2-1-导入表"><a href="#_2-1-%E5%AF%BC%E5%85%A5%E8%A1%A8" class="header-anchor">#</a> 2.1 导入表</h3> <p>点击 [基础设施 -&gt; 代码生成] 菜单，点击 [基于 DB 导入] 按钮，选择 <code>system_category</code> 表，后点击 [确认] 按钮。</p> <h3 id="_2-2-编辑配置"><a href="#_2-2-%E7%BC%96%E8%BE%91%E9%85%8D%E7%BD%AE" class="header-anchor">#</a> 2.2 编辑配置</h3> <p>点击 <code>system_category</code> 所在行的 [编辑] 按钮，修改生成配置。后操作如下：</p> <p><img src="/img/%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/%E6%A0%91%E8%A1%A8/%E7%94%9F%E6%88%90%E4%BF%A1%E6%81%AF.png" alt="生成信息"></p> <ul><li>将【生成模版】设置为【树表】。🔥最最关键的步骤！</li> <li>树表信息：将【父编号字段】设置为 <code>parent_id</code> 字段，将【树名称字段】设置为 <code>name</code> 字段。</li> <li>将【上级菜单】设置为【系统管理】。</li> <li>将【前端类型】设置为“前端项目”对应的“前端类型”。例如说，我们这里演示的是 <code>yudao-ui-admin-vue3</code> 前端项目，则选择了【Vue3 Element Plus 标准模版】。</li></ul> <h3 id="_2-3-预览代码"><a href="#_2-3-%E9%A2%84%E8%A7%88%E4%BB%A3%E7%A0%81" class="header-anchor">#</a> 2.3 预览代码</h3> <p>点击 <code>system_category</code> 所在行的 [预览] 按钮，在线预览生成的代码，检查是否符合预期。</p> <h3 id="_2-3-生成代码"><a href="#_2-3-%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81" class="header-anchor">#</a> 2.3 生成代码</h3> <p>点击 <code>system_category</code> 所在行的 [生成] 按钮，生成代码。</p> <h1 id="_3-代码运行"><a href="#_3-%E4%BB%A3%E7%A0%81%E8%BF%90%E8%A1%8C" class="header-anchor">#</a> 3. 代码运行</h1> <p>和 <a href="/new-feature/" class="router-link-active">《代码生成【单表】》</a> 的「3. 代码运行」一致，就不重复赘述。</p></div></div>
+    </div>
+</body>
+</html>

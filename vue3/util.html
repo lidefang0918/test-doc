@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通用方法 | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>通用方法 | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/vue3/util/">https://doc.iocoder.cn/vue3/util/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">通用方法<!----></h1>  <div class="theme-vdoing-content content__default"><p>本小节，分享前端项目的常用方法。</p> <h2 id="_1-缓存配置"><a href="#_1-%E7%BC%93%E5%AD%98%E9%85%8D%E7%BD%AE" class="header-anchor">#</a> 1. 缓存配置</h2> <div class="custom-block tip"><p class="custom-block-title">友情提示：</p> <p>该小节，基于 <a href="https://element-plus-admin-doc.cn/guide/settings.html#%E7%BC%93%E5%AD%98%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener noreferrer">《vue element plus admin —— 项目配置「缓存配置 」》<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 的内容修改。</p></div> <h3 id="_1-1-说明"><a href="#_1-1-%E8%AF%B4%E6%98%8E" class="header-anchor">#</a> 1.1 说明</h3> <p>在项目中，你可以看到很多地方都使用了 <code>wsCache.set</code> 或者 <code>wsCache.get</code>，这是基于 <a href="https://github.com/wuchangming/web-storage-cache" target="_blank" rel="noopener noreferrer">web-storage-cache<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 进行封装，采用 <code>hook</code> 的形式。</p> <p>该插件对HTML5 <code>localStorage</code> 和 <code>sessionStorage</code> 进行了扩展，添加了超时时间，序列化方法。可以直接存储 <code>json</code> 对象，同时可以非常简单的进行超时时间的设置。</p> <p>本项目默认是采用 <code>sessionStorage</code> 的存储方式，如果更改，可以直接在 <a href="https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/hooks/web/useCache.ts" target="_blank" rel="noopener noreferrer">useCache.ts<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 中把 <code>type: CacheType = 'sessionStorage'</code> 改为 <code>type: CacheType = 'localStorage'</code>，这样项目中的所有用到的地方，都会变成该方式进行数据存储。</p> <p>如果只想单个更改，可以传入存储类型 <code>const { wsCache } = useCache('localStorage')</code>，既可只适用当前存储对象。</p> <div class="custom-block tip"><p class="custom-block-title">注意：</p> <p>更改完默认存储方式后，需要清除浏览器缓存并重新登录，以免造成不可描述的问题。</p></div> <h3 id="_1-2-示例"><a href="#_1-2-%E7%A4%BA%E4%BE%8B" class="header-anchor">#</a> 1.2 示例</h3> <p><img src="/img/Vue3/%E9%80%9A%E7%94%A8%E6%96%B9%E6%B3%95/10.png" alt="wsCache 示例"></p> <h2 id="_2-message-对象"><a href="#_2-message-%E5%AF%B9%E8%B1%A1" class="header-anchor">#</a> 2. <code>message</code> 对象</h2> <h3 id="_2-1-说明"><a href="#_2-1-%E8%AF%B4%E6%98%8E" class="header-anchor">#</a> 2.1 说明</h3> <p><code>message</code> 对象，由 <a href="https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/hooks/web/useMessage.ts" target="_blank" rel="noopener noreferrer">src/hooks/web/useMessage.ts<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 实现，基于 ElMessage、ElMessageBox、ElNotification 封装，用于做消息提示、通知提示、对话框提醒、二次确认等。</p> <h3 id="_2-2-示例"><a href="#_2-2-%E7%A4%BA%E4%BE%8B" class="header-anchor">#</a> 2.2 示例</h3> <p><img src="/img/Vue3/%E9%80%9A%E7%94%A8%E6%96%B9%E6%B3%95/11.png" alt="message 示例"></p> <h2 id="_3-download-对象"><a href="#_3-download-%E5%AF%B9%E8%B1%A1" class="header-anchor">#</a> 3. <code>download</code> 对象</h2> <h3 id="_3-1-说明"><a href="#_3-1-%E8%AF%B4%E6%98%8E" class="header-anchor">#</a> 3.1 说明</h3> <p><code>$download</code> 对象，由 <a href="https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/utils/download.ts" target="_blank" rel="noopener noreferrer"><code>util/download.ts</code><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 实现，用于 Excel、Word、Zip、HTML 等类型的文件下载。</p> <h3 id="_3-2-示例"><a href="#_3-2-%E7%A4%BA%E4%BE%8B" class="header-anchor">#</a> 3.2 示例</h3> <p><img src="/img/Vue3/%E9%80%9A%E7%94%A8%E6%96%B9%E6%B3%95/12.png" alt="download 示例"></p></div></div>
+    </div>
+</body>
+</html>

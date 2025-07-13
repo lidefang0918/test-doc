@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟支付、退款 | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>模拟支付、退款 | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/pay/mock/">https://doc.iocoder.cn/pay/mock/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABGpJREFUSA3tVVtoXFUU3fvOI53UlmCaKIFmwEhsE7QK0ipFEdHEKpXaZGrp15SINsXUWvBDpBgQRKi0+KKoFeJHfZA+ED9KKoIU2gYD9UejTW4rVIzm0VSTziPzuNu1z507dibTTjL4U/DAzLn3nL3X2o91ziX6f9wMFdh6Jvbm9nNSV0msViVO6tN1Rm7NMu2OpeJ9lWBUTDxrJbYTS0hInuwciu9eLHlFxCLCZEk3MegsJmZ5K/JD6t7FkFdEvGUo1g7qJoG3MHImqRIn8/nzY1K9UPKKiJmtnUqHVE3Gbuay6vJE/N2FEmuxFjW2nUuE0yQXRRxLiTUAzs36zhZvOXJPdX850EVnnLZkB8prodQoM5JGj7Xk2mvC7JB8tG04Ef5PiXtG0UtxupRQSfTnBoCy554x18yJHI6I+G5Eru4LHmPJZEQsrvPUbMiA8G/WgMK7w7I+ez7++o2ANfbrjvaOl1tFMs+htG3IrZH9/hDX1Pr8Tc0UvH8tcX29KzAgIGcEkINyW5BF9x891hw6VYqgJHEk0huccS7vh3C6gTiODL+26huuBtbct8eZnqLML8PkxGYpuPZBqtqwkSjgc4mB5gbgig5i+y0UDK35LMxXisn9xQtK+nd26gTIHsHe/oblK/b29fUmN/8Y+9jAQrnBp56m1LcDlDp9irKTExSKduXJVWSqdBMA08pEJnEIOB3FPPMybu/oeV8zFeYN3xx576Q6RH+VmplE4ncQV5v+5rzSoyOU7PuEAg8g803PwBJ0CExno/jcMbN8tONYeOmHiuUNryvm3fRUy4tMPVLdAGkUhNWuggGrJcXPv+ouCjz0MKUHz1J2/E8IC9nqTabcxgaBYM0hPhD5Y65FsbxRQKxCQrDjDctW7PUM3HuZunFyifSAqEfuzCp48Il24luWUWZoyJCaPR82jE0+kFA643wRFVni4RYSq3ohJO2pZ7B5dO4xkDWbEpossJPLSrPjYID8rS2UHTlvyNxqIGsg674XJJ7vnh5L7PNwC4hh2sjCI96mzszOTpxLF0T7l88Yz7lAuK6OnL8gXLOnTvpzSb22YG8W7us3jSebFHeeqnXRG1vt+MoUM84LQIBmMsCTAcOauTh0T0l0neQK7m2bLMt2mGxU3HYssS0J2cdv5wljlPsrIuZLAG/2DOZIXgCYT8uMGZN+e2kSirfxZOPCsC0f24nTZzspnVn9VePS1Z5vubmAGGXG8ZFno9Hel0yfA5ZPhF7Dh972BQJ2qCpgH67lmWtBYbvk6sz02wjky2vXyz0XErP/kFB619js1BtwfOV4OPRqOQBjy3Qbk18vigUPPSD5ceHnwck7W9bhAqZdd7SuG7w4/P2F/GaJh8c7e9qgow+Q7cGBo+98WsLkuktFqiZabtXuQTu/Y5ETbR0v7tNSFnvrmu6pjdoan2KjMu8q/Hmj1EfCO2ZGfEIbIXKUlw8qaX9/b2oeSJmFksSeT/Fn0V3nSypChh4Gjh74ybO9aeZ/AN2dwciu2/MhAAAAAElFTkSuQmCC">模拟支付、退款<!----></h1>  <div class="theme-vdoing-content content__default"><div class="custom-block tip"><p class="custom-block-title">前置阅读：</p> <p>需要先阅读如下文档，对支付、退款功能有一定了解：</p> <ul><li><a href="/pay/build/">《支付功能开启》</a></li> <li><a href="/pay/alipay-pay-demo/">《支付宝支付接入》</a></li> <li><a href="/pay/refund-demo">《支付宝、微信退款接入》</a></li></ul></div> <p>考虑到支付、退款功能的接入，需要依赖支付宝、微信等支付渠道，会比较麻烦。所以，我们提供了模拟支付、退款的功能，方便开发者进行接入。</p> <p>具体的实现，可见 MockPayClient 客户端：</p> <ul><li>在 <code>#doUnifiedOrder(...)</code> 方法中，直接返回支付【成功】</li> <li>在 <code>#doUnifiedRefund(...)</code> 方法中，直接返回退款【成功】</li></ul> <p>下面，我们以“商城”为例子，讲解模拟支付的开启、使用。</p> <h2 id="_1-模拟支付的开启"><a href="#_1-%E6%A8%A1%E6%8B%9F%E6%94%AF%E4%BB%98%E7%9A%84%E5%BC%80%E5%90%AF" class="header-anchor">#</a> 1. 模拟支付的开启</h2> <p>在管理后台的 [支付管理 -&gt; 应用信息] 菜单，将商城对应的支付应用 <code>mall</code> 进行开启（开启状态为打开）。如下图所示：</p> <p><img src="/img/%E6%94%AF%E4%BB%98%E6%89%8B%E5%86%8C/%E6%A8%A1%E6%8B%9F/%E6%A8%A1%E6%8B%9F%E6%94%AF%E4%BB%98%E5%BC%80%E5%90%AF.png" alt="模拟支付开启"></p> <h2 id="_2-模拟支付的使用"><a href="#_2-%E6%A8%A1%E6%8B%9F%E6%94%AF%E4%BB%98%E7%9A%84%E4%BD%BF%E7%94%A8" class="header-anchor">#</a> 2. 模拟支付的使用</h2> <p>在商城 uni-app 收银台，选择“模拟支付”时，内部会调用 MockPayClient 的 <code>#doUnifiedOrder(...)</code> 方法，发起支付，直接成功。</p> <p>它的整体流程和 <a href="/pay/alipay-pay-demo">《支付宝支付接入》</a> 是类似的。</p> <p><img src="/img/%E6%94%AF%E4%BB%98%E6%89%8B%E5%86%8C/%E6%A8%A1%E6%8B%9F/%E6%A8%A1%E6%8B%9F%E6%94%AF%E4%BB%98.png" alt="模拟支付"></p> <h2 id="_3-模拟退款的使用"><a href="#_3-%E6%A8%A1%E6%8B%9F%E9%80%80%E6%AC%BE%E7%9A%84%E4%BD%BF%E7%94%A8" class="header-anchor">#</a> 3. 模拟退款的使用</h2> <p>模拟支付后，如果发起退款，内部会调用 MockPayClient 的 <code>#doUnifiedRefund(...)</code> 方法，发起退款，直接成功。</p> <p>它的整体流程和 <a href="/pay/refund-demo">《支付宝、微信退款接入》</a> 是类似的。</p></div></div>
+    </div>
+</body>
+</html>

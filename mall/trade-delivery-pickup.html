@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【交易】门店自提 | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>【交易】门店自提 | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/mall/trade-delivery-pickup/">https://doc.iocoder.cn/mall/trade-delivery-pickup/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABGpJREFUSA3tVVtoXFUU3fvOI53UlmCaKIFmwEhsE7QK0ipFEdHEKpXaZGrp15SINsXUWvBDpBgQRKi0+KKoFeJHfZA+ED9KKoIU2gYD9UejTW4rVIzm0VSTziPzuNu1z507dibTTjL4U/DAzLn3nL3X2o91ziX6f9wMFdh6Jvbm9nNSV0msViVO6tN1Rm7NMu2OpeJ9lWBUTDxrJbYTS0hInuwciu9eLHlFxCLCZEk3MegsJmZ5K/JD6t7FkFdEvGUo1g7qJoG3MHImqRIn8/nzY1K9UPKKiJmtnUqHVE3Gbuay6vJE/N2FEmuxFjW2nUuE0yQXRRxLiTUAzs36zhZvOXJPdX850EVnnLZkB8prodQoM5JGj7Xk2mvC7JB8tG04Ef5PiXtG0UtxupRQSfTnBoCy554x18yJHI6I+G5Eru4LHmPJZEQsrvPUbMiA8G/WgMK7w7I+ez7++o2ANfbrjvaOl1tFMs+htG3IrZH9/hDX1Pr8Tc0UvH8tcX29KzAgIGcEkINyW5BF9x891hw6VYqgJHEk0huccS7vh3C6gTiODL+26huuBtbct8eZnqLML8PkxGYpuPZBqtqwkSjgc4mB5gbgig5i+y0UDK35LMxXisn9xQtK+nd26gTIHsHe/oblK/b29fUmN/8Y+9jAQrnBp56m1LcDlDp9irKTExSKduXJVWSqdBMA08pEJnEIOB3FPPMybu/oeV8zFeYN3xx576Q6RH+VmplE4ncQV5v+5rzSoyOU7PuEAg8g803PwBJ0CExno/jcMbN8tONYeOmHiuUNryvm3fRUy4tMPVLdAGkUhNWuggGrJcXPv+ouCjz0MKUHz1J2/E8IC9nqTabcxgaBYM0hPhD5Y65FsbxRQKxCQrDjDctW7PUM3HuZunFyifSAqEfuzCp48Il24luWUWZoyJCaPR82jE0+kFA643wRFVni4RYSq3ohJO2pZ7B5dO4xkDWbEpossJPLSrPjYID8rS2UHTlvyNxqIGsg674XJJ7vnh5L7PNwC4hh2sjCI96mzszOTpxLF0T7l88Yz7lAuK6OnL8gXLOnTvpzSb22YG8W7us3jSebFHeeqnXRG1vt+MoUM84LQIBmMsCTAcOauTh0T0l0neQK7m2bLMt2mGxU3HYssS0J2cdv5wljlPsrIuZLAG/2DOZIXgCYT8uMGZN+e2kSirfxZOPCsC0f24nTZzspnVn9VePS1Z5vubmAGGXG8ZFno9Hel0yfA5ZPhF7Dh972BQJ2qCpgH67lmWtBYbvk6sz02wjky2vXyz0XErP/kFB619js1BtwfOV4OPRqOQBjy3Qbk18vigUPPSD5ceHnwck7W9bhAqZdd7SuG7w4/P2F/GaJh8c7e9qgow+Q7cGBo+98WsLkuktFqiZabtXuQTu/Y5ETbR0v7tNSFnvrmu6pjdoan2KjMu8q/Hmj1EfCO2ZGfEIbIXKUlw8qaX9/b2oeSJmFksSeT/Fn0V3nSypChh4Gjh74ybO9aeZ/AN2dwciu2/MhAAAAAElFTkSuQmCC">【交易】门店自提<!----></h1>  <div class="theme-vdoing-content content__default"><p>门店自提，是指用户在下单时，选择自提，然后到指定的门店进行自提（核销）。</p> <h2 id="_1-门店信息"><a href="#_1-%E9%97%A8%E5%BA%97%E4%BF%A1%E6%81%AF" class="header-anchor">#</a> 1. 门店信息</h2> <p>门店自提时，需要使用门店信息，由 <code>yudao-module-trade</code> 后端模块的 <code>delivery</code> 包的 DeliveryPickUpStoreService 实现。</p> <h3 id="_1-1-表结构"><a href="#_1-1-%E8%A1%A8%E7%BB%93%E6%9E%84" class="header-anchor">#</a> 1.1 表结构</h3> <blockquote><p>省略 creator/create_time/updater/update_time/deleted/tenant_id 等通用字段</p></blockquote> <div class="language-SQL extra-class"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token identifier"><span class="token punctuation">`</span>trade_delivery_pick_up_store<span class="token punctuation">`</span></span> <span class="token punctuation">(</span>
+  <span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">AUTO_INCREMENT</span> <span class="token keyword">COMMENT</span> <span class="token string">'编号'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>name<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'门店名称'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>introduction<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'门店简介'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>phone<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'门店手机'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>area_id<span class="token punctuation">`</span></span> <span class="token keyword">int</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'区域编号'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>detail_address<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'门店详细地址'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>logo<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'门店 logo'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>opening_time<span class="token punctuation">`</span></span> <span class="token keyword">time</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'营业开始时间'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>closing_time<span class="token punctuation">`</span></span> <span class="token keyword">time</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'营业结束时间'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>latitude<span class="token punctuation">`</span></span> <span class="token keyword">double</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'纬度'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>longitude<span class="token punctuation">`</span></span> <span class="token keyword">double</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'经度'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>status<span class="token punctuation">`</span></span> <span class="token keyword">tinyint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">DEFAULT</span> <span class="token string">'0'</span> <span class="token keyword">COMMENT</span> <span class="token string">'门店状态'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>verify_user_ids<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'核销用户编号数组'</span><span class="token punctuation">,</span>
+  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span><span class="token punctuation">)</span> <span class="token keyword">USING</span> <span class="token keyword">BTREE</span>
+<span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token operator">=</span><span class="token number">2</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8mb4 <span class="token keyword">COLLATE</span><span class="token operator">=</span>utf8mb4_unicode_ci <span class="token keyword">COMMENT</span><span class="token operator">=</span><span class="token string">'自提门店'</span><span class="token punctuation">;</span>
+</code></pre></div><p>主要是，存储下门店的基本信息。</p> <p>比较重要特殊的字段，是 <code>verify_user_ids</code> 字段，存储该门店可核销的管理员用户编号数组，关联的是 <code>system_admin_users</code> 的 <code>id</code> 字段。就是说，下单在该门店的订单，只有这些管理员才能核销。</p> <h3 id="_1-2-管理后台"><a href="#_1-2-%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0" class="header-anchor">#</a> 1.2 管理后台</h3> <p>对应 [商城系统 -&gt; 订单中心 -&gt; 配送管理 -&gt; 门店自提 -&gt; 门店管理] 菜单，对应 <code>yudao-ui-admin-vue3</code> 项目的 <code>views/mall/trade/delivery/express</code> 目录。如下图所示：</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E9%97%A8%E5%BA%97%E8%87%AA%E6%8F%90/%E9%97%A8%E5%BA%97%E4%BF%A1%E6%81%AF-%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0.png" alt="门店信息"></p> <h2 id="_2-自提流程"><a href="#_2-%E8%87%AA%E6%8F%90%E6%B5%81%E7%A8%8B" class="header-anchor">#</a> 2. 自提流程</h2> <h3 id="_2-1-下单【买家】"><a href="#_2-1-%E4%B8%8B%E5%8D%95%E3%80%90%E4%B9%B0%E5%AE%B6%E3%80%91" class="header-anchor">#</a> 2.1 下单【买家】</h3> <p>① 买家在 uni-app 订单结算页时，选择自提，然后选择自提门店。如下图所示：</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E9%97%A8%E5%BA%97%E8%87%AA%E6%8F%90/%E4%B9%B0%E5%AE%B6%E4%B8%8B%E5%8D%95.png" alt="买家下单"></p> <p>注意：商品的配送方式需要支持自提，才会显示自提的选项！！！如果没设置，去“商品管理”里，编辑下相关的商品。</p> <p>② 下单并支付完成后，买家在 uni-app 订单详情页时，可以看到自提门店的信息，也包括核销码、核销二维码。如下图所示：</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E9%97%A8%E5%BA%97%E8%87%AA%E6%8F%90/%E4%B9%B0%E5%AE%B6%E8%AE%A2%E5%8D%95%E8%AF%A6%E6%83%85.png" alt="买家订单详情"></p> <h3 id="_2-2-核销【卖家】"><a href="#_2-2-%E6%A0%B8%E9%94%80%E3%80%90%E5%8D%96%E5%AE%B6%E3%80%91" class="header-anchor">#</a> 2.2 核销【卖家】</h3> <p>① 核销订单列表，对应 [商城系统 -&gt; 订单中心 -&gt; 配送管理 -&gt; 门店自提 -&gt; 核销订单] 菜单，对应 <code>yudao-ui-admin-vue3</code> 项目的 <code>views/mall/trade/delivery/pickUpOrder</code> 目录。如下图所示：</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E9%97%A8%E5%BA%97%E8%87%AA%E6%8F%90/%E6%A0%B8%E9%94%80%E8%AE%A2%E5%8D%95%E5%88%97%E8%A1%A8-%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0.png" alt="核销订单列表"></p> <p>注意！只展示当前登录的管理员用户可核销的订单。关注下“自提门店”这个筛选项！！！</p> <p>② 点击「核销」按钮，输入核销码，查询核销订单的信息。如下图所示：</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E9%97%A8%E5%BA%97%E8%87%AA%E6%8F%90/%E6%A0%B8%E9%94%80%E8%AE%A2%E5%8D%95-%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0.png" alt="核销订单 - 查询"></p> <p>后端对应 AppTradeOrderController 的 <code>#getByPickUpVerifyCode(...)</code> 提供的“查询核销码对应的订单”接口，基于 <code>trade_order</code> 表的 <code>pick_up_verify_code</code> 字段查询。</p> <p>③ 点击「确认核销」按钮后，即可核销成功。如下图所示：</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E9%97%A8%E5%BA%97%E8%87%AA%E6%8F%90/%E6%A0%B8%E9%94%80%E8%AE%A2%E5%8D%952-%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0.png" alt="核销订单 - 确认"></p> <p>后端对应 AppTradeOrderController 的 <code>#pickUpOrderByVerifyCode(...)</code> 提供的“订单核销”接口。</p> <h2 id="_3-配送配置"><a href="#_3-%E9%85%8D%E9%80%81%E9%85%8D%E7%BD%AE" class="header-anchor">#</a> 3. 配送配置</h2> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E5%BF%AB%E9%80%92%E5%8F%91%E8%B4%A7/%E9%85%8D%E9%80%81%E9%85%8D%E7%BD%AE.png" alt="配送配置"></p> <ul><li>SQL 对应 <code>trade_config</code> 表的 <code>delivery_</code> 开头的字段。</li> <li>前端对应 <code>yudao-ui-admin-vue3</code> 项目的 <code>views/mall/trade/config/index.vue</code> 目录</li> <li>后端对应 <code>yudao-module-trade</code> 项目的 TradeConfigController 类</li></ul></div></div>
+    </div>
+</body>
+</html>

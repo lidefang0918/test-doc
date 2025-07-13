@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 思维导图 | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AI 思维导图 | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/ai/mindmap/">https://doc.iocoder.cn/ai/mindmap/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABGpJREFUSA3tVVtoXFUU3fvOI53UlmCaKIFmwEhsE7QK0ipFEdHEKpXaZGrp15SINsXUWvBDpBgQRKi0+KKoFeJHfZA+ED9KKoIU2gYD9UejTW4rVIzm0VSTziPzuNu1z507dibTTjL4U/DAzLn3nL3X2o91ziX6f9wMFdh6Jvbm9nNSV0msViVO6tN1Rm7NMu2OpeJ9lWBUTDxrJbYTS0hInuwciu9eLHlFxCLCZEk3MegsJmZ5K/JD6t7FkFdEvGUo1g7qJoG3MHImqRIn8/nzY1K9UPKKiJmtnUqHVE3Gbuay6vJE/N2FEmuxFjW2nUuE0yQXRRxLiTUAzs36zhZvOXJPdX850EVnnLZkB8prodQoM5JGj7Xk2mvC7JB8tG04Ef5PiXtG0UtxupRQSfTnBoCy554x18yJHI6I+G5Eru4LHmPJZEQsrvPUbMiA8G/WgMK7w7I+ez7++o2ANfbrjvaOl1tFMs+htG3IrZH9/hDX1Pr8Tc0UvH8tcX29KzAgIGcEkINyW5BF9x891hw6VYqgJHEk0huccS7vh3C6gTiODL+26huuBtbct8eZnqLML8PkxGYpuPZBqtqwkSjgc4mB5gbgig5i+y0UDK35LMxXisn9xQtK+nd26gTIHsHe/oblK/b29fUmN/8Y+9jAQrnBp56m1LcDlDp9irKTExSKduXJVWSqdBMA08pEJnEIOB3FPPMybu/oeV8zFeYN3xx576Q6RH+VmplE4ncQV5v+5rzSoyOU7PuEAg8g803PwBJ0CExno/jcMbN8tONYeOmHiuUNryvm3fRUy4tMPVLdAGkUhNWuggGrJcXPv+ouCjz0MKUHz1J2/E8IC9nqTabcxgaBYM0hPhD5Y65FsbxRQKxCQrDjDctW7PUM3HuZunFyifSAqEfuzCp48Il24luWUWZoyJCaPR82jE0+kFA643wRFVni4RYSq3ohJO2pZ7B5dO4xkDWbEpossJPLSrPjYID8rS2UHTlvyNxqIGsg674XJJ7vnh5L7PNwC4hh2sjCI96mzszOTpxLF0T7l88Yz7lAuK6OnL8gXLOnTvpzSb22YG8W7us3jSebFHeeqnXRG1vt+MoUM84LQIBmMsCTAcOauTh0T0l0neQK7m2bLMt2mGxU3HYssS0J2cdv5wljlPsrIuZLAG/2DOZIXgCYT8uMGZN+e2kSirfxZOPCsC0f24nTZzspnVn9VePS1Z5vubmAGGXG8ZFno9Hel0yfA5ZPhF7Dh972BQJ2qCpgH67lmWtBYbvk6sz02wjky2vXyz0XErP/kFB619js1BtwfOV4OPRqOQBjy3Qbk18vigUPPSD5ceHnwck7W9bhAqZdd7SuG7w4/P2F/GaJh8c7e9qgow+Q7cGBo+98WsLkuktFqiZabtXuQTu/Y5ETbR0v7tNSFnvrmu6pjdoan2KjMu8q/Hmj1EfCO2ZGfEIbIXKUlw8qaX9/b2oeSJmFksSeT/Fn0V3nSypChh4Gjh74ybO9aeZ/AN2dwciu2/MhAAAAAElFTkSuQmCC">AI 思维导图<!----></h1>  <div class="theme-vdoing-content content__default"><p>AI 思维导图，基于 LLM 大模型，实现智能思维导图的功能。</p> <p>它的实现原理，是根据 prompt 提示词生成 markdown 内容，之后再通过 markdown 转换成思维导图。</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/AI%E5%AF%BC%E5%9B%BE/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE.png" alt="思维导图"></p> <p>整个功能，涉及到 2 个表：</p> <ul><li>【配置】<code>ai_api_key</code>：API 秘钥表</li> <li>【导图】<code>ai_mind_map</code>：思维导图记录表</li></ul> <p>下面，我们逐个表进行介绍，这个过程中也会讲讲对应的功能。</p> <blockquote><p>省略 creator/create_time/updater/update_time/deleted/tenant_id 等通用字段</p></blockquote> <h2 id="_1-api-秘钥表"><a href="#_1-api-%E7%A7%98%E9%92%A5%E8%A1%A8" class="header-anchor">#</a> 1. API 秘钥表</h2> <p>在 <a href="/ai/chat/">《AI 对话》</a> 中，我们已经介绍了 API 秘钥表，这里就不再赘述了。</p> <p>你想使用哪个模型生成思维导图，可以参考对应的文档，进行配置：</p> <ul><li>国内模型：<a href="/ai/tongyi">《通义千问》</a>、<a href="/ai/deep-seek">《DeepSeek》</a>、<a href="/ai/doubao">《豆包》</a>、<a href="/ai/hunyuan">《混元》</a>、<a href="/ai/yiyan">《文心一言》</a>、<a href="/ai/siliconflow">《硅基流动》</a>、<a href="/ai/xinghuo">《讯飞星火》</a>、<a href="/ai/glm">《智谱 GLM》</a>、<a href="/ai/moonshot">《月之暗灭》</a>、<a href="/ai/minimax">《MiniMax》</a>、<a href="/ai/baichuan">《百川智能》</a></li> <li>国外模型：<a href="/ai/openai">《OpenAI（ChatGPT）》</a>、<a href="/ai/llama">《LLAMA》</a>、<a href="/ai/azure-openai">《【微软 OpenAI】ChatGPT》</a> 、<a href="/ai/gemini">《谷歌 Gemini》</a></li></ul> <div class="custom-block tip"><p class="custom-block-title">友情提示：</p> <p>一般情况下，建议先使用 <a href="/ai/deep-seek">《DeepSeek》</a> 模型，因为免费送了一些 tokens，可以先体验一下。</p></div> <h3 id="_1-1-补充说明"><a href="#_1-1-%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E" class="header-anchor">#</a> 1.1 补充说明</h3> <p>AI 生成思维导图时，使用什么模型和 system prompt 呢？它分成两种情况：</p> <p>① 情况一：通过【聊天角色】中的“导图助手 ”进行配置。如下图所示：</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/AI%E5%AF%BC%E5%9B%BE/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E6%A8%A1%E5%9E%8B.png" alt="AI 思维导图模型"></p> <p>② 情况二：如果没有配置，那就会使用 <code>ai_model</code> 表中的第一个模型（排序 <code>sort</code> 最小的）。同时，它对应的 system prompt 在 AiChatRoleEnum 的 <code>AI_MIND_MAP_ROLE</code> 进行配置。</p> <h2 id="_2-思维导图记录表"><a href="#_2-%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E8%AE%B0%E5%BD%95%E8%A1%A8" class="header-anchor">#</a> 2. 思维导图记录表</h2> <p>思维导图记录表，用户每发起一次思维导图，都会记录一条记录。</p> <h3 id="_2-1-表结构"><a href="#_2-1-%E8%A1%A8%E7%BB%93%E6%9E%84" class="header-anchor">#</a> 2.1 表结构</h3> <div class="language-SQL extra-class"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token identifier"><span class="token punctuation">`</span>ai_mind_map<span class="token punctuation">`</span></span> <span class="token punctuation">(</span>
+  <span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">AUTO_INCREMENT</span> <span class="token keyword">COMMENT</span> <span class="token string">'编号'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>user_id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'用户编号'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>platform<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'平台'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>model<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'模型'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>prompt<span class="token punctuation">`</span></span> <span class="token keyword">text</span> <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'生成内容提示'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>generated_content<span class="token punctuation">`</span></span> <span class="token keyword">text</span> <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token keyword">COMMENT</span> <span class="token string">'生成的思维导图内容'</span><span class="token punctuation">,</span>
+   
+   <span class="token identifier"><span class="token punctuation">`</span>error_message<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span> <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'错误信息'</span><span class="token punctuation">,</span>
+  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token operator">=</span><span class="token number">4</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8mb4 <span class="token keyword">COLLATE</span><span class="token operator">=</span>utf8mb4_unicode_ci <span class="token keyword">COMMENT</span><span class="token operator">=</span><span class="token string">'AI 思维导图表'</span><span class="token punctuation">;</span>
+</code></pre></div><p>① <code>user_id</code> 字段：对应 <code>system_users</code> 表的 <code>id</code> 字段，表示哪个用户生成的思维导图。</p> <p>② <code>platform</code> 字段：表示平台，对应 AiPlatformEnum 枚举，目前支持多个 AI 大模型。</p> <p><code>model</code> 字段：表示模型标识，对应不同的平台的模型标识，例如说 OpenAI 的 <code>gpt-3.5-turbo</code>、<code>gpt-4-turbo</code>，通义千问的 <code>qwen-plus</code>、<code>qwen-max</code> 等等。</p> <p>③ <code>prompt</code> 字段：表示生成内容提示，即生成思维导图的提示词。</p> <p><code>generated_content</code> 字段：表示生成的思维导图内容，markdown 格式。</p> <p>④ <code>error_message</code> 字段：表示错误信息，如果生成失败，会记录错误信息。</p> <h3 id="_2-2-管理后台"><a href="#_2-2-%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0" class="header-anchor">#</a> 2.2 管理后台</h3> <p>① 前端对应 [AI 大模型 -&gt; AI 思维导图] 菜单，对应 <code>yudao-ui-admin-vue3</code> 项目的 <code>@/views/ai/mindmap/index</code> 目录，提供给普通用户使用，生成思维导图。</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/AI%E5%AF%BC%E5%9B%BE/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE.png" alt="思维导图"></p> <p>它的后端 HTTP 接口，由 <code>yudao-module-ai</code> 模块的 <code>mindmap</code> 包的 AiMindMapController 实现。</p> <div class="custom-block tip"><p class="custom-block-title">最最最关键的代码！！！大家可以重点看看！！！</p> <p>AiMindMapController 提供的 <code>#generateMindMap(...)</code> 生成思维导图接口。</p> <p>它的内部，调用 Spring AI 的 StreamingChatClient 来实现大模型的调用。</p></div> <p>② 前端对应 [AI 大模型 -&gt; 控制台 -&gt; 导图管理] 菜单，对应 <code>yudao-ui-admin-vue3</code> 项目的 <code>@/views/ai/mindmap/mananger</code> 目录，提供给管理员使用，查看思维导图记录。</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/AI%E5%AF%BC%E5%9B%BE/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E7%AE%A1%E7%90%86.png" alt="思维导图管理"></p></div></div>
+    </div>
+</body>
+</html>

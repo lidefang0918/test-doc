@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【模型接入】文心一言 | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>【模型接入】文心一言 | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/ai/yiyan/">https://doc.iocoder.cn/ai/yiyan/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABH1JREFUSA3tVl1oHFUUPmdmd2ltklqbpJDiNnXFmgbFktho7YMPNiJSSZM0+CAYSkUELVhM6YuwIPpgoOKDqOBDC0XE2CQoNtQXBUFTTcCi+Wlh1V2TQExsUzcltd3M9Tt3ZjZzZ2fT+OJTL8yeM+eee757fmeJbq//KQL8X3DUSFOcfr7cRsRtxNQMWueeVzOkaITIGqQHNg5y8+jNW9ldM7A6nTpAjuolUikAwq7CE3WcM2RRDz+XGVgN3FptU/aUSlvq9Pa3iZ1+sgAqJyyAFqkipd9dqiwHF3P65YycLWc/6sqGrvoEoIp6DOFaX5h6+dnfjkWprwqsPk0dUGq5vySwDImC10KxFHgGL1SWoc92O3eVht09qdXNH11I2SsTsJYqMWzihqGMi+A+Garf3BAuuLI5oGlULyNfyB/HYNujwktOfRrMr5t77NmevqaUopx0grnKAyvVpmwUDB4x6FPXuGvYLTDwWsejwgtgkYKPqRJg8SV6xaiZ3ZTppGneS4yfH5/66fZSDHv+QZci/+h5c5UHtpy67JUqGppM0sh0Nc1dW6/N1W5Yoqat8/TU/VnadmdeW2PLLSyh0cvxBs3KbqTmwYPpxN4do/mzE8nEpvX/UMu2Wbp74zUAK5q6WkHns7V0eWkdPbPzd3rxkTGybadYySumVzhcaJFbs5UrEkQ/+CK8gF5dnh/6ciIZ73gwQ927L1IitoxKLXYP3SjYdOrHHfTZhRRlFyrorafPk20B3HPD1y2G3qKZME5Jcf3t/HUC13/8tSd++vqFveMUTwAUxSUFI1QekR1+bIze3D9MF2aq6cPvG72CgnldWCFqyRw3lwH8ZMerjTD9ElRO7Gv44wNpC90aASqGfVlz/Rx17srQ57/UU26hkhQqUB7dBR71WmzQhHUnblGmVOEw0jhbV1n9OlXUDCIRGaNV5Jp43N516fN7JmnTHdfp7Hgy0luO4aMhtkLL8Bi3bUWYvzh5Mn1dTxrL6QmGuRhGL/TiTTxRoEdTszSaq9GR0NGA3KdkOz3hqSV3MIDhQ5IVX/Ivx3umBti2es2h4eZby7x8br1rkf7Mo90AqC8aQ3sJeNzqFRu+vSANAQe3PL7l0HGOAdwDCeZYvNKeoZp1Qfs6Aipndh86HmFRi0LAnEO47wsqM6cdfjh3jBPUzhZy7nvlUfFsamED1VQt6aISHVymXZ/B2aCtIG8AI8xfobj2d3en1wWVhOeHELKmLQ1s211s88comkv4UCwWyF787mJdYXtNfhKAXVqnKTq8QZvGAGGOfaTo5pGZ/PwbUCr5+DPr/1J92JNHr9aOl/F3iI5+O1nfybsGxoimvZ3ViWSluDITw3P37mypheDIPY0tw7+O/5ApbkYw+zpfaUVu32Pi98+defdUhEpZkRFq0aqyNh9FuL9hpYbEm6iwi0z2REd09ZmyENEbuhjDWzKvZXTqKYaBIr3tt5kuPtQBZFvEUwHt60vfCNu41XsksH9Ij1BMMz1Y0OOunHNShFIP5868g5zeXmuLwL9T4b6Q2+KejgAAAABJRU5ErkJggg==">【模型接入】文心一言<!----></h1>  <div class="theme-vdoing-content content__default"><div class="custom-block tip"><p class="custom-block-title">友情提示：</p> <p>百度千帆 API 提供了 V2 版本，目前 Spring AI 不兼容，可关键 <a href="https://github.com/spring-projects/spring-ai/issues/2179" target="_blank" rel="noopener noreferrer">https://github.com/spring-projects/spring-ai/issues/2179<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 进展</p></div> <p>项目基于 Spring AI 提供的 <a href="https://github.com/spring-ai-community/qianfan" target="_blank" rel="noopener noreferrer"><code>spring-ai-qianfan</code><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，实现 <a href="https://yiyan.baidu.com/" target="_blank" rel="noopener noreferrer">文心一言<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 的接入：</p> <table><thead><tr><th>功能</th> <th>模型</th> <th>Spring AI 客户端</th></tr></thead> <tbody><tr><td>AI 对话</td> <td>ERNIE-4.0、ERNIE-3.5 等</td> <td><a href="https://github.com/spring-ai-community/qianfan/blob/main/qianfan-core/src/main/java/org/springframework/ai/qianfan/QianFanChatModel.java" target="_blank" rel="noopener noreferrer">QianFanChatModel<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td></tr> <tr><td>AI 绘画</td> <td><a href="https://cloud.baidu.com/product/creativity/ernie_Vilg" target="_blank" rel="noopener noreferrer">ernie_Vilg<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td> <td><a href="https://github.com/spring-ai-community/qianfan/blob/main/qianfan-core/src/main/java/org/springframework/ai/qianfan/QianFanImageModel.java" target="_blank" rel="noopener noreferrer">QinFanImageModel<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 的接入：</td></tr> <tr><td>)</td> <td></td> <td></td></tr></tbody></table> <h2 id="_1-申请密钥"><a href="#_1-%E7%94%B3%E8%AF%B7%E5%AF%86%E9%92%A5" class="header-anchor">#</a> 1. 申请密钥</h2> <p>由于文心一言是非开源的模型，所以无法私有化部署，需要去官网申请 API Key，然后通过 Spring AI 提供的客户端接入。</p> <h3 id="_1-1-申请百度云密钥"><a href="#_1-1-%E7%94%B3%E8%AF%B7%E7%99%BE%E5%BA%A6%E4%BA%91%E5%AF%86%E9%92%A5" class="header-anchor">#</a> 1.1 申请百度云密钥</h3> <p>① 在 <a href="https://cloud.baidu.com/" target="_blank" rel="noopener noreferrer">百度智能云<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 上，注册一个账号。</p> <p>② 在百度智能云上，创建一个 <a href="https://console.bce.baidu.com/qianfan/ais/console/applicationConsole/application" target="_blank" rel="noopener noreferrer">应用<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，获得到 API Key、Secret Key。</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/%E6%A8%A1%E5%9E%8B%E6%8E%A5%E5%85%A5/%E7%99%BE%E5%BA%A6%E4%BA%91-%E5%88%9B%E5%BB%BA%E5%BA%94%E7%94%A8.png" alt="创建应用"></p> <hr> <p>申请完成后，可以在我们系统的 [AI 大模型 -&gt; 控制台 -&gt; API 密钥] 菜单，进行密钥的配置。只需要填写“密钥”（<code>${API Key}|${Secret Key}</code>），不需要填写“自定义 API URL”（因为 Spring AI 默认官方地址）。如下图所示：</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/%E6%A8%A1%E5%9E%8B%E6%8E%A5%E5%85%A5/%E6%96%87%E5%BF%83%E4%B8%80%E8%A8%80-%E5%AE%98%E6%96%B9.png" alt="官方的密钥配置"></p> <h2 id="_2-模型配置"><a href="#_2-%E6%A8%A1%E5%9E%8B%E9%85%8D%E7%BD%AE" class="header-anchor">#</a> 2. 模型配置</h2> <h3 id="_2-1-ai-对话"><a href="#_2-1-ai-%E5%AF%B9%E8%AF%9D" class="header-anchor">#</a> 2.1 AI 对话</h3> <p>使用 <a href="/ai/chat/">《AI 对话》</a> 时，需要在 [AI 大模型 -&gt; 控制台 -&gt; 模型配置] 菜单，配置对应的聊天模型。</p> <p>模型有：<code>ernie_speed</code>、<code>ernie-tiny-8k</code> 等等，可通过 <a href="https://cloud.baidu.com/doc/WENXINWORKSHOP/s/Nlks5zkzu" target="_blank" rel="noopener noreferrer">千帆大模型平台<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 进行查看。</p> <p>注意，每个模型标识的 <code>max_tokens</code>（回复数 Token 数）是不同的，一般是 2048。</p> <h3 id="_2-2-ai-绘画"><a href="#_2-2-ai-%E7%BB%98%E7%94%BB" class="header-anchor">#</a> 2.2 AI 绘画</h3> <p>使用 <a href="/ai/image/">《AI 绘图》</a> 时，需要在 [AI 大模型 -&gt; 控制台 -&gt; 模型配置] 菜单，配置对应的图像模型。</p> <p>模型有：<code>sd_xl</code> 等等。</p> <p>注意，分辨率只允许选择 1024x1024、768x768、768x1024、1024x768、576x1024、1024x576 这几个。</p> <h2 id="_3-如何使用"><a href="#_3-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8" class="header-anchor">#</a> 3. 如何使用？</h2> <p>① 如果你的项目里需要直接通过 <code>@Resource</code> 注入 QianFanChatModel、QianFanImageModel 等对象，需要把 <code>application.yaml</code> 配置文件里的 <code>spring.ai.qianfan</code> 配置项，替换成你的！</p> <div class="language-YAML extra-class"><pre class="language-yaml"><code><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">ai</span><span class="token punctuation">:</span>
+    <span class="token key atrule">qianfan</span><span class="token punctuation">:</span> <span class="token comment"># 文心一言</span>
+      <span class="token key atrule">api-key</span><span class="token punctuation">:</span> x0cuLZ7XsaTCU08vuJWO87Lg
+      <span class="token key atrule">secret-key</span><span class="token punctuation">:</span> R9mYF9dl9KASgi5RUq0FQt3wRisSnOcK
+</code></pre></div><p>② 如果你希望使用 [AI 大模型 -&gt; 控制台 -&gt; API 密钥] 菜单的密钥配置，则可以通过 AiApiKeyService 的 <code>#getChatModel(...)</code> 或 <code>#getImageModel(...)</code> 方法，获取对应的模型对象。</p> <hr> <p>① 和 ② 这两者的后续使用，就是标准的 Spring AI 客户端的使用，调用对应的方法即可。</p> <p>另外，YiYanChatModelTests 里有对应的测试用例，可以参考。</p></div></div>
+    </div>
+</body>
+</html>

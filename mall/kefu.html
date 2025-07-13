@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线客服 | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>在线客服 | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/mall/kefu/">https://doc.iocoder.cn/mall/kefu/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABH1JREFUSA3tVl1oHFUUPmdmd2ltklqbpJDiNnXFmgbFktho7YMPNiJSSZM0+CAYSkUELVhM6YuwIPpgoOKDqOBDC0XE2CQoNtQXBUFTTcCi+Wlh1V2TQExsUzcltd3M9Tt3ZjZzZ2fT+OJTL8yeM+eee757fmeJbq//KQL8X3DUSFOcfr7cRsRtxNQMWueeVzOkaITIGqQHNg5y8+jNW9ldM7A6nTpAjuolUikAwq7CE3WcM2RRDz+XGVgN3FptU/aUSlvq9Pa3iZ1+sgAqJyyAFqkipd9dqiwHF3P65YycLWc/6sqGrvoEoIp6DOFaX5h6+dnfjkWprwqsPk0dUGq5vySwDImC10KxFHgGL1SWoc92O3eVht09qdXNH11I2SsTsJYqMWzihqGMi+A+Garf3BAuuLI5oGlULyNfyB/HYNujwktOfRrMr5t77NmevqaUopx0grnKAyvVpmwUDB4x6FPXuGvYLTDwWsejwgtgkYKPqRJg8SV6xaiZ3ZTppGneS4yfH5/66fZSDHv+QZci/+h5c5UHtpy67JUqGppM0sh0Nc1dW6/N1W5Yoqat8/TU/VnadmdeW2PLLSyh0cvxBs3KbqTmwYPpxN4do/mzE8nEpvX/UMu2Wbp74zUAK5q6WkHns7V0eWkdPbPzd3rxkTGybadYySumVzhcaJFbs5UrEkQ/+CK8gF5dnh/6ciIZ73gwQ927L1IitoxKLXYP3SjYdOrHHfTZhRRlFyrorafPk20B3HPD1y2G3qKZME5Jcf3t/HUC13/8tSd++vqFveMUTwAUxSUFI1QekR1+bIze3D9MF2aq6cPvG72CgnldWCFqyRw3lwH8ZMerjTD9ElRO7Gv44wNpC90aASqGfVlz/Rx17srQ57/UU26hkhQqUB7dBR71WmzQhHUnblGmVOEw0jhbV1n9OlXUDCIRGaNV5Jp43N516fN7JmnTHdfp7Hgy0luO4aMhtkLL8Bi3bUWYvzh5Mn1dTxrL6QmGuRhGL/TiTTxRoEdTszSaq9GR0NGA3KdkOz3hqSV3MIDhQ5IVX/Ivx3umBti2es2h4eZby7x8br1rkf7Mo90AqC8aQ3sJeNzqFRu+vSANAQe3PL7l0HGOAdwDCeZYvNKeoZp1Qfs6Aipndh86HmFRi0LAnEO47wsqM6cdfjh3jBPUzhZy7nvlUfFsamED1VQt6aISHVymXZ/B2aCtIG8AI8xfobj2d3en1wWVhOeHELKmLQ1s211s88comkv4UCwWyF787mJdYXtNfhKAXVqnKTq8QZvGAGGOfaTo5pGZ/PwbUCr5+DPr/1J92JNHr9aOl/F3iI5+O1nfybsGxoimvZ3ViWSluDITw3P37mypheDIPY0tw7+O/5ApbkYw+zpfaUVu32Pi98+defdUhEpZkRFq0aqyNh9FuL9hpYbEm6iwi0z2REd09ZmyENEbuhjDWzKvZXTqKYaBIr3tt5kuPtQBZFvEUwHt60vfCNu41XsksH9Ij1BMMz1Y0OOunHNShFIP5868g5zeXmuLwL9T4b6Q2+KejgAAAABJRU5ErkJggg==">在线客服<!----></h1>  <div class="theme-vdoing-content content__default"><div class="custom-block tip"><p class="custom-block-title">友情提示：</p> <p>该功能会在 V2.2.0 版本上线，提供一个基础的在线客服功能。</p> <p>预计在 V2.4.0 版本上，会重点打磨下界面，现在做的比较朴素~~~</p></div> <h2 id="_1-功能介绍"><a href="#_1-%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D" class="header-anchor">#</a> 1. 功能介绍</h2> <p>项目支持在线客服，实现会员和管理员之间的实时聊天。</p> <p>聊天消息的内容，可以是文字、图标、表情，也可以是商品、订单等信息。</p> <h3 id="_1-1-uni-app"><a href="#_1-1-uni-app" class="header-anchor">#</a> 1.1 uni-app</h3> <p>会员的在线客服界面，可以访问商品详情的右下角的【客服】按钮，如下图所示：</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E5%9C%A8%E7%BA%BF%E5%AE%A2%E6%9C%8D/%E4%BC%9A%E5%91%98%E7%95%8C%E9%9D%A2.png" alt="会员界面"></p> <p>该界面对应 uni-app 的 <code>/pages/chat/index.vue</code> 路径。</p> <h3 id="_1-2-管理后台"><a href="#_1-2-%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0" class="header-anchor">#</a> 1.2 管理后台</h3> <p>管理员的在线客服界面，对应 [商城系统 -&gt; 客服中心] 菜单，如下图所示：</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E5%9C%A8%E7%BA%BF%E5%AE%A2%E6%9C%8D/%E7%AE%A1%E7%90%86%E5%91%98%E7%95%8C%E9%9D%A2.png" alt="管理员界面"></p> <h2 id="_2-实现原理"><a href="#_2-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86" class="header-anchor">#</a> 2. 实现原理</h2> <p>本小节，我们主要讲解在线客服的实现原理，主要涉及消息的通信、存储。</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E5%9C%A8%E7%BA%BF%E5%AE%A2%E6%9C%8D/%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.png" alt="实现原理"></p> <h3 id="_2-1-消息通信"><a href="#_2-1-%E6%B6%88%E6%81%AF%E9%80%9A%E4%BF%A1" class="header-anchor">#</a> 2.1 消息通信</h3> <div class="custom-block tip"><p class="custom-block-title">友情提示：</p> <p>你需要先阅读 <a href="/websocket/">《WebSocket 实时通信》</a> 文档。</p></div> <p>在线客服采用 WebSocket + HTTP 的方式，实现消息的实时通信：</p> <ul><li>消息上行：指的是“前端”发送消息给“后端”，使用 HTTP。</li> <li>消息下行：指的是“后端”发送消息给“前端”，使用 WebSocket。</li></ul> <p>① 消息上行（消息发送）：</p> <ul><li>会员调用 AppKeFuMessageController 的 <code>#send(...)</code> 方法，发送消息给管理员。</li> <li>管理员调用 KeFuMessageController 的 <code>#send(...)</code> 方法，发送消息给会员。</li></ul> <p>② 消息下行（消息推送）：</p> <p>后端在被前端 HTTP 调用发送消息后，会通过 WebSocket 推送消息给对端的前端。如下图所示：</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E5%9C%A8%E7%BA%BF%E5%AE%A2%E6%9C%8D/%E7%AE%A1%E7%90%86%E5%91%98%E5%8F%91%E9%80%81.png" alt="管理员发送"></p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E5%9C%A8%E7%BA%BF%E5%AE%A2%E6%9C%8D/%E4%BC%9A%E5%91%98%E5%8F%91%E9%80%81.png" alt="会员发送"></p> <p>无论是推送给会员，还是推送给管理员，都是通过 WebSocketSenderApi 的 <code>#sendObject(...)</code> 方法，实现消息的推送。</p> <p>ps：不过有一点要注意，目前一个会员的消息，是所有管理员都可以回复，所以在推送给管理员时，没有指定具体的管理员编号，而是所有管理员！！！</p> <h3 id="_2-2-消息存储"><a href="#_2-2-%E6%B6%88%E6%81%AF%E5%AD%98%E5%82%A8" class="header-anchor">#</a> 2.2 消息存储</h3> <p>后端由 <code>yudao-module-promotion</code> 模块的 <code>kefu</code> 包下来实现。它有两个表：</p> <ul><li><code>promotion_kefu_conversation</code> 表：客服会话</li> <li><code>promotion_kefu_message</code> 表：客服消息</li></ul> <h4 id="_2-2-1-客服会话表"><a href="#_2-2-1-%E5%AE%A2%E6%9C%8D%E4%BC%9A%E8%AF%9D%E8%A1%A8" class="header-anchor">#</a> 2.2.1 客服会话表</h4> <blockquote><p>省略 creator/create_time/updater/update_time/deleted/tenant_id 等通用字段</p></blockquote> <div class="language-SQL extra-class"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token identifier"><span class="token punctuation">`</span>promotion_kefu_conversation<span class="token punctuation">`</span></span> <span class="token punctuation">(</span>
+  <span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">AUTO_INCREMENT</span> <span class="token keyword">COMMENT</span> <span class="token string">'编号'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>user_id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'会话所属用户'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>last_message_time<span class="token punctuation">`</span></span> <span class="token keyword">datetime</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'最后聊天时间'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>last_message_content<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">2048</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'最后聊天内容'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>last_message_content_type<span class="token punctuation">`</span></span> <span class="token keyword">int</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'最后发送的消息类型'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>admin_pinned<span class="token punctuation">`</span></span> <span class="token keyword">bit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">DEFAULT</span> b<span class="token string">'0'</span> <span class="token keyword">COMMENT</span> <span class="token string">'管理端置顶'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>user_deleted<span class="token punctuation">`</span></span> <span class="token keyword">bit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">DEFAULT</span> b<span class="token string">'0'</span> <span class="token keyword">COMMENT</span> <span class="token string">'用户是否可见'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>admin_deleted<span class="token punctuation">`</span></span> <span class="token keyword">bit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">DEFAULT</span> b<span class="token string">'0'</span> <span class="token keyword">COMMENT</span> <span class="token string">'管理员是否可见'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>admin_unread_message_count<span class="token punctuation">`</span></span> <span class="token keyword">int</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'管理员未读消息数'</span><span class="token punctuation">,</span>
+  
+  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span><span class="token punctuation">)</span> <span class="token keyword">USING</span> <span class="token keyword">BTREE</span>
+<span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token operator">=</span><span class="token number">3</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8mb4 <span class="token keyword">COLLATE</span><span class="token operator">=</span>utf8mb4_unicode_ci ROW_FORMAT<span class="token operator">=</span>DYNAMIC <span class="token keyword">COMMENT</span><span class="token operator">=</span><span class="token string">'客服会话'</span><span class="token punctuation">;</span>
+</code></pre></div><p>① <code>user_id</code> 字段：表示会话所属会员用户，即会员的编号。简单来说，每个会员用户，对应一个会话。</p> <p>② <code>last_message_time</code>、<code>last_message_content</code>、<code>last_message_content_type</code> 字段：表示最后一条消息的时间、内容、类型。目的是，用于会话列表的展示。</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E5%9C%A8%E7%BA%BF%E5%AE%A2%E6%9C%8D/%E6%9C%80%E5%90%8E%E6%B6%88%E6%81%AF.png" alt="最后消息"></p> <p>③ <code>admin_pinned</code> 字段：表示管理员是否置顶。如果置顶，那么会话列表中，会优先展示。</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E5%9C%A8%E7%BA%BF%E5%AE%A2%E6%9C%8D/%E7%BD%AE%E9%A1%B6%E4%BC%9A%E8%AF%9D.png" alt="置顶会话"></p> <p>由于会员就一个会话，所以他无法置顶，也就没有对应的这个字段！</p> <p>④ <code>user_deleted</code>、<code>admin_deleted</code> 字段：分别表示用户、管理员是否删除。如果删除，那么会话列表中，不再展示。</p> <p>⑤ <code>admin_unread_message_count</code> 字段：表示管理员未读消息数。如果有未读消息，那么会话列表中，会显示未读消息数。</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E5%9C%A8%E7%BA%BF%E5%AE%A2%E6%9C%8D/%E6%B6%88%E6%81%AF%E6%9C%AA%E8%AF%BB%E6%95%B0.png" alt="消息未读数"></p> <p>由于会员就一个会话，暂时没有未读消息数的展示，所以对应的这个字段！</p> <h4 id="_2-2-2-客服消息表"><a href="#_2-2-2-%E5%AE%A2%E6%9C%8D%E6%B6%88%E6%81%AF%E8%A1%A8" class="header-anchor">#</a> 2.2.2 客服消息表</h4> <blockquote><p>省略 creator/create_time/updater/update_time/deleted/tenant_id 等通用字段</p></blockquote> <div class="language-SQL extra-class"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token identifier"><span class="token punctuation">`</span>promotion_kefu_message<span class="token punctuation">`</span></span> <span class="token punctuation">(</span>
+  <span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">AUTO_INCREMENT</span> <span class="token keyword">COMMENT</span> <span class="token string">'编号'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>conversation_id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'会话编号'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>sender_id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'发送人编号'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>sender_type<span class="token punctuation">`</span></span> <span class="token keyword">int</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'发送人类型'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>receiver_id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'接收人编号'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>receiver_type<span class="token punctuation">`</span></span> <span class="token keyword">int</span> <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'接收人类型'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>content_type<span class="token punctuation">`</span></span> <span class="token keyword">int</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'消息类型'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>content<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">2048</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'消息'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>read_status<span class="token punctuation">`</span></span> <span class="token keyword">bit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">DEFAULT</span> b<span class="token string">'0'</span> <span class="token keyword">COMMENT</span> <span class="token string">'是否已读'</span><span class="token punctuation">,</span>
+
+  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span><span class="token punctuation">)</span> <span class="token keyword">USING</span> <span class="token keyword">BTREE</span>
+<span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token operator">=</span><span class="token number">25</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8mb4 <span class="token keyword">COLLATE</span><span class="token operator">=</span>utf8mb4_unicode_ci ROW_FORMAT<span class="token operator">=</span>DYNAMIC <span class="token keyword">COMMENT</span><span class="token operator">=</span><span class="token string">'客服消息'</span><span class="token punctuation">;</span>
+</code></pre></div><p>① <code>conversation_id</code> 字段：表示消息所属会话，即会话的编号。简单来说，每个会话，对应多条消息。</p> <p>② <code>sender_id</code>、<code>sender_type</code> 字段：表示发送人的编号、类型。发送人有两种类型，分别是会员和管理员。</p> <p>③ <code>receiver_id</code>、<code>receiver_type</code> 字段：表示接收人的编号、类型。接收人有两种类型，分别是会员和管理员。</p> <p>④ <code>content_type</code> 字段：表示消息的类型，对应 KeFuMessageContentTypeEnum 枚举类。目前支持文本、图片、商品、订单等类型。</p> <p><code>content</code> 字段：表示消息的内容，根据消息类型的不同，内容也不同。</p> <p>⑤ <code>read_status</code> 字段：表示消息是否已读。如果未读，那么会话列表中，会显示未读消息数。</p></div></div>
+    </div>
+</body>
+</html>

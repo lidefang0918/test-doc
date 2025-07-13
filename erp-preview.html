@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP 演示 | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ERP 演示 | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/erp-preview/">https://doc.iocoder.cn/erp-preview/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">ERP 演示<!----></h1>  <div class="theme-vdoing-content content__default"><h2 id="_1-演示地址"><a href="#_1-%E6%BC%94%E7%A4%BA%E5%9C%B0%E5%9D%80" class="header-anchor">#</a> 1. 演示地址</h2> <h3 id="_1-1-erp-管理后台"><a href="#_1-1-erp-%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0" class="header-anchor">#</a> 1.1 ERP 管理后台</h3> <ul><li>演示地址：<a href="http://dashboard-vue3.yudao.iocoder.cn/" target="_blank" rel="noopener noreferrer">http://dashboard-vue3.yudao.iocoder.cn/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>菜单：“ERP 系统”下的「采购管理」「销售管理」「库存管理」「产品管理」「财务管理」</li> <li>仓库：<a href="https://github.com/yudaocode/yudao-ui-admin-vue3" target="_blank" rel="noopener noreferrer">https://github.com/yudaocode/yudao-ui-admin-vue3<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 的 <code>erp</code> 目录，基于 Vue3 + Element Plus 实现</li></ul> <p><img src="/img/ERP%E6%89%8B%E5%86%8C/%E5%8A%9F%E8%83%BD%E6%BC%94%E7%A4%BA/%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0.png" alt="管理后台"></p> <h3 id="_1-2-erp-后端"><a href="#_1-2-erp-%E5%90%8E%E7%AB%AF" class="header-anchor">#</a> 1.2 ERP 后端</h3> <p>支持 Spring Boot 单体、Spring Cloud 微服务架构</p> <ul><li>单体仓库： <a href="https://github.com/YunaiV/ruoyi-vue-pro" target="_blank" rel="noopener noreferrer">https://github.com/YunaiV/ruoyi-vue-pro<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 的 <code>yudao-module-erp</code> 模块</li> <li>微服务仓库： <a href="https://github.com/YunaiV/yudao-cloud" target="_blank" rel="noopener noreferrer">https://github.com/YunaiV/yudao-cloud<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 的 <code>yudao-module-erp</code> 服务</li></ul> <h2 id="_2-erp-启动"><a href="#_2-erp-%E5%90%AF%E5%8A%A8" class="header-anchor">#</a> 2. ERP 启动</h2> <p>参见 <a href="/erp/build/">《ERP 手册 —— 功能开启》</a> 文档，一般 3 分钟就可以启动完成。</p> <h2 id="_3-erp-交流"><a href="#_3-erp-%E4%BA%A4%E6%B5%81" class="header-anchor">#</a> 3. ERP 交流</h2> <p>专属交流社区，欢迎扫码加入。</p> <p><img src="/img/ad/zsxq_erp.png" alt="交流群"></p> <h2 id="_4-功能描述"><a href="#_4-%E5%8A%9F%E8%83%BD%E6%8F%8F%E8%BF%B0" class="header-anchor">#</a> 4. 功能描述</h2> <p>主要分为 5 个核心模块：采购、销售、库存、产品、财务。</p> <p><img src="/img/common/erp-feature.png" alt="ERP 功能列表"></p> <h2 id="_5-表结构"><a href="#_5-%E8%A1%A8%E7%BB%93%E6%9E%84" class="header-anchor">#</a> 5. 表结构</h2> <p>ERP 一共有 <strong>30+</strong> 张表，具备一定的业务复杂度，对提升技术能力会有不错的帮助，平时做项目也可以参考参考。</p> <h3 id="_5-1-采购管理"><a href="#_5-1-%E9%87%87%E8%B4%AD%E7%AE%A1%E7%90%86" class="header-anchor">#</a> 5.1 采购管理</h3> <p>以 <code>erp_purchase_</code> 作为前缀的表，表结构如下：</p> <p><img src="/img/ERP%E6%89%8B%E5%86%8C/%E5%8A%9F%E8%83%BD%E6%BC%94%E7%A4%BA/%E9%87%87%E8%B4%AD%E8%A1%A8.png" alt="采购表"></p> <ul><li><a href="/erp/purchase/">《【采购】采购订单、入库、退货》</a></li></ul> <h3 id="_5-2-销售管理"><a href="#_5-2-%E9%94%80%E5%94%AE%E7%AE%A1%E7%90%86" class="header-anchor">#</a> 5.2 销售管理</h3> <p>以 <code>erp_sale_</code> 作为前缀的表，表结构如下：</p> <p><img src="/img/ERP%E6%89%8B%E5%86%8C/%E5%8A%9F%E8%83%BD%E6%BC%94%E7%A4%BA/%E9%94%80%E5%94%AE%E8%A1%A8.png" alt="销售表"></p> <ul><li><a href="/erp/sale/">《【销售】销售订单、出库、退货》</a></li></ul> <h3 id="_5-3-库存管理"><a href="#_5-3-%E5%BA%93%E5%AD%98%E7%AE%A1%E7%90%86" class="header-anchor">#</a> 5.3 库存管理</h3> <p>以 <code>erp_stock_</code> 作为前缀的表，表结构如下：</p> <p><img src="/img/ERP%E6%89%8B%E5%86%8C/%E5%8A%9F%E8%83%BD%E6%BC%94%E7%A4%BA/%E5%BA%93%E5%AD%98%E8%A1%A8.png" alt="库存表"></p> <ul><li><a href="/erp/stock/">《【库存】产品库存、库存明细》</a></li> <li><a href="/erp/stock-in-out/">《【库存】其它入库、其它出库》</a></li> <li><a href="/erp/stock-move-check/">《【库存】库存调拨、库存盘点》</a></li></ul> <h3 id="_5-4-产品管理"><a href="#_5-4-%E4%BA%A7%E5%93%81%E7%AE%A1%E7%90%86" class="header-anchor">#</a> 5.4 产品管理</h3> <p>以 <code>erp_product_</code> 作为前缀的表，表结构如下：</p> <p><img src="/img/ERP%E6%89%8B%E5%86%8C/%E5%8A%9F%E8%83%BD%E6%BC%94%E7%A4%BA/%E4%BA%A7%E5%93%81%E8%A1%A8.png" alt="产品表"></p> <ul><li><a href="/erp/product/">《【产品】产品信息、分类、单位》</a></li></ul> <h3 id="_5-5-财务管理"><a href="#_5-5-%E8%B4%A2%E5%8A%A1%E7%AE%A1%E7%90%86" class="header-anchor">#</a> 5.5 财务管理</h3> <p>以 <code>erp_finance_</code> 作为前缀的表，表结构如下：</p> <p><img src="/img/ERP%E6%89%8B%E5%86%8C/%E5%8A%9F%E8%83%BD%E6%BC%94%E7%A4%BA/%E8%B4%A2%E5%8A%A1%E8%A1%A8.png" alt="财务表"></p> <ul><li><a href="/erp/finance-payment-receipt/">《【财务】采购付款、销售收款》</a></li></ul></div></div>
+    </div>
+</body>
+</html>

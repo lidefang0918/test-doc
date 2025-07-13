@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD 组件 | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>CRUD 组件 | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/vue3/crud-schema/">https://doc.iocoder.cn/vue3/crud-schema/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">CRUD 组件<!----></h1>  <div class="theme-vdoing-content content__default"><div class="custom-block tip"><p class="custom-block-title">友情提示：</p> <p>CRUD 组件，比较适合开发简单的 CRUD 功能。如果是复杂的功能，使用起来会比较困难。所以一般情况下，我们还是建议使用 Element Plus 的原生组件。</p></div> <p>管理后台的功能，一般就是 CRUD 增删改查，可以拆分 3 个部分：“列表”、“新增/修改”、“详情”，如下图所示：</p> <table><thead><tr><th>部分</th> <th>组件</th> <th>示例</th></tr></thead> <tbody><tr><td>列表</td> <td>Search + Table</td> <td><img src="/img/Vue3/CRUD%E7%BB%84%E4%BB%B6/CRUD-%E5%88%97%E8%A1%A8.png" alt="列表"></td></tr> <tr><td>新增 / 修改</td> <td>Form</td> <td><img src="/img/Vue3/CRUD%E7%BB%84%E4%BB%B6/CRUD-%E8%A1%A8%E5%8D%95.png" alt="表单"></td></tr> <tr><td>详情</td> <td>Descriptions</td> <td><img src="/img/Vue3/CRUD%E7%BB%84%E4%BB%B6/CRUD-%E8%AF%A6%E6%83%85.png" alt="详情"></td></tr></tbody></table> <h2 id="_1-基础组件"><a href="#_1-%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6" class="header-anchor">#</a> 1. 基础组件</h2> <p>涉及到 4 个前端基础组件，如下所示：</p> <table><thead><tr><th>组件</th> <th>文档</th></tr></thead> <tbody><tr><td><a href="https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/components/Search/src/Search.vue" target="_blank" rel="noopener noreferrer">Search<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td> <td><a href="https://element-plus-admin-doc.cn/components/search.html" target="_blank" rel="noopener noreferrer">查询组件<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td></tr> <tr><td><a href="https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/components/Table/src/Table.vue" target="_blank" rel="noopener noreferrer">Table<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td> <td><a href="https://element-plus-admin-doc.cn/components/table.html" target="_blank" rel="noopener noreferrer">表格组件<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td></tr> <tr><td><a href="https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/components/Form/src/Form.vue" target="_blank" rel="noopener noreferrer">Form<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td> <td><a href="https://element-plus-admin-doc.cn/components/form.html" target="_blank" rel="noopener noreferrer">表单组件<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td></tr> <tr><td><a href="https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/components/Descriptions/src/Descriptions.vue" target="_blank" rel="noopener noreferrer">Descriptions<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td> <td><a href="https://element-plus-admin-doc.cn/components/descriptions.html" target="_blank" rel="noopener noreferrer">描述组件<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td></tr></tbody></table> <h2 id="_2-crud-组件"><a href="#_2-crud-%E7%BB%84%E4%BB%B6" class="header-anchor">#</a> 2. CRUD 组件</h2> <p>由于以上 4 个组件都需要 Schema 或者 <code>columns</code> 的字段，如果每个组件都写一遍的话，会造成大量重复代码，所以提供 useCrudSchemas 来进行统一的数据生成。</p> <p>① useCrudSchemas：位于 <a href="https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/hooks/web/useCrudSchemas.ts" target="_blank" rel="noopener noreferrer">src/hooks/web/useCrudSchemas.ts<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 内</p> <p>② useCrudSchemas 可以理解成一个 JSON 配置，示例如下：</p> <details class="custom-block details"><summary>useCrudSchemas 示例</summary> <div class="language-JS extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>script setup lang<span class="token operator">=</span><span class="token string">"ts"</span><span class="token operator">&gt;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> CrudSchema<span class="token punctuation">,</span> useCrudSchemas <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/hooks/web/useCrudSchemas'</span>
+
+<span class="token keyword">const</span> crudSchemas <span class="token operator">=</span> reactive<span class="token operator">&lt;</span>CrudSchema<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        <span class="token literal-property property">field</span><span class="token operator">:</span> <span class="token string">'index'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token function">t</span><span class="token punctuation">(</span><span class="token string">'tableDemo.index'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'index'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">form</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">show</span><span class="token operator">:</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">detail</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">show</span><span class="token operator">:</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        <span class="token literal-property property">field</span><span class="token operator">:</span> <span class="token string">'title'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token function">t</span><span class="token punctuation">(</span><span class="token string">'tableDemo.title'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">search</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">show</span><span class="token operator">:</span> <span class="token boolean">true</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">form</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">colProps</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token literal-property property">span</span><span class="token operator">:</span> <span class="token number">24</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">detail</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">span</span><span class="token operator">:</span> <span class="token number">24</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        <span class="token literal-property property">field</span><span class="token operator">:</span> <span class="token string">'author'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token function">t</span><span class="token punctuation">(</span><span class="token string">'tableDemo.author'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        <span class="token literal-property property">field</span><span class="token operator">:</span> <span class="token string">'display_time'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token function">t</span><span class="token punctuation">(</span><span class="token string">'tableDemo.displayTime'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">form</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">component</span><span class="token operator">:</span> <span class="token string">'DatePicker'</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">componentProps</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'datetime'</span><span class="token punctuation">,</span>
+                <span class="token literal-property property">valueFormat</span><span class="token operator">:</span> <span class="token string">'YYYY-MM-DD HH:mm:ss'</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        <span class="token literal-property property">field</span><span class="token operator">:</span> <span class="token string">'importance'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token function">t</span><span class="token punctuation">(</span><span class="token string">'tableDemo.importance'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">formatter</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">_</span><span class="token operator">:</span> Recordable<span class="token punctuation">,</span> <span class="token literal-property property">__</span><span class="token operator">:</span> TableColumn<span class="token punctuation">,</span> <span class="token literal-property property">cellValue</span><span class="token operator">:</span> number</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">h</span><span class="token punctuation">(</span>
+                ElTag<span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                    <span class="token literal-property property">type</span><span class="token operator">:</span> cellValue <span class="token operator">===</span> <span class="token number">1</span> <span class="token operator">?</span> <span class="token string">'success'</span> <span class="token operator">:</span> cellValue <span class="token operator">===</span> <span class="token number">2</span> <span class="token operator">?</span> <span class="token string">'warning'</span> <span class="token operator">:</span> <span class="token string">'danger'</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span>
+                    cellValue <span class="token operator">===</span> <span class="token number">1</span>
+                        <span class="token operator">?</span> <span class="token function">t</span><span class="token punctuation">(</span><span class="token string">'tableDemo.important'</span><span class="token punctuation">)</span>
+                        <span class="token operator">:</span> cellValue <span class="token operator">===</span> <span class="token number">2</span>
+                            <span class="token operator">?</span> <span class="token function">t</span><span class="token punctuation">(</span><span class="token string">'tableDemo.good'</span><span class="token punctuation">)</span>
+                            <span class="token operator">:</span> <span class="token function">t</span><span class="token punctuation">(</span><span class="token string">'tableDemo.commonly'</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">form</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">component</span><span class="token operator">:</span> <span class="token string">'Select'</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">componentProps</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token string">'重要'</span><span class="token punctuation">,</span>
+                        <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token number">3</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token string">'良好'</span><span class="token punctuation">,</span>
+                        <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token number">2</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token string">'一般'</span><span class="token punctuation">,</span>
+                        <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token number">1</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        <span class="token literal-property property">field</span><span class="token operator">:</span> <span class="token string">'pageviews'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token function">t</span><span class="token punctuation">(</span><span class="token string">'tableDemo.pageviews'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">form</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">component</span><span class="token operator">:</span> <span class="token string">'InputNumber'</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token number">0</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        <span class="token literal-property property">field</span><span class="token operator">:</span> <span class="token string">'content'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token function">t</span><span class="token punctuation">(</span><span class="token string">'exampleDemo.content'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">table</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">show</span><span class="token operator">:</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">form</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">component</span><span class="token operator">:</span> <span class="token string">'Editor'</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">colProps</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token literal-property property">span</span><span class="token operator">:</span> <span class="token number">24</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">detail</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">span</span><span class="token operator">:</span> <span class="token number">24</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        <span class="token literal-property property">field</span><span class="token operator">:</span> <span class="token string">'action'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token string">'260px'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token function">t</span><span class="token punctuation">(</span><span class="token string">'tableDemo.action'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">form</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">show</span><span class="token operator">:</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">detail</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">show</span><span class="token operator">:</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> <span class="token punctuation">{</span> allSchemas <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useCrudSchemas</span><span class="token punctuation">(</span>crudSchemas<span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre></div></details> <p>③ 字段的详细说明，可见 <a href="https://element-plus-admin-doc.cn/hooks/useCrudSchemas.html" target="_blank" rel="noopener noreferrer">useCrudSchemas 文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。</p> <h2 id="_3-实战案例"><a href="#_3-%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B" class="header-anchor">#</a> 3. 实战案例</h2> <p>项目的 [系统管理 -&gt; 邮箱管理] 相关的功能，都使用 CRUD 实现，你可以自己去学习。</p> <table><thead><tr><th>功能</th> <th>代码</th></tr></thead> <tbody><tr><td>邮箱账号</td> <td><a href="https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/system/mail/account/" target="_blank" rel="noopener noreferrer">src/views/system/mail/account<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td></tr> <tr><td>邮箱模版</td> <td><a href="https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/system/mail/template/" target="_blank" rel="noopener noreferrer">src/views/system/mail/template<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td></tr> <tr><td>邮箱记录</td> <td><a href="https://github.com/yudaocode/yudao-ui-admin-vue3/blob/master/src/views/system/mail/log/" target="_blank" rel="noopener noreferrer">src/views/system/mail/log<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td></tr></tbody></table> <h2 id="_4-常见问题"><a href="#_4-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98" class="header-anchor">#</a> 4. 常见问题</h2> <h3 id="_4-1-如何隐藏某个字段"><a href="#_4-1-%E5%A6%82%E4%BD%95%E9%9A%90%E8%97%8F%E6%9F%90%E4%B8%AA%E5%AD%97%E6%AE%B5" class="header-anchor">#</a> 4.1 如何隐藏某个字段？</h3> <p>如 <code>formSchema</code> 不需要 <code>field</code> 为 <code>createTime</code> 的字段，可以使用 <code>form: { show: false }</code> 或 <code>isForm: false</code> 进行过滤，其他组件同理。</p> <p><img src="/img/Vue3/CRUD%E7%BB%84%E4%BB%B6/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98-%E5%A6%82%E4%BD%95%E9%9A%90%E8%97%8F%E6%9F%90%E4%B8%AA%E5%AD%97%E6%AE%B5.png" alt="常见问题 - 如何隐藏某个字段"></p> <h3 id="_4-2-如何使用数据字典"><a href="#_4-2-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8" class="header-anchor">#</a> 4.2 如何使用数据字典？</h3> <p>设置 <code>dictType</code> 字典的类型，和 <code>dictClass</code> 字典的数据类型。</p> <p><img src="/img/Vue3/CRUD%E7%BB%84%E4%BB%B6/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8.png" alt="常见问题 - 如何使用数据字典"></p> <h3 id="_4-3-如何使用-api-获取数据"><a href="#_4-3-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-api-%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE" class="header-anchor">#</a> 4.3 如何使用 API 获取数据？</h3> <p>使用 <code>api</code> 来获取接口数据，需要主动 <code>return</code> 数据。</p> <p><img src="/img/Vue3/CRUD%E7%BB%84%E4%BB%B6/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8API%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE.png" alt="常见问题 - 如何使用 API 获取数据"></p> <h3 id="_4-4-如何结合-slot-自定义"><a href="#_4-4-%E5%A6%82%E4%BD%95%E7%BB%93%E5%90%88-slot-%E8%87%AA%E5%AE%9A%E4%B9%89" class="header-anchor">#</a> 4.4 如何结合 Slot 自定义？</h3> <p>如果想要自定义，可以结合 Slot 来实现。具体有哪些 Slot，阅读对应基础组件的文档。</p> <p><img src="/img/Vue3/CRUD%E7%BB%84%E4%BB%B6/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98-%E5%A6%82%E4%BD%95%E7%BB%93%E5%90%88Slot%E8%87%AA%E5%AE%9A%E4%B9%89.png" alt="常见问题 - 如何结合Slot自定义"></p></div></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 写作助手 | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AI 写作助手 | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/ai/write/">https://doc.iocoder.cn/ai/write/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">AI 写作助手<!----></h1>  <div class="theme-vdoing-content content__default"><p>AI 写作，基于 LLM 大模型，实现文章的撰写、回复的功能。</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/AI%E5%86%99%E4%BD%9C/%E5%86%99%E4%BD%9C.png" alt="AI 写作"></p> <p>整个功能，涉及到 3 个表：</p> <ul><li>【配置】<code>ai_api_key</code>：API 秘钥表</li> <li>【配置】<code>ai_model</code>：模型表</li> <li>【写作】<code>ai_write</code>：写作记录表</li></ul> <div class="custom-block tip"><p class="custom-block-title">补充说明：</p> <p><code>ai_api_key</code>、<code>ai_model</code> 已经在 <a href="/ai/build/">《功能开启》</a> 讲解，就不重复赘述。</p></div> <p>下面，我们逐个表进行介绍，这个过程中也会讲讲对应的功能。</p> <h2 id="_1-前置准备"><a href="#_1-%E5%89%8D%E7%BD%AE%E5%87%86%E5%A4%87" class="header-anchor">#</a> 1. 前置准备</h2> <p>你想使用哪个模型生成，可以参考对应的文档，进行配置“聊天”模型：</p> <ul><li>国内模型：<a href="/ai/tongyi">《通义千问》</a>、<a href="/ai/deep-seek">《DeepSeek》</a>、<a href="/ai/doubao">《豆包》</a>、<a href="/ai/hunyuan">《混元》</a>、<a href="/ai/yiyan">《文心一言》</a>、<a href="/ai/siliconflow">《硅基流动》</a>、<a href="/ai/xinghuo">《讯飞星火》</a>、<a href="/ai/glm">《智谱 GLM》</a>、<a href="/ai/moonshot">《月之暗灭》</a>、<a href="/ai/minimax">《MiniMax》</a>、<a href="/ai/baichuan">《百川智能》</a></li> <li>国外模型：<a href="/ai/openai">《OpenAI（ChatGPT）》</a>、<a href="/ai/llama">《LLAMA》</a>、<a href="/ai/azure-openai">《【微软 OpenAI】ChatGPT》</a> 、<a href="/ai/gemini">《谷歌 Gemini》</a></li></ul> <div class="custom-block tip"><p class="custom-block-title">友情提示：</p> <p>一般情况下，建议先使用 <a href="/ai/deep-seek">《DeepSeek》</a> 模块，因为免费送了一些 tokens，可以先体验一下。</p></div> <h2 id="_2-prompt-配置"><a href="#_2-prompt-%E9%85%8D%E7%BD%AE" class="header-anchor">#</a> 2. Prompt 配置</h2> <p>AI 写作时，使用什么模型和 system prompt 呢？它分成两种情况：</p> <p>① 情况一：通过【聊天角色】中的“写作助手”进行配置。如下图所示：</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/AI%E5%86%99%E4%BD%9C/%E5%86%99%E4%BD%9C%E6%A8%A1%E5%9E%8B.png" alt="AI 写作模型"></p> <p>② 情况二：如果没有配置，那就会使用 <code>ai_model</code> 表中的第一个模型（排序 <code>sort</code> 最小的）。同时，它对应的 system prompt 在 AiChatRoleEnum 的 <code>AI_WRITE_ROLE</code> 进行配置。</p> <h2 id="_3-写作记录表"><a href="#_3-%E5%86%99%E4%BD%9C%E8%AE%B0%E5%BD%95%E8%A1%A8" class="header-anchor">#</a> 3. 写作记录表</h2> <p>写作记录表，用户每发起一次写作，都会记录一条记录。</p> <h3 id="_3-1-表结构"><a href="#_3-1-%E8%A1%A8%E7%BB%93%E6%9E%84" class="header-anchor">#</a> 3.1 表结构</h3> <blockquote><p>省略 creator/create_time/updater/update_time/deleted/tenant_id 等通用字段</p></blockquote> <div class="language-SQL extra-class"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token identifier"><span class="token punctuation">`</span>ai_write<span class="token punctuation">`</span></span> <span class="token punctuation">(</span>
+  <span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">AUTO_INCREMENT</span> <span class="token keyword">COMMENT</span> <span class="token string">'编号'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>user_id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'用户编号'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>type<span class="token punctuation">`</span></span> <span class="token keyword">int</span> <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'写作类型'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>original_content<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">5120</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_0900_bin <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'原文'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>platform<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_0900_bin <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'平台'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>model<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_0900_bin <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'模型'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>prompt<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">512</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_0900_bin <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'生成内容提示'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>generated_content<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">5120</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_0900_bin <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'生成的内容'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>length<span class="token punctuation">`</span></span> <span class="token keyword">tinyint</span> <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'长度提示词'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>format<span class="token punctuation">`</span></span> <span class="token keyword">tinyint</span> <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'格式提示词'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>tone<span class="token punctuation">`</span></span> <span class="token keyword">tinyint</span> <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'语气提示词'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>language<span class="token punctuation">`</span></span> <span class="token keyword">tinyint</span> <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'语言提示词'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>error_message<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_0900_bin <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'错误信息'</span><span class="token punctuation">,</span>
+  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span><span class="token punctuation">)</span> <span class="token keyword">USING</span> <span class="token keyword">BTREE</span>
+<span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token operator">=</span><span class="token number">225</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8mb4 <span class="token keyword">COLLATE</span><span class="token operator">=</span>utf8mb4_0900_bin <span class="token keyword">COMMENT</span><span class="token operator">=</span><span class="token string">'AI 写作表'</span><span class="token punctuation">;</span>
+</code></pre></div><p>① <code>user_id</code> 字段：对应 <code>system_users</code> 表的 <code>id</code> 字段，表示哪个用户生成的写作。</p> <p>② <code>type</code> 字段：表示写作类型，对应 AiWriteTypeEnum 枚举，目前有两个类型：撰写文章、回复文章。</p> <p>当回复文章时，<code>original_content</code> 字段表示原文（被回复文章）。</p> <p>③ <code>platform</code> 字段：表示平台，对应 AiPlatformEnum 枚举，目前支持多个 AI 大模型。</p> <p><code>model</code> 字段：表示模型标识，对应不同的平台的模型标识，例如说 OpenAI 的 <code>gpt-3.5-turbo</code>、<code>gpt-4-turbo</code>，通义千问的 <code>qwen-plus</code>、<code>qwen-max</code> 等等。</p> <p>④ <code>prompt</code> 字段：表示生成内容提示，用户输入的文本。</p> <p><code>generated_content</code> 字段：表示生成的内容，AI 生成的文本。</p> <p>⑤ <code>length</code>、<code>format</code>、<code>tone</code>、<code>language</code> 字段：表示长度、格式、语气、语言提示词。它们是有数据字典枚举，分别对应 <code>ai_write_length</code>、<code>ai_write_format</code>、<code>ai_write_tone</code>、<code>ai_write_language</code>。</p> <p>⑥ <code>error_message</code> 字段：表示错误信息。由于写作是 stream 流式生成，所以可能会出现错误，这时会记录错误信息。</p> <h2 id="_3-2-管理后台"><a href="#_3-2-%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0" class="header-anchor">#</a> 3.2 管理后台</h2> <p>① 前端对应 [AI 大模型 -&gt; AI 写作] 菜单，对应 <code>yudao-ui-admin-vue3</code> 项目的 <code>@/views/ai/write/index</code> 目录，提供给普通用户使用，生成写作。</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/AI%E5%86%99%E4%BD%9C/%E5%86%99%E4%BD%9C.png" alt="写作"></p> <p>它的后端 HTTP 接口，由 <code>yudao-module-ai</code> 模块的 <code>write</code> 包的 AiWriteController 实现。</p> <div class="custom-block tip"><p class="custom-block-title">最最最关键的代码！！！大家可以重点看看！！！</p> <p>AiWriteController 提供的 <code>#generateWriteContent(...)</code> 写作接口。</p> <p>它的内部，调用 Spring AI 的 StreamingChatClient 来实现大模型的调用。</p></div> <p>② 前端对应 [AI 大模型 -&gt; 控制台 -&gt; 写作管理] 菜单，对应 <code>yudao-ui-admin-vue3</code> 项目的 <code>@/views/ai/write/mananger</code> 目录，提供给管理员使用，查看写作记录。</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/AI%E5%86%99%E4%BD%9C/%E5%86%99%E4%BD%9C%E7%AE%A1%E7%90%86.png" alt="写作管理"></p></div></div>
+    </div>
+</body>
+</html>

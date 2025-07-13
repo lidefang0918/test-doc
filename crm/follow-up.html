@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【通用】跟进记录、待办事项 | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>【通用】跟进记录、待办事项 | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/crm/follow-up/">https://doc.iocoder.cn/crm/follow-up/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABGpJREFUSA3tVVtoXFUU3fvOI53UlmCaKIFmwEhsE7QK0ipFEdHEKpXaZGrp15SINsXUWvBDpBgQRKi0+KKoFeJHfZA+ED9KKoIU2gYD9UejTW4rVIzm0VSTziPzuNu1z507dibTTjL4U/DAzLn3nL3X2o91ziX6f9wMFdh6Jvbm9nNSV0msViVO6tN1Rm7NMu2OpeJ9lWBUTDxrJbYTS0hInuwciu9eLHlFxCLCZEk3MegsJmZ5K/JD6t7FkFdEvGUo1g7qJoG3MHImqRIn8/nzY1K9UPKKiJmtnUqHVE3Gbuay6vJE/N2FEmuxFjW2nUuE0yQXRRxLiTUAzs36zhZvOXJPdX850EVnnLZkB8prodQoM5JGj7Xk2mvC7JB8tG04Ef5PiXtG0UtxupRQSfTnBoCy554x18yJHI6I+G5Eru4LHmPJZEQsrvPUbMiA8G/WgMK7w7I+ez7++o2ANfbrjvaOl1tFMs+htG3IrZH9/hDX1Pr8Tc0UvH8tcX29KzAgIGcEkINyW5BF9x891hw6VYqgJHEk0huccS7vh3C6gTiODL+26huuBtbct8eZnqLML8PkxGYpuPZBqtqwkSjgc4mB5gbgig5i+y0UDK35LMxXisn9xQtK+nd26gTIHsHe/oblK/b29fUmN/8Y+9jAQrnBp56m1LcDlDp9irKTExSKduXJVWSqdBMA08pEJnEIOB3FPPMybu/oeV8zFeYN3xx576Q6RH+VmplE4ncQV5v+5rzSoyOU7PuEAg8g803PwBJ0CExno/jcMbN8tONYeOmHiuUNryvm3fRUy4tMPVLdAGkUhNWuggGrJcXPv+ouCjz0MKUHz1J2/E8IC9nqTabcxgaBYM0hPhD5Y65FsbxRQKxCQrDjDctW7PUM3HuZunFyifSAqEfuzCp48Il24luWUWZoyJCaPR82jE0+kFA643wRFVni4RYSq3ohJO2pZ7B5dO4xkDWbEpossJPLSrPjYID8rS2UHTlvyNxqIGsg674XJJ7vnh5L7PNwC4hh2sjCI96mzszOTpxLF0T7l88Yz7lAuK6OnL8gXLOnTvpzSb22YG8W7us3jSebFHeeqnXRG1vt+MoUM84LQIBmMsCTAcOauTh0T0l0neQK7m2bLMt2mGxU3HYssS0J2cdv5wljlPsrIuZLAG/2DOZIXgCYT8uMGZN+e2kSirfxZOPCsC0f24nTZzspnVn9VePS1Z5vubmAGGXG8ZFno9Hel0yfA5ZPhF7Dh972BQJ2qCpgH67lmWtBYbvk6sz02wjky2vXyz0XErP/kFB619js1BtwfOV4OPRqOQBjy3Qbk18vigUPPSD5ceHnwck7W9bhAqZdd7SuG7w4/P2F/GaJh8c7e9qgow+Q7cGBo+98WsLkuktFqiZabtXuQTu/Y5ETbR0v7tNSFnvrmu6pjdoan2KjMu8q/Hmj1EfCO2ZGfEIbIXKUlw8qaX9/b2oeSJmFksSeT/Fn0V3nSypChh4Gjh74ybO9aeZ/AN2dwciu2/MhAAAAAElFTkSuQmCC">【通用】跟进记录、待办事项<!----></h1>  <div class="theme-vdoing-content content__default"><p>跟进记录，由 <code>yudao-module-crm</code> 后端模块的 <code>followup</code> 包实现，支持线索、客户、联系人、商机、合同等对象的跟进记录。</p> <h2 id="_1-表结构"><a href="#_1-%E8%A1%A8%E7%BB%93%E6%9E%84" class="header-anchor">#</a> 1. 表结构</h2> <blockquote><p>省略 creator/create_time/updater/update_time/deleted/tenant_id 等通用字段</p></blockquote> <div class="language-SQL extra-class"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token identifier"><span class="token punctuation">`</span>crm_follow_up_record<span class="token punctuation">`</span></span> <span class="token punctuation">(</span>
+  <span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">AUTO_INCREMENT</span> <span class="token keyword">COMMENT</span> <span class="token string">'编号'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>biz_type<span class="token punctuation">`</span></span> <span class="token keyword">int</span> <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'数据类型'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>biz_id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'数据编号'</span><span class="token punctuation">,</span>
+
+  <span class="token identifier"><span class="token punctuation">`</span>next_time<span class="token punctuation">`</span></span> <span class="token keyword">datetime</span> <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'下次联系时间'</span><span class="token punctuation">,</span>  
+  <span class="token identifier"><span class="token punctuation">`</span>type<span class="token punctuation">`</span></span> <span class="token keyword">int</span> <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'跟进类型'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>content<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">512</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token keyword">DEFAULT</span> <span class="token string">''</span> <span class="token keyword">COMMENT</span> <span class="token string">'跟进内容'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>pic_urls<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span> <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'图片'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>file_urls<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span> <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'附件'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>business_ids<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token keyword">DEFAULT</span> <span class="token string">''</span> <span class="token keyword">COMMENT</span> <span class="token string">'关联的商机编号数组'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>contact_ids<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_unicode_ci <span class="token keyword">DEFAULT</span> <span class="token string">''</span> <span class="token keyword">COMMENT</span> <span class="token string">'关联的联系人编号数组'</span><span class="token punctuation">,</span>
+   <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span><span class="token punctuation">)</span> <span class="token keyword">USING</span> <span class="token keyword">BTREE</span>
+<span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token operator">=</span><span class="token number">33</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8mb4 <span class="token keyword">COLLATE</span><span class="token operator">=</span>utf8mb4_unicode_ci ROW_FORMAT<span class="token operator">=</span>DYNAMIC <span class="token keyword">COMMENT</span><span class="token operator">=</span><span class="token string">'CRM 跟进记录'</span><span class="token punctuation">;</span>
+</code></pre></div><p>① <code>biz_type</code>、<code>biz_id</code> 字段：关联被跟进的对象，其中 <code>biz_type</code> 由 CrmBizTypeEnum 枚举，包括线索、客户、联系人、商机、合同等等。</p> <p>② 从 <code>type</code> 到 <code>file_urls</code> 字段：跟进记录的基本信息，包括跟进类型、跟进内容、下次联系时间、图片、附件等等。比较重要的是 <code>next_time</code> 字段，用于提醒用户下次联系时间。</p> <p>③ <code>business_ids</code>、<code>contact_ids</code> 字段：关联的商机编号数组、关联的联系人编号数组。例如说，某个跟进记录关联了 3 个商机、2 个联系人。</p> <h2 id="_2-管理后台"><a href="#_2-%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0" class="header-anchor">#</a> 2. 管理后台</h2> <p>在每个数据的详情界面，有一个 [跟进记录] 的功能，可以查看、新增、删除跟进记录。如下图所示：</p> <p><img src="/img/CRM%E6%89%8B%E5%86%8C/%E8%B7%9F%E8%BF%9B%E8%AE%B0%E5%BD%95/%E8%B7%9F%E8%BF%9B%E8%AE%B0%E5%BD%95.png" alt="跟进记录（界面）"></p> <p>① 点击【写跟进】按钮，会弹出一个对话框，可以填写跟进记录的基本信息。如下图所示：</p> <p><img src="/img/CRM%E6%89%8B%E5%86%8C/%E8%B7%9F%E8%BF%9B%E8%AE%B0%E5%BD%95/%E5%86%99%E8%B7%9F%E8%BF%9B.png" alt="写跟进（界面）"></p> <p>② 确认后，会新增一条跟进记录。另外，在这个过程中，会更新对应对象的 <code>next_time</code> 字段，用于提醒用户下次联系时间。如下图所示：</p> <p><img src="/img/CRM%E6%89%8B%E5%86%8C/%E8%B7%9F%E8%BF%9B%E8%AE%B0%E5%BD%95/%E5%86%99%E8%B7%9F%E8%BF%9B-%E5%90%8E%E7%AB%AF.png" alt="写跟进（代码）"></p> <p>也就是说，<code>crm_follow_up_record</code> 用于记录每一次跟进，<code>biz_type</code> + <code>biz_id</code> 对应的对象（客户、商机、联系人等等）自己也会记录最后一次的跟进信息。</p> <h2 id="_2-待办事项"><a href="#_2-%E5%BE%85%E5%8A%9E%E4%BA%8B%E9%A1%B9" class="header-anchor">#</a> 2. 待办事项</h2> <p>对应 [CRM 系统 -&gt; 待办事项] 菜单，对应 <code>yudao-ui-admin-vue3</code> 项目的 <code>@/views/crm/backlog</code> 目录。如下图所示：</p> <p><img src="/img/CRM%E6%89%8B%E5%86%8C/%E8%B7%9F%E8%BF%9B%E8%AE%B0%E5%BD%95/%E5%BE%85%E5%8A%9E%E4%BA%8B%E9%A1%B9.png" alt="待办事项"></p> <p>它目前没有单独的表存储，或者专属的后端模块，而是通过每个对象的 Controller 实现的。比如说，客户的待办事项是通过 CrmCustomerController 实现的。如下图所示：</p> <p><img src="/img/CRM%E6%89%8B%E5%86%8C/%E8%B7%9F%E8%BF%9B%E8%AE%B0%E5%BD%95/%E5%BE%85%E5%8A%9E%E4%BA%8B%E9%A1%B9-%E5%90%8E%E7%AB%AF.png" alt="待办事项（代码）"></p></div></div>
+    </div>
+</body>
+</html>

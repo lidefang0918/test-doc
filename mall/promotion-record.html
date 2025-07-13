@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【营销】满减送活动 | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>【营销】满减送活动 | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/mall/promotion-record/">https://doc.iocoder.cn/mall/promotion-record/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">【营销】满减送活动<!----></h1>  <div class="theme-vdoing-content content__default"><p>满减送活动，主要由 <code>yudao-module-promotion</code> 后端模块的 <code>reward</code> 实现，支持减金额、减运费、送积分、送优惠券等等。</p> <h2 id="_1-表结构"><a href="#_1-%E8%A1%A8%E7%BB%93%E6%9E%84" class="header-anchor">#</a> 1. 表结构</h2> <blockquote><p>省略 creator/create_time/updater/update_time/deleted/tenant_id 等通用字段</p></blockquote> <div class="language-SQL extra-class"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token identifier"><span class="token punctuation">`</span>promotion_reward_activity<span class="token punctuation">`</span></span> <span class="token punctuation">(</span>
+  <span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">AUTO_INCREMENT</span> <span class="token keyword">COMMENT</span> <span class="token string">'活动编号'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>name<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_general_ci <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">DEFAULT</span> <span class="token string">''</span> <span class="token keyword">COMMENT</span> <span class="token string">'活动标题'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>start_time<span class="token punctuation">`</span></span> <span class="token keyword">datetime</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'开始时间'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>end_time<span class="token punctuation">`</span></span> <span class="token keyword">datetime</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'结束时间'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>remark<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_general_ci <span class="token keyword">DEFAULT</span> <span class="token string">''</span> <span class="token keyword">COMMENT</span> <span class="token string">'备注'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>status<span class="token punctuation">`</span></span> <span class="token keyword">tinyint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">DEFAULT</span> <span class="token string">'-1'</span> <span class="token keyword">COMMENT</span> <span class="token string">'活动状态'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>product_scope<span class="token punctuation">`</span></span> <span class="token keyword">tinyint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'商品范围'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>product_scope_values<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_general_ci <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'商品范围编号的数组'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>condition_type<span class="token punctuation">`</span></span> <span class="token keyword">tinyint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">DEFAULT</span> <span class="token string">'-1'</span> <span class="token keyword">COMMENT</span> <span class="token string">'条件类型'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>rules<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">2000</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_general_ci <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'优惠规则的数组'</span><span class="token punctuation">,</span>
+  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span><span class="token punctuation">)</span> <span class="token keyword">USING</span> <span class="token keyword">BTREE</span>
+<span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token operator">=</span><span class="token number">5</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8mb4 <span class="token keyword">COLLATE</span><span class="token operator">=</span>utf8mb4_general_ci <span class="token keyword">COMMENT</span><span class="token operator">=</span><span class="token string">'满减送活动'</span><span class="token punctuation">;</span>
+</code></pre></div><p>① <code>status</code> 字段：活动状态，由 CommonStatusEnum 枚举，只有开启、禁用两个状态。禁用时，无法参与满减送活动。</p> <p>② <code>product_scope</code> 字段：商品范围，商品范围，由 PromotionProductScopeEnum 枚举，分成 3 种情况：</p> <ul><li>1、通用券：全部商品</li> <li>2、商品券：指定商品，由 <code>product_scope_values</code> 字段指定商品编号的数组</li> <li>3、品类券：指定品类，由 <code>product_scope_values</code> 字段指定品类编号的数组</li></ul> <p>③ <code>condition_type</code> 字段：条件类型，由 PromotionConditionTypeEnum 枚举，分成 2 种情况：满 N 元、满 N 件。</p> <p><code>rules</code> 字段：优惠规则的数组，支持多层级，可配置优惠金额、包邮、赠送积分、优惠劵。</p> <h2 id="_2-管理后台"><a href="#_2-%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0" class="header-anchor">#</a> 2. 管理后台</h2> <p>对应 [商城系统 -&gt; 营销中心 -&gt; 优惠活动 -&gt; 满减送] 菜单，对应 <code>yudao-ui-admin-vue3</code> 项目的 <code>src/views/mall/promotion/rewardActivity</code> 目录。如下图所示：</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E6%BB%A1%E5%87%8F%E9%80%81%E6%B4%BB%E5%8A%A8/%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0.png" alt="管理后台"></p> <h2 id="_3-移动端"><a href="#_3-%E7%A7%BB%E5%8A%A8%E7%AB%AF" class="header-anchor">#</a> 3. 移动端</h2> <h3 id="_3-1-商品详情"><a href="#_3-1-%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85" class="header-anchor">#</a> 3.1 商品详情</h3> <p>① 在 uni-app 商品列表页，会展示该商品参与的满减送活动的 1 条优惠信息。如下图所示：</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E6%BB%A1%E5%87%8F%E9%80%81%E6%B4%BB%E5%8A%A8/%E5%95%86%E5%93%81%E5%88%97%E8%A1%A8.png" alt="商品列表"></p> <p>具体的前端逻辑，可见 <code>yudao-mall-uniapp</code> 的 <code>sheep/components/s-goods-column/s-goods-column.vue</code> 文件，搜 <code>rewardActivity</code> 关键字。</p> <p>② 在 uni-app 商品详情页，会展示该商品参与的满减送活动的至多 3 条优惠信息。点击后，会弹出满减送的所有优惠明细，如下图所示：</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E6%BB%A1%E5%87%8F%E9%80%81%E6%B4%BB%E5%8A%A8/%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85.png" alt="商品详情"></p> <p>弹窗由 <code>yudao-mall-uniapp</code> 的 <code>sheep/components/s-activity-pop/s-activity-pop.vue</code> 组件实现。</p> <h3 id="_3-2-活动详情"><a href="#_3-2-%E6%B4%BB%E5%8A%A8%E8%AF%A6%E6%83%85" class="header-anchor">#</a> 3.2 活动详情</h3> <p>继续点击上图的满减送活动，会进入活动详情页，并展示参与该活动的商品列表，对应 <code>yudao-mall-uniapp</code> 的 <code>yudao-mall-uniapp/pages/activity/index.vue</code> 文件。如下图所示：</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E6%BB%A1%E5%87%8F%E9%80%81%E6%B4%BB%E5%8A%A8/%E6%B4%BB%E5%8A%A8%E8%AF%A6%E6%83%85.png" alt="活动详情"></p> <h3 id="_3-3-价格计算"><a href="#_3-3-%E4%BB%B7%E6%A0%BC%E8%AE%A1%E7%AE%97" class="header-anchor">#</a> 3.3 价格计算</h3> <p>下单时，满减送的价格计算，后端由 TradeRewardActivityPriceCalculator 类实现。效果如下图所示：</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E6%BB%A1%E5%87%8F%E9%80%81%E6%B4%BB%E5%8A%A8/%E4%B8%8B%E5%8D%95%E7%A1%AE%E8%AE%A4%E9%A1%B5.png" alt="下单确认页"></p> <p>弹窗由 <code>yudao-mall-uniapp</code> 的 <code>/sheep/components/s-discount-list/s-discount-list.vue</code> 组件实现。</p></div></div>
+    </div>
+</body>
+</html>

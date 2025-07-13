@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastGPT 工作流 | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>FastGPT 工作流 | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/ai/fastgpt/">https://doc.iocoder.cn/ai/fastgpt/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABGpJREFUSA3tVVtoXFUU3fvOI53UlmCaKIFmwEhsE7QK0ipFEdHEKpXaZGrp15SINsXUWvBDpBgQRKi0+KKoFeJHfZA+ED9KKoIU2gYD9UejTW4rVIzm0VSTziPzuNu1z507dibTTjL4U/DAzLn3nL3X2o91ziX6f9wMFdh6Jvbm9nNSV0msViVO6tN1Rm7NMu2OpeJ9lWBUTDxrJbYTS0hInuwciu9eLHlFxCLCZEk3MegsJmZ5K/JD6t7FkFdEvGUo1g7qJoG3MHImqRIn8/nzY1K9UPKKiJmtnUqHVE3Gbuay6vJE/N2FEmuxFjW2nUuE0yQXRRxLiTUAzs36zhZvOXJPdX850EVnnLZkB8prodQoM5JGj7Xk2mvC7JB8tG04Ef5PiXtG0UtxupRQSfTnBoCy554x18yJHI6I+G5Eru4LHmPJZEQsrvPUbMiA8G/WgMK7w7I+ez7++o2ANfbrjvaOl1tFMs+htG3IrZH9/hDX1Pr8Tc0UvH8tcX29KzAgIGcEkINyW5BF9x891hw6VYqgJHEk0huccS7vh3C6gTiODL+26huuBtbct8eZnqLML8PkxGYpuPZBqtqwkSjgc4mB5gbgig5i+y0UDK35LMxXisn9xQtK+nd26gTIHsHe/oblK/b29fUmN/8Y+9jAQrnBp56m1LcDlDp9irKTExSKduXJVWSqdBMA08pEJnEIOB3FPPMybu/oeV8zFeYN3xx576Q6RH+VmplE4ncQV5v+5rzSoyOU7PuEAg8g803PwBJ0CExno/jcMbN8tONYeOmHiuUNryvm3fRUy4tMPVLdAGkUhNWuggGrJcXPv+ouCjz0MKUHz1J2/E8IC9nqTabcxgaBYM0hPhD5Y65FsbxRQKxCQrDjDctW7PUM3HuZunFyifSAqEfuzCp48Il24luWUWZoyJCaPR82jE0+kFA643wRFVni4RYSq3ohJO2pZ7B5dO4xkDWbEpossJPLSrPjYID8rS2UHTlvyNxqIGsg674XJJ7vnh5L7PNwC4hh2sjCI96mzszOTpxLF0T7l88Yz7lAuK6OnL8gXLOnTvpzSb22YG8W7us3jSebFHeeqnXRG1vt+MoUM84LQIBmMsCTAcOauTh0T0l0neQK7m2bLMt2mGxU3HYssS0J2cdv5wljlPsrIuZLAG/2DOZIXgCYT8uMGZN+e2kSirfxZOPCsC0f24nTZzspnVn9VePS1Z5vubmAGGXG8ZFno9Hel0yfA5ZPhF7Dh972BQJ2qCpgH67lmWtBYbvk6sz02wjky2vXyz0XErP/kFB619js1BtwfOV4OPRqOQBjy3Qbk18vigUPPSD5ceHnwck7W9bhAqZdd7SuG7w4/P2F/GaJh8c7e9qgow+Q7cGBo+98WsLkuktFqiZabtXuQTu/Y5ETbR0v7tNSFnvrmu6pjdoan2KjMu8q/Hmj1EfCO2ZGfEIbIXKUlw8qaX9/b2oeSJmFksSeT/Fn0V3nSypChh4Gjh74ybO9aeZ/AN2dwciu2/MhAAAAAElFTkSuQmCC">FastGPT 工作流<!----></h1>  <div class="theme-vdoing-content content__default"><h2 id="_1-fastgpt-是什么"><a href="#_1-fastgpt-%E6%98%AF%E4%BB%80%E4%B9%88" class="header-anchor">#</a> 1. FastGPT 是什么？</h2> <p>FastGPT 是一个基于 LLM 大语言模型的知识库问答系统，提供开箱即用的数据处理、模型调用等能力。同时可以通过 Flow 可视化进行工作流编排，从而实现复杂的问答场景！</p> <p>它的官网是 <a href="https://tryfastgpt.ai/" target="_blank" rel="noopener noreferrer">https://tryfastgpt.ai/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，可直接申请使用。</p> <p>同时，它也是个开源项目，地址是 <a href="https://github.com/labring/FastGPT" target="_blank" rel="noopener noreferrer">https://github.com/labring/FastGPT<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，可以自行部署。</p> <h2 id="_2-如何接入"><a href="#_2-%E5%A6%82%E4%BD%95%E6%8E%A5%E5%85%A5" class="header-anchor">#</a> 2. 如何接入？</h2> <p>由于 FastGPT 的 <a href="https://doc.fastgpt.cn/docs/development/openapi/chat/#%E5%8F%91%E8%B5%B7%E5%AF%B9%E8%AF%9D" target="_blank" rel="noopener noreferrer">对话接口<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 兼容了 GPT 的接口，所以可以使用 <a href="/ai/openai">《【模型接入】OpenAI》</a> 的方式，通过 OpenAIChatModel 进行接入。</p> <p>下面，我们讲解下，如何把我们系统中的 <a href="/ai/chat/">《AI 对话聊天》</a> ，接入到 FastGPT 的工作台（简易应用、工作流、插件等）。</p> <h3 id="_2-1-第一步-创建-fastgpt-应用"><a href="#_2-1-%E7%AC%AC%E4%B8%80%E6%AD%A5-%E5%88%9B%E5%BB%BA-fastgpt-%E5%BA%94%E7%94%A8" class="header-anchor">#</a> 2.1 第一步：创建 FastGPT 应用</h3> <p>① 在 <a href="https://cloud.fastgpt.cn/app/list" target="_blank" rel="noopener noreferrer">https://cloud.fastgpt.cn/app/list<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 工作台，点击【新建】按钮，创建一个应用。具体怎么创建，可见 <a href="https://doc.tryfastgpt.ai/docs/guide/workbench/" target="_blank" rel="noopener noreferrer">https://doc.tryfastgpt.ai/docs/guide/workbench/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 文档。</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/FastGPT/%E6%96%B0%E5%BB%BA%E5%BA%94%E7%94%A8.png" alt="新建应用"></p> <p>② 点击应用，切换到【发布渠道】选项，再点击【API 访问】卡片，之后点击【新建】按钮，生成一个 API 密钥。</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/FastGPT/%E6%96%B0%E5%BB%BAAPI%E5%AF%86%E9%92%A5.png" alt="新建 API 密钥"></p> <h3 id="_2-2-第二步-配置-api-密钥与模型"><a href="#_2-2-%E7%AC%AC%E4%BA%8C%E6%AD%A5-%E9%85%8D%E7%BD%AE-api-%E5%AF%86%E9%92%A5%E4%B8%8E%E6%A8%A1%E5%9E%8B" class="header-anchor">#</a> 2.2 第二步：配置 API 密钥与模型</h3> <p>① 在我们系统的 [AI 大模型 -&gt; 控制台 -&gt; API 密钥] 菜单，新建一个 FastGPT 的 API 密钥，填写上面的“密钥”，并设置 URL 为 <code>https://cloud.fastgpt.cn/api</code> 。如下图所示：</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/FastGPT/API%E5%AF%86%E9%92%A5.png" alt="API 密钥"></p> <p>② 在我们系统的 [AI 大模型 -&gt; 控制台 -&gt; 模型配置] 菜单，新建一个 FastGPT 的聊天模型，填写上面的“模型名称” + “API 密钥” + “API URL”。如下图所示：</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/FastGPT/%E6%A8%A1%E5%9E%8B%E9%85%8D%E7%BD%AE.png" alt="模型配置"></p> <h3 id="_2-3-第三步-ai-对话聊天"><a href="#_2-3-%E7%AC%AC%E4%B8%89%E6%AD%A5-ai-%E5%AF%B9%E8%AF%9D%E8%81%8A%E5%A4%A9" class="header-anchor">#</a> 2.3 第三步：AI 对话聊天</h3> <p>在 [AI 大模型 -&gt; AI 对话] 菜单，选择 FastGPT 的聊天模型，即可开始对话。如下图所示：</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/FastGPT/AI%E5%AF%B9%E8%AF%9D.png" alt="AI 对话"></p> <h2 id="_3-常见问题"><a href="#_3-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98" class="header-anchor">#</a> 3. 常见问题？</h2> <p>① 如果你想使用 FastGPT 知识库接口，可参考 <a href="https://doc.fastgpt.cn/docs/development/openapi/dataset/" target="_blank" rel="noopener noreferrer">https://doc.fastgpt.cn/docs/development/openapi/dataset/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 进行对接。</p> <p>当然，我们系统已经提供了 <a href="/ai/knowledge">《AI 知识库》</a> 功能。</p> <p>② 如果使用 FastGPT 对话接口时，需要传递 <code>variables</code>、<code>responseChatItemId</code> 等参数，无法采用上述方式接入。</p> <p>此时，只能参考 OpenAiChatModel 的源码，实现类似 FastGPTChatModel 的接入。</p></div></div>
+    </div>
+</body>
+</html>

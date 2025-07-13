@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【商品】商品评价 | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>【商品】商品评价 | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/mall/product-comment/">https://doc.iocoder.cn/mall/product-comment/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABH1JREFUSA3tVl1oHFUUPmdmd2ltklqbpJDiNnXFmgbFktho7YMPNiJSSZM0+CAYSkUELVhM6YuwIPpgoOKDqOBDC0XE2CQoNtQXBUFTTcCi+Wlh1V2TQExsUzcltd3M9Tt3ZjZzZ2fT+OJTL8yeM+eee757fmeJbq//KQL8X3DUSFOcfr7cRsRtxNQMWueeVzOkaITIGqQHNg5y8+jNW9ldM7A6nTpAjuolUikAwq7CE3WcM2RRDz+XGVgN3FptU/aUSlvq9Pa3iZ1+sgAqJyyAFqkipd9dqiwHF3P65YycLWc/6sqGrvoEoIp6DOFaX5h6+dnfjkWprwqsPk0dUGq5vySwDImC10KxFHgGL1SWoc92O3eVht09qdXNH11I2SsTsJYqMWzihqGMi+A+Garf3BAuuLI5oGlULyNfyB/HYNujwktOfRrMr5t77NmevqaUopx0grnKAyvVpmwUDB4x6FPXuGvYLTDwWsejwgtgkYKPqRJg8SV6xaiZ3ZTppGneS4yfH5/66fZSDHv+QZci/+h5c5UHtpy67JUqGppM0sh0Nc1dW6/N1W5Yoqat8/TU/VnadmdeW2PLLSyh0cvxBs3KbqTmwYPpxN4do/mzE8nEpvX/UMu2Wbp74zUAK5q6WkHns7V0eWkdPbPzd3rxkTGybadYySumVzhcaJFbs5UrEkQ/+CK8gF5dnh/6ciIZ73gwQ927L1IitoxKLXYP3SjYdOrHHfTZhRRlFyrorafPk20B3HPD1y2G3qKZME5Jcf3t/HUC13/8tSd++vqFveMUTwAUxSUFI1QekR1+bIze3D9MF2aq6cPvG72CgnldWCFqyRw3lwH8ZMerjTD9ElRO7Gv44wNpC90aASqGfVlz/Rx17srQ57/UU26hkhQqUB7dBR71WmzQhHUnblGmVOEw0jhbV1n9OlXUDCIRGaNV5Jp43N516fN7JmnTHdfp7Hgy0luO4aMhtkLL8Bi3bUWYvzh5Mn1dTxrL6QmGuRhGL/TiTTxRoEdTszSaq9GR0NGA3KdkOz3hqSV3MIDhQ5IVX/Ivx3umBti2es2h4eZby7x8br1rkf7Mo90AqC8aQ3sJeNzqFRu+vSANAQe3PL7l0HGOAdwDCeZYvNKeoZp1Qfs6Aipndh86HmFRi0LAnEO47wsqM6cdfjh3jBPUzhZy7nvlUfFsamED1VQt6aISHVymXZ/B2aCtIG8AI8xfobj2d3en1wWVhOeHELKmLQ1s211s88comkv4UCwWyF787mJdYXtNfhKAXVqnKTq8QZvGAGGOfaTo5pGZ/PwbUCr5+DPr/1J92JNHr9aOl/F3iI5+O1nfybsGxoimvZ3ViWSluDITw3P37mypheDIPY0tw7+O/5ApbkYw+zpfaUVu32Pi98+defdUhEpZkRFq0aqyNh9FuL9hpYbEm6iwi0z2REd09ZmyENEbuhjDWzKvZXTqKYaBIr3tt5kuPtQBZFvEUwHt60vfCNu41XsksH9Ij1BMMz1Y0OOunHNShFIP5868g5zeXmuLwL9T4b6Q2+KejgAAAABJRU5ErkJggg==">【商品】商品评价<!----></h1>  <div class="theme-vdoing-content content__default"><h2 id="_1-表结构"><a href="#_1-%E8%A1%A8%E7%BB%93%E6%9E%84" class="header-anchor">#</a> 1. 表结构</h2> <p>商品评价由 <code>yudao-module-product</code> 后端模块的 <code>comment</code> 包实现，表结构如下：</p> <blockquote><p>省略 creator/create_time/updater/update_time/deleted/tenant_id 等通用字段</p></blockquote> <div class="language-SQL extra-class"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token identifier"><span class="token punctuation">`</span>product_comment<span class="token punctuation">`</span></span> <span class="token punctuation">(</span>
+  <span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">AUTO_INCREMENT</span> <span class="token keyword">COMMENT</span> <span class="token string">'评价编号，主键自增'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>user_id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'评价人的用户编号，关联 MemberUserDO 的 id 编号'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>user_nickname<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_general_ci <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'评价人名称'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>user_avatar<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_general_ci <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'评价人头像'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>anonymous<span class="token punctuation">`</span></span> <span class="token keyword">bit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'是否匿名'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>order_id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token keyword">DEFAULT</span> <span class="token string">'0'</span> <span class="token keyword">COMMENT</span> <span class="token string">'交易订单编号，关联 TradeOrderDO 的 id 编号'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>order_item_id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token keyword">DEFAULT</span> <span class="token string">'0'</span> <span class="token keyword">COMMENT</span> <span class="token string">'交易订单项编号，关联 TradeOrderItemDO 的 id 编号'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>spu_id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'商品 SPU 编号，关联 ProductSpuDO 的 id'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>spu_name<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_general_ci <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'商品 SPU 名称'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>sku_id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'商品 SKU 编号，关联 ProductSkuDO 的 id 编号'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>sku_pic_url<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_general_ci <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'图片地址'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>sku_properties<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">512</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_general_ci <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'属性数组，JSON 格式 [{propertId: , valueId: }, {propertId: , valueId: }]'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>scores<span class="token punctuation">`</span></span> <span class="token keyword">tinyint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'评分星级1-5分'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>description_scores<span class="token punctuation">`</span></span> <span class="token keyword">tinyint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'描述星级 1-5 星'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>benefit_scores<span class="token punctuation">`</span></span> <span class="token keyword">tinyint</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'服务星级 1-5 星'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>content<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_general_ci <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'评价内容'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>pic_urls<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">4096</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_general_ci <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'评价图片地址数组'</span><span class="token punctuation">,</span>
+  
+  <span class="token identifier"><span class="token punctuation">`</span>visible<span class="token punctuation">`</span></span> <span class="token keyword">bit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'是否可见，true:显示false:隐藏'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>reply_status<span class="token punctuation">`</span></span> <span class="token keyword">bit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">DEFAULT</span> b<span class="token string">'0'</span> <span class="token keyword">COMMENT</span> <span class="token string">'商家是否回复'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>reply_user_id<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span> <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'回复管理员编号，关联 AdminUserDO 的 id 编号'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>reply_content<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span> <span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> utf8mb4 <span class="token keyword">COLLATE</span> utf8mb4_general_ci <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'商家回复内容'</span><span class="token punctuation">,</span>
+  <span class="token identifier"><span class="token punctuation">`</span>reply_time<span class="token punctuation">`</span></span> <span class="token keyword">datetime</span> <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'商家回复时间'</span><span class="token punctuation">,</span>
+  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>id<span class="token punctuation">`</span></span><span class="token punctuation">)</span> <span class="token keyword">USING</span> <span class="token keyword">BTREE</span>
+<span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token operator">=</span><span class="token number">14</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8mb4 <span class="token keyword">COLLATE</span><span class="token operator">=</span>utf8mb4_general_ci <span class="token keyword">COMMENT</span><span class="token operator">=</span><span class="token string">'商品评价'</span><span class="token punctuation">;</span>
+</code></pre></div><p>① <code>user_id</code>、<code>user_nickname</code>、<code>user_avatar</code>、<code>anonymous</code> 字段，会员用户相关信息。</p> <p>② <code>order_id</code>、<code>order_item_id</code> 字段，交易订单相关信息。下单的每个订单项（商品），都可以评价一次，所以这里可以看到 <code>order_item_id</code> 字段。</p> <p>③ <code>spu_id</code>、<code>spu_name</code>、<code>sku_id</code>、<code>sku_pic_url</code>、<code>sku_properties</code> 字段，商品 SPU、SKU 相关信息。通过冗余这些商品字段，可以减少关联查询，提高查询效率。</p> <p>④ <code>description_scores</code>、<code>benefit_scores</code>、<code>content</code>、<code>pic_urls</code> 字段，会员用户的评价信息。而 <code>score</code> 字段是 <code>description_scores</code>、<code>benefit_scores</code> 两个字段的平均值。</p> <p>⑤ <code>reply_status</code>、<code>reply_user_id</code>、<code>reply_content</code>、<code>reply_time</code> 字段，商家回复相关信息。</p> <p><code>visible</code> 字段，控制评价在 uni-app 是否可见，默认为 <code>true</code>，可以通过管理后台修改。</p> <h2 id="_2-管理后台"><a href="#_2-%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0" class="header-anchor">#</a> 2. 管理后台</h2> <p>对应 [商城系统 -&gt; 商品中心 -&gt; 商品评价] 菜单，对应 <code>yudao-ui-admin-vue3</code> 项目的 <code>@/views/mall/product/comment</code> 目录。</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E5%95%86%E5%93%81%E8%AF%84%E4%BB%B7/%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0-%E8%AF%84%E4%BB%B7%E5%88%97%E8%A1%A8.png" alt="评价列表"></p> <p>① 点击「添加虚拟评价」按钮，可以给某个商品添加虚拟评价，用于商品详情页的评价展示。</p> <p>② 点击「回复」按钮，可以回复某个评价。</p> <p>③ 点击「是否展示」按钮，可以控制评价在 uni-app 是否可见。</p> <h2 id="_3-移动端"><a href="#_3-%E7%A7%BB%E5%8A%A8%E7%AB%AF" class="header-anchor">#</a> 3. 移动端</h2> <h3 id="_3-1-评价列表"><a href="#_3-1-%E8%AF%84%E4%BB%B7%E5%88%97%E8%A1%A8" class="header-anchor">#</a> 3.1 评价列表</h3> <p>① 商品详情页，展示近 3 条评价，由 <code>yudao-ui-uniapp</code> 项目的 <code>pages/goods/components/detail/detail-comment-card.vue</code> 实现。如下图所示：</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E5%95%86%E5%93%81%E8%AF%84%E4%BB%B7/%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85-%E8%AF%84%E4%BB%B7%E5%88%97%E8%A1%A8.png" alt="商品详情页-评价列表"></p> <p>② 点击「查看全部」按钮，进入商品评价列表页，由 <code>yudao-ui-uniapp</code> 项目的 <code>pages/goods/comment/list.vue</code> 实现。如下图所示：</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E5%95%86%E5%93%81%E8%AF%84%E4%BB%B7/%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E8%AF%84%E4%BB%B7%E5%88%97%E8%A1%A8.png" alt="评价列表"></p> <h3 id="_3-2-添加评价"><a href="#_3-2-%E6%B7%BB%E5%8A%A0%E8%AF%84%E4%BB%B7" class="header-anchor">#</a> 3.2 添加评价</h3> <p>在订单确认售后后，可以对商品进行评价，由 <code>yudao-ui-uniapp</code> 项目的 <code>pages/goods/comment/add.vue</code> 实现。如下图所示：</p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E5%95%86%E5%93%81%E8%AF%84%E4%BB%B7/%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E5%BE%85%E8%AF%84%E4%BB%B7%E8%AE%A2%E5%8D%95.png" alt="待评价订单"></p> <p><img src="/img/%E5%95%86%E5%9F%8E%E6%89%8B%E5%86%8C/%E5%95%86%E5%93%81%E8%AF%84%E4%BB%B7/%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E6%B7%BB%E5%8A%A0%E8%AF%84%E4%BB%B7.png" alt="添加评价"></p></div></div>
+    </div>
+</body>
+</html>

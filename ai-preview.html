@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 大模型演示 | ruoyi-vue-pro 开发指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .source-url {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content-wrapper {
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AI 大模型演示 | ruoyi-vue-pro 开发指南</h1>
+        <div class="source-url">原始链接: <a href="https://doc.iocoder.cn/ai-preview/">https://doc.iocoder.cn/ai-preview/</a></div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">AI 大模型演示<!----></h1>  <div class="theme-vdoing-content content__default"><h2 id="_1-演示地址"><a href="#_1-%E6%BC%94%E7%A4%BA%E5%9C%B0%E5%9D%80" class="header-anchor">#</a> 1. 演示地址</h2> <h3 id="_1-1-管理后台"><a href="#_1-1-%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0" class="header-anchor">#</a> 1.1 管理后台</h3> <ul><li>演示地址：<a href="http://dashboard-vue3.yudao.iocoder.cn/" target="_blank" rel="noopener noreferrer">http://dashboard-vue3.yudao.iocoder.cn/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>菜单：“AI 大模型”下的「AI 聊天」「AI 绘画」「AI 知识库」「AI 工具」「AI 写作」「AI 脑图」「AI 音乐」「控制台」等等</li> <li>仓库：<a href="https://github.com/yudaocode/yudao-ui-admin-vue3" target="_blank" rel="noopener noreferrer">https://github.com/yudaocode/yudao-ui-admin-vue3<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 的 <code>ai</code> 目录，基于 Vue3 + Element Plus 实现</li></ul> <p><img src="/img/AI%E6%89%8B%E5%86%8C/%E5%8A%9F%E8%83%BD%E6%BC%94%E7%A4%BA/%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0.png" alt="管理后台"></p> <h3 id="_1-2-ai-后端"><a href="#_1-2-ai-%E5%90%8E%E7%AB%AF" class="header-anchor">#</a> 1.2 AI 后端</h3> <p>支持 Spring Boot 单体、Spring Cloud 微服务架构</p> <ul><li>单体仓库： <a href="https://github.com/YunaiV/ruoyi-vue-pro" target="_blank" rel="noopener noreferrer">https://github.com/YunaiV/ruoyi-vue-pro<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 的 <code>yudao-module-ai</code> 模块</li> <li>微服务仓库： <a href="https://github.com/YunaiV/yudao-cloud" target="_blank" rel="noopener noreferrer">https://github.com/YunaiV/yudao-cloud<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 的 <code>yudao-module-ai</code> 服务</li></ul> <h2 id="_2-ai-启动"><a href="#_2-ai-%E5%90%AF%E5%8A%A8" class="header-anchor">#</a> 2. AI 启动</h2> <p>参见 <a href="/ai/build/">《AI 手册 —— 功能开启》</a> 文档，一般 3 分钟就可以启动完成。</p> <p>已经内置多个 AI 大模型（相关密钥已配置）：</p> <ul><li>国内：【阿里】通义千问、【深度求索】DeepSeek、【字节】豆包、【腾讯】混元、【百度】文心一言、【SiliconFlow】硅基流动、【讯飞】星火、【智谱】GLM、【月之暗灭】Moonshot、【MiniMax】MiniMax</li> <li>国外：【OpenAI】GPT、【Meta】Llama、【Google】Gemini、【Stability】Stable Diffusion</li></ul> <h2 id="_3-ai-交流群"><a href="#_3-ai-%E4%BA%A4%E6%B5%81%E7%BE%A4" class="header-anchor">#</a> 3. AI 交流群</h2> <p>专属交流社区，欢迎扫码加入。</p> <p><img src="/img/ad/zsxq_ai.png" alt="交流群"></p> <h2 id="_4-功能描述"><a href="#_4-%E5%8A%9F%E8%83%BD%E6%8F%8F%E8%BF%B0" class="header-anchor">#</a> 4. 功能描述</h2> <p>主要分为 8 个核心模块：对话、绘画、知识库、工具、工作流、写作、脑图、音乐。</p> <p>目前正在增加新的 4 个模块：语音、视频、翻译、PPT。</p> <h3 id="_4-1-模型接入"><a href="#_4-1-%E6%A8%A1%E5%9E%8B%E6%8E%A5%E5%85%A5" class="header-anchor">#</a> 4.1 模型接入</h3> <p><img src="/img/AI%E6%89%8B%E5%86%8C/%E5%8A%9F%E8%83%BD%E6%BC%94%E7%A4%BA/%E6%A8%A1%E5%9E%8B%E6%8E%A5%E5%85%A5.png" alt="模型接入"></p> <table><thead><tr><th>模型（可点击链接，查看申请/部署文档）</th> <th>国内/国外</th> <th>是否开源（私有化部署）</th></tr></thead> <tbody><tr><td><a href="/ai/tongyi">《【阿里】通义千问》</a></td> <td>国内</td> <td>√</td></tr> <tr><td><a href="/ai/deep-seek">《【深度求索】DeepSeek》</a></td> <td>国内</td> <td>√</td></tr> <tr><td><a href="/ai/doubao">《【字节】豆包》</a></td> <td>国内</td> <td>√</td></tr> <tr><td><a href="/ai/hunyuan">《【腾讯】混元》</a></td> <td>国内</td> <td>√</td></tr> <tr><td><a href="/ai/yiyan">《【百度】文心一言》</a></td> <td>国内</td> <td></td></tr> <tr><td><a href="/ai/siliconflow">《【SiliconFlow】硅基流动》</a></td> <td>国内</td> <td></td></tr> <tr><td><a href="/ai/xinghuo">《【讯飞】星火认知》</a></td> <td>国内</td> <td></td></tr> <tr><td><a href="/ai/glm/">《【智谱】GLM》</a></td> <td>国内</td> <td>√</td></tr> <tr><td><a href="/ai/xinghuo">《【讯飞】星火认知》</a></td> <td>国内</td> <td></td></tr> <tr><td><a href="/ai/moonshot">《【月之暗灭】Moonshot》</a></td> <td>国内</td> <td></td></tr> <tr><td><a href="/ai/minimax">《【MiniMax】MiniMax》</a></td> <td>国内</td> <td>√</td></tr> <tr><td><a href="/ai/baichuan">《【百创智能】BaiChuan》</a></td> <td>国内</td> <td>√</td></tr> <tr><td></td> <td></td> <td></td></tr> <tr><td><a href="/ai/openai">《【OpenAI】ChatGPT》</a></td> <td>国外</td> <td></td></tr> <tr><td><a href="/ai/llama">《【Meta】LLAMA》</a></td> <td>国外</td> <td>√</td></tr> <tr><td><a href="/ai/azure-openai">《【微软 OpenAI】ChatGPT》</a></td> <td>国外</td> <td></td></tr> <tr><td><a href="/ai/yiyan">《【谷歌】Gemini》</a></td> <td>国外</td> <td>√(Gemma)</td></tr> <tr><td><a href="/ai/stable-diffusion">《【Stability】Stable Diffusion》</a></td> <td>国外</td> <td>√</td></tr> <tr><td><a href="/ai/midjourney">《【Midjourney】Midjourney》</a></td> <td>国外</td> <td>√</td></tr> <tr><td><a href="/ai/midjourney">《【Suno AI】Suno》</a></td> <td>国外</td> <td></td></tr></tbody></table> <h3 id="_4-2-ai-对话聊天"><a href="#_4-2-ai-%E5%AF%B9%E8%AF%9D%E8%81%8A%E5%A4%A9" class="header-anchor">#</a> 4.2 AI 对话聊天</h3> <p>详细说明，可见 <a href="/ai/chat/">《AI 对话聊天》</a> 文档</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/AI%E5%AF%B9%E8%AF%9D/%E5%AF%B9%E8%AF%9D.png" alt="AI 聊天"></p> <h3 id="_4-3-ai-绘画创作"><a href="#_4-3-ai-%E7%BB%98%E7%94%BB%E5%88%9B%E4%BD%9C" class="header-anchor">#</a> 4.3 AI 绘画创作</h3> <p>详细说明，可见 <a href="/ai/image/">《AI 绘画创作》</a> 文档</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/AI%E7%BB%98%E7%94%BB/%E7%BB%98%E7%94%BB.png" alt="AI 绘画"></p> <h3 id="_4-4-ai-知识库"><a href="#_4-4-ai-%E7%9F%A5%E8%AF%86%E5%BA%93" class="header-anchor">#</a> 4.4 AI 知识库</h3> <p>详细说明，可见 <a href="/ai/knowledge/">《AI 知识库》</a> 文档</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/AI%E7%9F%A5%E8%AF%86%E5%BA%93/%E7%9F%A5%E8%AF%86%E5%BA%93.png" alt="AI 知识库"></p> <h3 id="_4-5-ai-工作流"><a href="#_4-5-ai-%E5%B7%A5%E4%BD%9C%E6%B5%81" class="header-anchor">#</a> 4.5 AI 工作流</h3> <ul><li><a href="/ai/workflow/">《AI 工作流》</a></li> <li><a href="/ai/dify">《接入 Dify 工作流》</a></li> <li><a href="/ai/fastgpt">《接入 FastGPT 工作流》</a></li> <li><a href="/ai/coze">《接入 Coze 工作流》</a></li></ul> <h2 id="_4-6-ai-工具调用"><a href="#_4-6-ai-%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8" class="header-anchor">#</a> 4.6 AI 工具调用</h2> <ul><li><a href="/ai/tool">《AI 工具调用（function calling）》</a></li></ul> <h3 id="_4-7-ai-音乐创作"><a href="#_4-7-ai-%E9%9F%B3%E4%B9%90%E5%88%9B%E4%BD%9C" class="header-anchor">#</a> 4.7 AI 音乐创作</h3> <p>详细可见，可见 <a href="/ai/music/">《AI 音乐创作》</a> 文档</p> <h3 id="_4-8-ai-写作助手"><a href="#_4-8-ai-%E5%86%99%E4%BD%9C%E5%8A%A9%E6%89%8B" class="header-anchor">#</a> 4.8 AI 写作助手</h3> <p>详细可见，可见 <a href="/ai/write/">《AI 写作助手》</a> 文档</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/AI%E5%86%99%E4%BD%9C/%E5%86%99%E4%BD%9C.png" alt="AI 写作"></p> <h3 id="_4-9-ai-思维导图"><a href="#_4-9-ai-%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE" class="header-anchor">#</a> 4.9 AI 思维导图</h3> <p>详细可见，可见 <a href="/ai/mindmap/">《AI 思维导图》</a> 文档</p> <p><img src="/img/AI%E6%89%8B%E5%86%8C/AI%E5%AF%BC%E5%9B%BE/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE.png" alt="思维导图"></p></div></div>
+    </div>
+</body>
+</html>

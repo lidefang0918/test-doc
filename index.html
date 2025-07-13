@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruoyi文档浏览器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* 左侧菜单栏 */
+        .sidebar {
+            width: 350px;
+            background: white;
+            border-right: 1px solid #e8e8e8;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .sidebar-header h1 {
+            font-size: 1.5em;
+            margin-bottom: 8px;
+        }
+
+        .sidebar-header p {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .search-box {
+            margin: 15px;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .search-box:focus {
+            border-color: #667eea;
+        }
+
+        .menu-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px 0;
+        }
+
+        .menu-category {
+            margin-bottom: 2px;
+        }
+
+        .category-header {
+            padding: 12px 20px;
+            background: #f8f9fa;
+            color: #333;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 1px solid #e8e8e8;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background-color 0.3s;
+        }
+
+        .category-header:hover {
+            background: #e9ecef;
+        }
+
+        .category-header .expand-icon {
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+
+        .category-header.expanded .expand-icon {
+            transform: rotate(90deg);
+        }
+
+        .category-items {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .category-items.expanded {
+            max-height: 2000px;
+        }
+
+        .menu-item {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+            transition: all 0.3s;
+            font-size: 13px;
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu-item:hover {
+            background: #f8f9fa;
+            border-left-color: #667eea;
+        }
+
+        .menu-item.active {
+            background: #e8f2ff;
+            border-left-color: #667eea;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .menu-item.disabled {
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        .menu-item.disabled:hover {
+            background: transparent;
+            border-left-color: transparent;
+        }
+
+        .menu-item .item-title {
+            flex: 1;
+        }
+
+        .menu-item .item-status {
+            font-size: 11px;
+            color: #999;
+            margin-left: 8px;
+        }
+
+        .menu-item .item-path {
+            font-size: 11px;
+            color: #999;
+            margin-left: 8px;
+        }
+
+        .menu-item.hidden {
+            display: none;
+        }
+
+        /* 右侧内容区域 */
+        .content-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 目录导航 */
+        .toc-nav {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 250px;
+            max-height: 70vh;
+            background: white;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            z-index: 100;
+            display: none;
+        }
+
+        .toc-nav.show {
+            display: block;
+        }
+
+        .toc-header {
+            padding: 12px 16px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e8e8e8;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .toc-toggle {
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 2px;
+            border-radius: 3px;
+            color: #666;
+        }
+
+        .toc-toggle:hover {
+            background: #e9ecef;
+        }
+
+        .toc-content {
+            max-height: calc(70vh - 45px);
+            overflow-y: auto;
+            padding: 8px 0;
+        }
+
+        .toc-item {
+            display: block;
+            padding: 6px 16px;
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            line-height: 1.4;
+            border-left: 3px solid transparent;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .toc-item:hover {
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .toc-item.active {
+            background: #e8f2ff;
+            color: #667eea;
+            border-left-color: #667eea;
+            font-weight: 500;
+        }
+
+        .toc-item.level-1 {
+            padding-left: 16px;
+            font-weight: 500;
+        }
+
+        .toc-item.level-2 {
+            padding-left: 28px;
+        }
+
+        .toc-item.level-3 {
+            padding-left: 40px;
+        }
+
+        .toc-item.level-4 {
+            padding-left: 52px;
+        }
+
+        .toc-item.level-5 {
+            padding-left: 64px;
+        }
+
+        .toc-item.level-6 {
+            padding-left: 76px;
+        }
+
+        .content-header {
+            padding: 15px 25px;
+            background: white;
+            border-bottom: 1px solid #e8e8e8;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .content-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .content-meta {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .content-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 25px;
+            background: white;
+            display: flex;
+            justify-content: center;
+            padding-right: 300px; /* 为目录导航留出空间 */
+        }
+
+        .content-wrapper {
+            max-width: 800px;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .welcome-screen {
+            text-align: center;
+            padding: 80px 20px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .welcome-screen h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .welcome-screen p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .error {
+            text-align: center;
+            padding: 50px;
+            color: #e74c3c;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 内容样式 */
+        .content-body h1,
+        .content-body h2,
+        .content-body h3,
+        .content-body h4,
+        .content-body h5,
+        .content-body h6 {
+            margin: 20px 0 15px 0;
+            color: #333;
+        }
+
+        .content-body h1 {
+            font-size: 2em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .content-body h2 {
+            font-size: 1.5em;
+            color: #667eea;
+        }
+
+        .content-body p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .content-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin: 15px 0;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .content-body img:hover {
+            transform: scale(1.02);
+        }
+
+        /* 图片放大模态框 */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            cursor: pointer;
+        }
+
+        .image-modal img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            cursor: default;
+        }
+
+        .image-modal .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .image-modal .close-btn:hover {
+            color: #ccc;
+        }
+
+        .content-body a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .content-body a:hover {
+            text-decoration: underline;
+        }
+
+        .content-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .content-body th,
+        .content-body td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .content-body th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .content-body pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .content-body code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.9em;
+        }
+
+        .content-body blockquote {
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #666;
+            font-style: italic;
+        }
+
+                 /* 响应式设计 */
+         @media (max-width: 1200px) {
+             .content-body {
+                 padding-right: 25px; /* 在较小屏幕上移除目录导航的空间 */
+             }
+
+             .toc-nav {
+                 display: none !important; /* 在较小屏幕上隐藏目录导航 */
+             }
+         }
+
+         @media (max-width: 768px) {
+             .sidebar {
+                 width: 100%;
+                 position: fixed;
+                 left: -100%;
+                 z-index: 1000;
+                 transition: left 0.3s;
+             }
+
+             .sidebar.show {
+                 left: 0;
+             }
+
+             .content-area {
+                 width: 100%;
+             }
+
+             .content-wrapper {
+                 max-width: 100%;
+                 padding: 0 10px;
+             }
+
+             .mobile-menu-btn {
+                 display: block;
+                 position: fixed;
+                 top: 15px;
+                 left: 15px;
+                 z-index: 1001;
+                 background: #667eea;
+                 color: white;
+                 border: none;
+                 padding: 10px;
+                 border-radius: 5px;
+                 cursor: pointer;
+             }
+         }
+
+        .mobile-menu-btn {
+            display: none;
+        }
+
+        /* 滚动条样式 */
+        .menu-list::-webkit-scrollbar,
+        .content-body::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .menu-list::-webkit-scrollbar-track,
+        .content-body::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .menu-list::-webkit-scrollbar-thumb,
+        .content-body::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 3px;
+        }
+
+        .menu-list::-webkit-scrollbar-thumb:hover,
+        .content-body::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+        .content-wrapper .header {
+            display: none;
+        }
+        .content-wrapper .right-menu-wrapper {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+
+    <div class="container">
+        <!-- 左侧菜单栏 -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1>📚 Ruoyi文档</h1>
+                <p>离线文档浏览器</p>
+            </div>
+
+            <input type="text" class="search-box" placeholder="搜索文档..." id="searchBox">
+
+            <div class="menu-list" id="menuList">
+                <!-- 菜单项将通过JavaScript动态生成 -->
+            </div>
+        </div>
+
+        <!-- 右侧内容区域 -->
+        <div class="content-area">
+            <div class="content-header">
+                <div class="content-title" id="contentTitle">欢迎使用</div>
+                <div class="content-meta" id="contentMeta"></div>
+            </div>
+
+            <div class="content-body" id="contentBody">
+                <div class="content-wrapper">
+                    <div class="welcome-screen">
+                        <h2>🚀 欢迎使用 Ruoyi 文档浏览器</h2>
+                        <p>请从左侧菜单选择要查看的文档</p>
+                        <p>本地离线文档，包含完整的开发指南和教程</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 目录导航 -->
+        <div class="toc-nav" id="tocNav">
+            <div class="toc-header">
+                <span>📋 目录</span>
+                <button class="toc-toggle" onclick="toggleTOC()">−</button>
+            </div>
+            <div class="toc-content" id="tocContent">
+                <!-- 目录项将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 图片放大模态框 -->
+    <div class="image-modal" id="imageModal">
+        <span class="close-btn" onclick="closeImageModal()">&times;</span>
+        <img id="modalImage" src="" alt="">
+    </div>
+
+    <script>
+        // 完整的菜单结构 - 按原网站层级组织
+        const menuStructure = [
+            {
+                title: "萌新必读",
+                items: [
+                    { title: "简介", path: "/intro/", file: "intro.html" },
+                    { title: "交流群", path: "/qun/", file: "qun.html" },
+                    { title: "视频教程", path: "/video/", file: "video.html" },
+                    { title: "功能列表", path: "/feature/", file: "feature.html" },
+                    { title: "快速启动（后端项目）", path: "/quick-start/", file: "quick-start.html" },
+                    { title: "快速启动（前端项目）", path: "/quick-start-front/", file: "quick-start-front.html" },
+                    { title: "接口文档", path: "/api-doc/", file: "api-doc.html" },
+                    { title: "技术选型", path: "/technology/", file: "technology.html" },
+                    { title: "项目结构", path: "/project-intro/", file: "project-intro.html" },
+                    { title: "代码热加载", path: "/dev-hot-swap/", file: "dev-hot-swap.html" },
+                    { title: "一键改包", path: "/project-rename/", file: "project-rename.html" },
+                    { title: "迁移模块（适合新项目）", path: "/migrate-module/", file: "migrate-module.html" },
+                    { title: "删除功能（以租户为例）", path: "/delete-code/", file: "delete-code.html" },
+                    { title: "表结构变更（版本升级）", path: "/sql-update/", file: "sql-update.html" },
+                    { title: "国产信创数据库（DM 达梦、大金、OpenGauss）", path: "/xinchuang-db/", file: "xinchuang-db.html" },
+                    { title: "如何去除 Redis 缓存", path: "/remove-redis/", file: "remove-redis.html" },
+                    { title: "内网穿透", path: "/natapp/", file: "natapp.html" },
+                    { title: "面试题、简历模版、简历优化", path: "/interview/", file: "interview.html" },
+                    { title: "项目外包", path: "/waibao/", file: "waibao.html" }
+                ]
+            },
+            {
+                title: "后端手册",
+                items: [
+                    { title: "新建模块", path: "/module-new/", file: "module-new.html" },
+                    { title: "代码生成【单表】（新增功能）", path: "/new-feature/", file: "new-feature.html" },
+                    { title: "代码生成【主子表】", path: "/new-feature/master-sub/", file: "new-feature/master-sub.html" },
+                    { title: "代码生成（树表）", path: "/new-feature/tree/", file: "new-feature/tree.html" },
+                    { title: "功能权限", path: "/resource-permission/", file: "resource-permission.html" },
+                    { title: "数据权限", path: "/data-permission/", file: "data-permission.html" },
+                    { title: "用户体系", path: "/user-center/", file: "user-center.html" },
+                    { title: "三方登录", path: "/social-user/", file: "social-user.html" },
+                    { title: "OAuth 2.0（SSO 单点登录)", path: "/oauth2/", file: "oauth2.html" },
+                    { title: "SaaS 多租户【字段隔离】", path: "/saas-tenant/", file: "saas-tenant.html" },
+                    { title: "SaaS 多租户【数据库隔离】", path: "/saas-tenant/dynamic/", file: "saas-tenant/dynamic.html" },
+                    { title: "WebSocket 实时通信", path: "/websocket/", file: "websocket.html" },
+                    { title: "异常处理（错误码）", path: "/exception/", file: "exception.html" },
+                    { title: "参数校验、时间传参", path: "/validator/", file: "validator.html" },
+                    { title: "分页实现", path: "/page-feature/", file: "page-feature.html" },
+                    { title: "VO 对象转换、数据翻译", path: "/vo/", file: "vo.html" },
+                    { title: "文件存储（上传下载）", path: "/file/", file: "file.html" },
+                    { title: "Excel 导入导出", path: "/excel-import-and-export/", file: "excel-import-and-export.html" },
+                    { title: "操作日志、访问日志、异常日志", path: "/system-log/", file: "system-log.html" },
+                    { title: "MyBatis 数据库", path: "/mybatis/", file: "mybatis.html" },
+                    { title: "MyBatis 联表&分页查询", path: "/mybatis-pro/", file: "mybatis-pro.html" },
+                    { title: "多数据源（读写分离）、事务", path: "/dynamic-datasource/", file: "dynamic-datasource.html" },
+                    { title: "Redis 缓存", path: "/redis-cache/", file: "redis-cache.html" },
+                    { title: "本地缓存", path: "/local-cache/", file: "local-cache.html" },
+                    { title: "异步任务", path: "/async-task/", file: "async-task.html" },
+                    { title: "分布式锁", path: "/distributed-lock/", file: "distributed-lock.html" },
+                    { title: "幂等性（防重复提交）", path: "/idempotent/", file: "idempotent.html" },
+                    { title: "请求限流（RateLimiter）", path: "/rate-limiter/", file: "rate-limiter.html" },
+                    { title: "HTTP 接口签名（防篡改）", path: "/http-sign/", file: "http-sign.html" },
+                    { title: "单元测试", path: "/unit-test/", file: "unit-test.html" },
+                    { title: "验证码", path: "/captcha/", file: "captcha.html" },
+                    { title: "工具类 Util", path: "/util/", file: "util.html" },
+                    { title: "配置管理", path: "/config-center/", file: "config-center.html" },
+                    { title: "数据库文档", path: "/db-doc/", file: "db-doc.html" }
+                ]
+            },
+            {
+                title: "中间件手册",
+                items: [
+                    { title: "定时任务", path: "/job/", file: "job.html" },
+                    { title: "消息队列（内存）", path: "/message-queue/event/", file: "message-queue/event.html" },
+                    { title: "消息队列（Redis）", path: "/message-queue/redis/", file: "message-queue/redis.html" },
+                    { title: "消息队列（RocketMQ）", path: "/message-queue/rocketmq/", file: "message-queue/rocketmq.html" },
+                    { title: "消息队列（RabbitMQ）", path: "/message-queue/rabbitmq/", file: "message-queue/rabbitmq.html" },
+                    { title: "消息队列（Kafka）", path: "/message-queue/kafka/", file: "message-queue/kafka.html" },
+                    { title: "限流熔断", path: "/server-protection/", file: "server-protection.html" }
+                ]
+            },
+            {
+                title: "工作流手册",
+                items: [
+                    { title: "工作流演示", path: "/bpm-preview/", file: "bpm-preview.html" },
+                    { title: "功能开启", path: "/bpm/", file: "bpm.html" },
+                    { title: "工作流（达梦适配）", path: "/bpm/dameng/", file: "bpm/dameng.html" },
+                    { title: "审批接入（流程表单）", path: "/bpm/use-bpm-form/", file: "bpm/use-bpm-form.html" },
+                    { title: "审批接入（业务表单）", path: "/bpm/use-business-form/", file: "bpm/use-business-form.html" },
+                    { title: "流程设计器（BPMN）", path: "/bpm/model-designer-bpmn/", file: "bpm/model-designer-bpmn.html" },
+                    { title: "流程设计器（钉钉、飞书）", path: "/bpm/model-designer-dingding/", file: "bpm/model-designer-dingding.html" },
+                    { title: "选择审批人、发起人自选", path: "/bpm/assignee/", file: "bpm/assignee.html" },
+                    { title: "会签、或签、依次审批", path: "/bpm/multi-instance/", file: "bpm/multi-instance.html" },
+                    { title: "流程发起、取消、重新发起", path: "/bpm/process-instance/", file: "bpm/process-instance.html" },
+                    { title: "审批通过、不通过、驳回", path: "/bpm/task-todo-done/", file: "bpm/task-todo-done.html" },
+                    { title: "审批加签、减签", path: "/bpm/sign/", file: "bpm/sign.html" },
+                    { title: "审批转办、委派、抄送", path: "/bpm/task-delegation-and-cc/", file: "bpm/task-delegation-and-cc.html" },
+                    { title: "执行监听器、任务监听器", path: "/bpm/listener/", file: "bpm/listener.html" },
+                    { title: "流程表达式", path: "/bpm/expression/", file: "bpm/expression.html" },
+                    { title: "流程审批通知", path: "/bpm/message/", file: "bpm/message.html" }
+                ]
+            },
+            {
+                title: "大屏手册",
+                items: [
+                    { title: "报表设计器", path: "/report/", file: "report.html" },
+                    { title: "大屏设计器", path: "/report/screen/", file: "report/screen.html" }
+                ]
+            },
+            {
+                title: "支付手册",
+                items: [
+                    { title: "功能开启", path: "/pay/build/", file: "pay/build.html" },
+                    { title: "支付宝支付接入", path: "/pay/alipay-pay-demo/", file: "pay/alipay-pay-demo.html" },
+                    { title: "微信公众号支付接入", path: "/pay/wx-pub-pay-demo/", file: "pay/wx-pub-pay-demo.html" },
+                    { title: "微信小程序支付接入", path: "/pay/wx-lite-pay-demo/", file: "pay/wx-lite-pay-demo.html" },
+                    { title: "支付宝、微信退款接入", path: "/pay/refund-demo/", file: "pay/refund-demo.html" },
+                    { title: "支付宝转账接入", path: "/pay/alipay-transfer-demo/", file: "pay/alipay-transfer-demo.html" },
+                    { title: "微信转账接入", path: "/pay/wx-transfer-demo/", file: "pay/wx-transfer-demo.html" },
+                    { title: "钱包充值、支付、退款", path: "/pay/wallet/", file: "pay/wallet.html" },
+                    { title: "模拟支付、退款", path: "/pay/mock/", file: "pay/mock.html" }
+                ]
+            },
+            {
+                title: "会员手册",
+                items: [
+                    { title: "功能开启", path: "/member/build/", file: "member/build.html" },
+                    { title: "微信公众号登录", path: "/member/weixin-mp-login/", file: "member/weixin-mp-login.html" },
+                    { title: "微信小程序登录", path: "/member/weixin-lite-login/", file: "member/weixin-lite-login.html" },
+                    { title: "微信小程序订阅消息", path: "/member/weixin-lite-subscribe-message/", file: "member/weixin-lite-subscribe-message.html" },
+                    { title: "微信小程序码", path: "/member/weixin-lite-qrcode/", file: "member/weixin-lite-qrcode.html" },
+                    { title: "会员用户、标签、分组", path: "/member/user/", file: "member/user.html" },
+                    { title: "会员等级、积分、签到", path: "/member/level/", file: "member/level.html" }
+                ]
+            },
+            {
+                title: "商城手册",
+                items: [
+                    { title: "商城演示", path: "/mall-preview/", file: "mall-preview.html" },
+                    { title: "功能开启", path: "/mall/build/", file: "mall/build.html" },
+                    { title: "商城装修", path: "/mall/diy/", file: "mall/diy.html" },
+                    { title: "在线客服", path: "/mall/kefu/", file: "mall/kefu.html" },
+                    { title: "【商品】商品分类", path: "/mall/product-category/", file: "mall/product-category.html" },
+                    { title: "【商品】商品属性", path: "/mall/product-property/", file: "mall/product-property.html" },
+                    { title: "【商品】商品 SPU 与 SKU", path: "/mall/product-spu-sku/", file: "mall/product-spu-sku.html" },
+                    { title: "【商品】商品评价", path: "/mall/product-comment/", file: "mall/product-comment.html" },
+                    { title: "【交易】购物车", path: "/mall/trade-cart/", file: "mall/trade-cart.html" },
+                    { title: "【交易】交易订单", path: "/mall/trade-order/", file: "mall/trade-order.html" },
+                    { title: "【交易】售后退款", path: "/mall/trade-aftersale/", file: "mall/trade-aftersale.html" },
+                    { title: "【交易】快递发货", path: "/mall/trade-delivery-express/", file: "mall/trade-delivery-express.html" },
+                    { title: "【交易】门店自提", path: "/mall/trade-delivery-pickup/", file: "mall/trade-delivery-pickup.html" },
+                    { title: "【交易】分销返佣", path: "/mall/trade-brokerage/", file: "mall/trade-brokerage.html" },
+                    { title: "【营销】优惠劵", path: "/mall/promotion-coupon/", file: "mall/promotion-coupon.html" },
+                    { title: "【营销】积分商城", path: "/mall/point-activity/", file: "mall/point-activity.html" },
+                    { title: "【营销】拼团活动", path: "/mall/promotion-combination/", file: "mall/promotion-combination.html" },
+                    { title: "【营销】秒杀活动", path: "/mall/promotion-seckill/", file: "mall/promotion-seckill.html" },
+                    { title: "【营销】砍价活动", path: "/mall/promotion-bargain/", file: "mall/promotion-bargain.html" },
+                    { title: "【营销】满减送活动", path: "/mall/promotion-record/", file: "mall/promotion-record.html" },
+                    { title: "【营销】限时折扣", path: "/mall/promotion-discount/", file: "mall/promotion-discount.html" },
+                    { title: "【营销】内容管理", path: "/mall/promotion-content/", file: "mall/promotion-content.html" },
+                    { title: "【统计】会员、商品、交易统计", path: "/mall/statistics/", file: "mall/statistics.html" }
+                ]
+            },
+            {
+                title: "ERP手册",
+                items: [
+                    { title: "ERP 演示", path: "/erp-preview/", file: "erp-preview.html" },
+                    { title: "功能开启", path: "/erp/build/", file: "erp/build.html" },
+                    { title: "【产品】产品信息、分类、单位", path: "/erp/product/", file: "erp/product.html" },
+                    { title: "【库存】产品库存、库存明细", path: "/erp/stock/", file: "erp/stock.html" },
+                    { title: "【库存】其它入库、其它出库", path: "/erp/stock-in-out/", file: "erp/stock-in-out.html" },
+                    { title: "【库存】库存调拨、库存盘点", path: "/erp/stock-move-check/", file: "erp/stock-move-check.html" },
+                    { title: "【采购】采购订单、入库、退货", path: "/erp/purchase/", file: "erp/purchase.html" },
+                    { title: "【销售】销售订单、出库、退货", path: "/erp/sale/", file: "erp/sale.html" },
+                    { title: "【财务】采购付款、销售收款", path: "/sale/finance-payment-receipt/", file: "sale/finance-payment-receipt.html" }
+                ]
+            },
+            {
+                title: "CRM手册",
+                items: [
+                    { title: "CRM 演示", path: "/crm-preview/", file: "crm-preview.html" },
+                    { title: "功能开启", path: "/crm/build/", file: "crm/build.html" },
+                    { title: "【线索】线索管理", path: "/crm/clue/", file: "crm/clue.html" },
+                    { title: "【客户】客户管理、公海客户", path: "/crm/customer/", file: "crm/customer.html" },
+                    { title: "【商机】商机管理、商机状态", path: "/crm/business/", file: "crm/business.html" },
+                    { title: "【合同】合同管理、合同提醒", path: "/crm/contract/", file: "crm/contract.html" },
+                    { title: "【回款】回款管理、回款计划", path: "/crm/receivable/", file: "crm/receivable.html" },
+                    { title: "【产品】产品管理、产品分类", path: "/crm/product/", file: "crm/product.html" },
+                    { title: "【通用】数据权限", path: "/crm/permission/", file: "crm/permission.html" },
+                    { title: "【通用】跟进记录、待办事项", path: "/crm/follow-up/", file: "crm/follow-up.html" }
+                ]
+            },
+            {
+                title: "AI大模型手册",
+                items: [
+                    { title: "AI 大模型演示", path: "/ai-preview/", file: "ai-preview.html" },
+                    { title: "功能开启", path: "/ai/build/", file: "ai/build.html" },
+                    { title: "AI 聊天对话", path: "/ai/chat/", file: "ai/chat.html" },
+                    { title: "AI 绘画创作", path: "/ai/image/", file: "ai/image.html" },
+                    { title: "AI 知识库", path: "/ai/knowledge/", file: "ai/knowledge.html" },
+                    { title: "AI 音乐创作", path: "/ai/music/", file: "ai/music.html" },
+                    { title: "AI 写作助手", path: "/ai/write/", file: "ai/write.html" },
+                    { title: "AI 思维导图", path: "/ai/mindmap/", file: "ai/mindmap.html" },
+                    { title: "AI 工具（function calling）", path: "/ai/tool/", file: "ai/tool.html" },
+                    { title: "AI 工作流", path: "/ai/workflow/", file: "ai/workflow.html" },
+                    { title: "Dify 工作流", path: "/ai/dify/", file: "ai/dify.html" },
+                    { title: "FastGPT 工作流", path: "/ai/fastgpt/", file: "ai/fastgpt.html" },
+                    { title: "Coze 智能体", path: "/ai/coze/", file: "ai/coze.html" },
+                    { title: "【模型接入】OpenAI", path: "/ai/openai/", file: "ai/openai.html" },
+                    { title: "【模型接入】通义千问", path: "/ai/tongyi/", file: "ai/tongyi.html" },
+                    { title: "【模型接入】DeepSeek", path: "/ai/deep-seek/", file: "ai/deep-seek.html" },
+                    { title: "【模型接入】字节豆包", path: "/ai/doubao/", file: "ai/doubao.html" },
+                    { title: "【模型接入】腾讯混元", path: "/ai/hunyuan/", file: "ai/hunyuan.html" },
+                    { title: "【模型接入】硅基流动", path: "/ai/siliconflow/", file: "ai/siliconflow.html" },
+                    { title: "【模型接入】MiniMax", path: "/ai/minimax/", file: "ai/minimax.html" },
+                    { title: "【模型接入】月之暗灭", path: "/ai/moonshot/", file: "ai/moonshot.html" },
+                    { title: "【模型接入】百川智能", path: "/ai/baichuan/", file: "ai/baichuan.html" },
+                    { title: "【模型接入】文心一言", path: "/ai/yiyan/", file: "ai/yiyan.html" },
+                    { title: "【模型接入】LLAMA", path: "/ai/llama/", file: "ai/llama.html" },
+                    { title: "【模型接入】智谱 GLM", path: "/ai/glm/", file: "ai/glm.html" },
+                    { title: "【模型接入】讯飞星火", path: "/ai/xinghuo/", file: "ai/xinghuo.html" },
+                    { title: "【模型接入】微软 OpenAI", path: "/ai/azure-openai/", file: "ai/azure-openai.html" },
+                    { title: "【模型接入】谷歌 Gemini", path: "/ai/gemini/", file: "ai/gemini.html" },
+                    { title: "【模型接入】Stable Diffusion", path: "/ai/stable-diffusion/", file: "ai/stable-diffusion.html" },
+                    { title: "【模型接入】Midjourney", path: "/ai/midjourney/", file: "ai/midjourney.html" },
+                    { title: "【模型接入】Suno", path: "/ai/suno/", file: "ai/suno.html" }
+                ]
+            },
+            {
+                title: "IoT物联网手册",
+                items: [
+                    { title: "功能开启", path: "/iot/build/", file: "iot/build.html" }
+                ]
+            },
+            {
+                title: "公众号手册",
+                items: [
+                    { title: "功能开启", path: "/mp/build/", file: "mp/build.html" },
+                    { title: "公众号接入", path: "/mp/account/", file: "mp/account.html" },
+                    { title: "公众号粉丝", path: "/mp/user/", file: "mp/user.html" },
+                    { title: "公众号标签", path: "/mp/tag/", file: "mp/tag.html" },
+                    { title: "公众号消息", path: "/mp/message/", file: "mp/message.html" },
+                    { title: "自动回复", path: "/mp/auto-reply/", file: "mp/auto-reply.html" },
+                    { title: "公众号菜单", path: "/mp/menu/", file: "mp/menu.html" },
+                    { title: "公众号素材", path: "/mp/material/", file: "mp/material.html" },
+                    { title: "公众号图文", path: "/mp/article/", file: "mp/article.html" },
+                    { title: "公众号统计", path: "/mp/statistics/", file: "mp/statistics.html" }
+                ]
+            },
+            {
+                title: "系统手册",
+                items: [
+                    { title: "短信配置", path: "/sms/", file: "sms.html" },
+                    { title: "邮件配置", path: "/mail/", file: "mail.html" },
+                    { title: "站内信配置", path: "/notify/", file: "notify.html" },
+                    { title: "数据脱敏、字段权限", path: "/desensitize/", file: "desensitize.html" },
+                    { title: "敏感词", path: "/sensitive-word/", file: "sensitive-word.html" },
+                    { title: "地区 & IP 库", path: "/area-and-ip/", file: "area-and-ip.html" }
+                ]
+            },
+            {
+                title: "运维手册",
+                items: [
+                    { title: "开发环境", path: "/dev-env/", file: "dev-env.html" },
+                    { title: "Linux 部署", path: "/deployment-linux/", file: "deployment-linux.html" },
+                    { title: "Docker 部署", path: "/deployment-docker/", file: "deployment-docker.html" },
+                    { title: "Jenkins 部署", path: "/deployment-jenkins/", file: "deployment-jenkins.html" },
+                    { title: "宝塔部署", path: "/deployment-baota/", file: "deployment-baota.html" },
+                    { title: "HTTPS 证书", path: "/https/", file: "https.html" },
+                    { title: "服务监控", path: "/server-monitor/", file: "server-monitor.html" }
+                ]
+            },
+            {
+                title: "前端手册 Vue 3.x",
+                items: [
+                    { title: "开发规范", path: "/vue3/dev-spec/", file: "vue3/dev-spec.html" },
+                    { title: "菜单路由", path: "/vue3/route/", file: "vue3/route.html" },
+                    { title: "Icon 图标", path: "/vue3/icon/", file: "vue3/icon.html" },
+                    { title: "字典数据", path: "/vue3/dict/", file: "vue3/dict.html" },
+                    { title: "系统组件", path: "/vue3/components/", file: "vue3/components.html" },
+                    { title: "通用方法", path: "/vue3/util/", file: "vue3/util.html" },
+                    { title: "配置读取", path: "/vue3/config-center/", file: "vue3/config-center.html" },
+                    { title: "CRUD 组件", path: "/vue3/crud-schema/", file: "vue3/crud-schema.html" },
+                    { title: "国际化", path: "/vue3/i18n/", file: "vue3/i18n.html" },
+                    { title: "IDE 调试", path: "/vue3/debugger/", file: "vue3/debugger.html" },
+                    { title: "代码格式化", path: "/vue3/format/", file: "vue3/format.html" }
+                ]
+            },
+            {
+                title: "前端手册 Vue 2.x",
+                items: [
+                    { title: "开发规范", path: "/vue2/dev-spec/", file: "vue2/dev-spec.html" },
+                    { title: "菜单路由", path: "/vue2/route/", file: "vue2/route.html" },
+                    { title: "Icon 图标", path: "/vue2/icon/", file: "vue2/icon.html" },
+                    { title: "字典数据", path: "/vue2/dict/", file: "vue2/dict.html" },
+                    { title: "系统组件", path: "/vue2/components/", file: "vue2/components.html" },
+                    { title: "通用方法", path: "/vue2/util/", file: "vue2/util.html" },
+                    { title: "配置读取", path: "/vue2/config-center/", file: "vue2/config-center.html" }
+                ]
+            },
+            {
+                title: "更新日志",
+                items: [
+                    { title: "【v2-6-1】开发中", path: "/changelog/2.6.1/", file: "changelog/2.6.1.html" },
+                    { title: "【v2-6-0】2025-06-07", path: "/changelog/2.6.0/", file: "changelog/2.6.0.html" },
+                    { title: "【v2.5.0】2025-05-13", path: "/changelog/2.5.0/", file: "changelog/2.5.0.html" },
+                    { title: "【v2.4.2】2025-04-12", path: "/changelog/2.4.2/", file: "changelog/2.4.2.html" },
+                    { title: "【v2.4.1】2025-02-09", path: "/changelog/2.4.1/", file: "changelog/2.4.1.html" },
+                    { title: "【v2.4.0】2024-12-31", path: "/changelog/2.4.0/", file: "changelog/2.4.0.html" },
+                    { title: "【v2.3.0】2024-10-07", path: "/changelog/2.3.0/", file: "changelog/2.3.0.html" },
+                    { title: "【v2.2.0】2024-08-02", path: "/changelog/2.2.0/", file: "changelog/2.2.0.html" },
+                    { title: "【v2.1.0】2024-05-05", path: "/changelog/2.1.0/", file: "changelog/2.1.0.html" },
+                    { title: "【v2.0.1】2024-03-01", path: "/changelog/2.0.1/", file: "changelog/2.0.1.html" },
+                    { title: "【v2.0.0】2024-01-26", path: "/changelog/2.0.0/", file: "changelog/2.0.0.html" }
+                ]
+            }
+        ];
+
+        let currentDoc = null;
+        let filteredMenus = [...menuStructure];
+        let tocVisible = true;
+        let tocItems = [];
+        let isScrolling = false;
+
+        // 初始化
+        function init() {
+            renderMenu();
+            setupSearch();
+
+            // 从localStorage恢复上次选择的文档
+            const lastDoc = localStorage.getItem('lastSelectedDoc');
+            if (lastDoc) {
+                loadDocument(lastDoc);
+            }
+        }
+
+        // 渲染菜单
+        function renderMenu() {
+            const menuList = document.getElementById('menuList');
+
+            let html = '';
+            filteredMenus.forEach(category => {
+                html += `<div class="menu-category">`;
+                html += `<div class="category-header" onclick="toggleCategory(this)">
+                    <span>${category.title}</span>
+                    <span class="expand-icon">▶</span>
+                </div>`;
+
+                html += `<div class="category-items">`;
+                category.items.forEach(item => {
+                    const isActive = currentDoc === item.file ? 'active' : '';
+                    const isDisabled = !item.file ? 'disabled' : '';
+                    const clickHandler = item.file ? `onclick="loadDocument('${item.file}')"` : '';
+
+                    html += `<div class="menu-item ${isActive} ${isDisabled}" ${clickHandler} data-title="${item.title.toLowerCase()}" data-file="${item.file || ''}">
+                        <span class="item-title">${item.title}</span>
+                        <span class="item-path">${item.path}</span>
+                        ${!item.file ? '<span class="item-status">还未下载</span>' : ''}
+                    </div>`;
+                });
+                html += `</div>`;
+
+                html += `</div>`;
+            });
+
+            menuList.innerHTML = html;
+        }
+
+        // 切换分类展开/收起
+        function toggleCategory(header) {
+            const category = header.parentElement;
+            const items = category.querySelector('.category-items');
+            const icon = header.querySelector('.expand-icon');
+
+            if (items.classList.contains('expanded')) {
+                items.classList.remove('expanded');
+                header.classList.remove('expanded');
+            } else {
+                items.classList.add('expanded');
+                header.classList.add('expanded');
+            }
+        }
+
+        // 搜索功能
+        function setupSearch() {
+            const searchBox = document.getElementById('searchBox');
+            searchBox.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+
+                if (searchTerm === '') {
+                    filteredMenus = [...menuStructure];
+                } else {
+                    filteredMenus = menuStructure.map(category => {
+                        const filteredItems = category.items.filter(item =>
+                            item.title.toLowerCase().includes(searchTerm) ||
+                            item.path.toLowerCase().includes(searchTerm)
+                        );
+
+                        return {
+                            ...category,
+                            items: filteredItems
+                        };
+                    }).filter(category => category.items.length > 0);
+                }
+
+                renderMenu();
+
+                // 如果有搜索结果，自动展开所有分类
+                if (searchTerm !== '') {
+                    setTimeout(() => {
+                        document.querySelectorAll('.category-header').forEach(header => {
+                            const items = header.parentElement.querySelector('.category-items');
+                            items.classList.add('expanded');
+                            header.classList.add('expanded');
+                        });
+                    }, 100);
+                }
+            });
+        }
+
+        // 加载文档
+        async function loadDocument(filename) {
+            const contentBody = document.getElementById('contentBody');
+            const contentTitle = document.getElementById('contentTitle');
+            const contentMeta = document.getElementById('contentMeta');
+
+                         // 显示加载状态
+             contentBody.innerHTML = '<div class="content-wrapper"><div class="loading">正在加载文档...</div></div>';
+
+            try {
+                const response = await fetch(filename);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const html = await response.text();
+
+                // 解析HTML，提取内容
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+
+                // 提取标题
+                const title = doc.querySelector('title')?.textContent || '未知标题';
+
+                // 提取内容 - 查找.content div
+                const contentDiv = doc.querySelector('.content');
+                let content = '';
+
+                if (contentDiv) {
+                    content = contentDiv.innerHTML;
+                } else {
+                    // 如果没有找到.content div，尝试提取body内容
+                    const bodyContent = doc.querySelector('body');
+                    if (bodyContent) {
+                        content = bodyContent.innerHTML;
+                    } else {
+                        content = '<p>无法提取文档内容</p>';
+                    }
+                }
+
+                                                  // 更新页面
+                contentTitle.textContent = title.replace(' | ruoyi-vue-pro 开发指南', '');
+                contentMeta.textContent = `文件: ${filename}`;
+                 contentBody.innerHTML = `<div class="content-wrapper">${content}</div>`;
+
+                 // 为图片添加点击放大功能
+                 setupImageModal();
+
+                 // 生成目录导航
+                 generateTOC();
+
+                 // 更新当前文档状态
+                 currentDoc = filename;
+
+                // 更新菜单选中状态
+                document.querySelectorAll('.menu-item').forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('data-file') === filename) {
+                        item.classList.add('active');
+                    }
+                });
+
+                // 保存到localStorage
+                localStorage.setItem('lastSelectedDoc', filename);
+
+                // 滚动到顶部
+                contentBody.scrollTop = 0;
+
+                // 在移动端关闭菜单
+                if (window.innerWidth <= 768) {
+                    document.getElementById('sidebar').classList.remove('show');
+                }
+
+                         } catch (error) {
+                 console.error('加载文档失败:', error);
+                 contentBody.innerHTML = `<div class="content-wrapper"><div class="error">加载文档失败: ${error.message}</div></div>`;
+             }
+        }
+
+        // 移动端菜单切换
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('show');
+        }
+
+        // 监听窗口大小变化
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.getElementById('sidebar').classList.remove('show');
+            }
+        });
+
+                 // 图片放大功能
+         function setupImageModal() {
+             const images = document.querySelectorAll('.content-body img');
+             images.forEach(img => {
+                 img.addEventListener('click', function() {
+                     openImageModal(this.src);
+                 });
+             });
+         }
+
+         function openImageModal(src) {
+             const modal = document.getElementById('imageModal');
+             const modalImage = document.getElementById('modalImage');
+             modal.style.display = 'block';
+             modalImage.src = src;
+         }
+
+         function closeImageModal() {
+             const modal = document.getElementById('imageModal');
+             modal.style.display = 'none';
+         }
+
+         // 点击模态框背景关闭
+         document.getElementById('imageModal').addEventListener('click', function(e) {
+             if (e.target === this) {
+                 closeImageModal();
+             }
+         });
+
+         // ESC键关闭模态框
+         document.addEventListener('keydown', function(e) {
+             if (e.key === 'Escape') {
+                 closeImageModal();
+             }
+         });
+
+         // 目录导航相关功能
+         function generateTOC() {
+             const contentWrapper = document.querySelector('.content-wrapper');
+             const tocContent = document.getElementById('tocContent');
+             const tocNav = document.getElementById('tocNav');
+             
+             if (!contentWrapper) {
+                 tocNav.classList.remove('show');
+                 return;
+             }
+
+             // 查找所有标题元素
+             const headings = contentWrapper.querySelectorAll('h2, h3, h4, h5, h6');
+             
+             if (headings.length === 0) {
+                 tocNav.classList.remove('show');
+                 return;
+             }
+
+             tocItems = [];
+             let tocHTML = '';
+
+             headings.forEach((heading, index) => {
+                 const level = parseInt(heading.tagName.charAt(1));
+                 const text = heading.textContent.trim();
+                 
+                 // 如果标题没有id，自动生成一个
+                 if (!heading.id) {
+                     heading.id = `heading-${index}`;
+                 }
+
+                 const tocItem = {
+                     id: heading.id,
+                     text: text,
+                     level: level,
+                     element: heading
+                 };
+
+                 tocItems.push(tocItem);
+
+                 tocHTML += `<a href="#${heading.id}" class="toc-item level-${level}" data-target="${heading.id}" onclick="scrollToSection('${heading.id}', event)">${text}</a>`;
+             });
+
+             tocContent.innerHTML = tocHTML;
+             tocNav.classList.add('show');
+
+             // 设置滚动监听
+             setupScrollListener();
+         }
+
+         function scrollToSection(targetId, event) {
+             if (event) {
+                 event.preventDefault();
+             }
+
+             const targetElement = document.getElementById(targetId);
+             const contentBody = document.getElementById('contentBody');
+             
+             if (targetElement && contentBody) {
+                 isScrolling = true;
+                 
+                 // 计算目标位置，考虑header高度
+                 const targetTop = targetElement.offsetTop - 80;
+                 
+                 contentBody.scrollTo({
+                     top: targetTop,
+                     behavior: 'smooth'
+                 });
+
+                 // 更新活跃状态
+                 updateActiveTOC(targetId);
+
+                 // 重置滚动标记
+                 setTimeout(() => {
+                     isScrolling = false;
+                 }, 1000);
+             }
+         }
+
+         function updateActiveTOC(activeId) {
+             const tocItems = document.querySelectorAll('.toc-item');
+             tocItems.forEach(item => {
+                 if (item.getAttribute('data-target') === activeId) {
+                     item.classList.add('active');
+                 } else {
+                     item.classList.remove('active');
+                 }
+             });
+         }
+
+         function setupScrollListener() {
+             const contentBody = document.getElementById('contentBody');
+             
+             if (contentBody) {
+                 contentBody.addEventListener('scroll', throttle(function() {
+                     if (isScrolling) return;
+                     
+                     const scrollTop = contentBody.scrollTop;
+                     const contentHeight = contentBody.clientHeight;
+                     
+                     // 找到当前可见的标题
+                     let activeHeading = null;
+                     
+                     for (let i = tocItems.length - 1; i >= 0; i--) {
+                         const item = tocItems[i];
+                         const element = item.element;
+                         const elementTop = element.offsetTop - 100;
+                         
+                         if (scrollTop >= elementTop) {
+                             activeHeading = item.id;
+                             break;
+                         }
+                     }
+                     
+                     if (activeHeading) {
+                         updateActiveTOC(activeHeading);
+                     }
+                 }, 100));
+             }
+         }
+
+         function toggleTOC() {
+             const tocContent = document.getElementById('tocContent');
+             const tocToggle = document.querySelector('.toc-toggle');
+             
+             if (tocVisible) {
+                 tocContent.style.display = 'none';
+                 tocToggle.textContent = '+';
+                 tocVisible = false;
+             } else {
+                 tocContent.style.display = 'block';
+                 tocToggle.textContent = '−';
+                 tocVisible = true;
+             }
+         }
+
+         // 节流函数
+         function throttle(func, limit) {
+             let inThrottle;
+             return function() {
+                 const args = arguments;
+                 const context = this;
+                 if (!inThrottle) {
+                     func.apply(context, args);
+                     inThrottle = true;
+                     setTimeout(() => inThrottle = false, limit);
+                 }
+             }
+         }
+
+         // 页面加载完成后初始化
+         document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
